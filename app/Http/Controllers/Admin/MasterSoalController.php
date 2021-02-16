@@ -14,39 +14,14 @@ class MasterSoalController extends Controller
         return view('master_soal.master_soal');
     }
 
-//     TipeSoal
-// soal
-// TrueFalse
-// jawabanA
-// jawabanB
-// jawabanC
-// jawabanD
-// jawabanE
-// jawabanBenar
-
     public function addSoal(Request $request){
 
         $TipeSoal = $request->tipeSoal;
 
         if($TipeSoal == 1){
-            $create = MasterSoal::create([
-                "type" => $TipeSoal,
-                "packageSoal" => $request->packageSoal,
-                "soal" => $request->soal,
-                "jawabanA" => $request->jawabanA,
-                "jawabanB" => $request->jawabanB,
-                "jawabanC" => $request->jawabanC,
-                "jawabanD" => $request->jawabanD,
-                "jawabanE" => $request->jawabanE,
-                "jawabanBenar" => $request->jawabanBenar,
-            ]);
+            $create = MasterSoal::create($request->except(['TrueFalse']));
         }else{
-            $create = MasterSoal::create([
-                "type" => $TipeSoal,
-                "packageSoal" => $request->packageSoal,
-                "soal" => $request->soal,
-                "TrueFalse" => $request->TrueFalse,
-            ]);
+            $create = MasterSoal::create($request->only(['type','packageSoal','soal','TrueFalse']));
         }
         
         if($create){
