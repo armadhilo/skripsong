@@ -39,4 +39,16 @@ class PackageSoalController extends Controller
         return PackageSoal::find($id);
     }
 
+    public function delete($id){
+        $delete = PackageSoal::find($id);
+        $delete->delete();
+
+        
+        if($delete){
+            return response()->json(["status" => 'success']);
+        }else{
+            return response()->json(["status" => 'fail']);
+        }
+    }
+
 }

@@ -46,13 +46,10 @@
                                     <td>{{ $item->deskripsi }}</td>
                                     <td class="text-center">
                                        <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="add_package({{$item->id}})"><i class="fa fa-edit"></i></button>
-                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                       <button class="btn btn-sm btn-icon btn-danger" onclick="delete_package({{$item->id}})"><i class="fa fa-trash"></i></button>
                                     </td>
                                  </tr>
                               @endforeach
-
-                              
-                              
                            </tbody>
                         </table>
                      </div>
@@ -110,8 +107,22 @@
       $("#tb_package").DataTable();
    });
 
-   function add_package(id = null){
+   function delete_package(id){
+      $.ajax({
+         url: "/admin/package/" + id,
+         type: "DELETE",
+         dataType: 'JSON',
+         success: function( data, textStatus, jQxhr ){
+            console.log(data);
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
+   }
 
+   function add_package(id = null){
       if(id){
          $('#modalTitle').html('Edit Package');
          $("#modal_package").modal('show');
@@ -124,6 +135,7 @@
             success: function( data, textStatus, jQxhr ){
                $('#package').val(data.package);
                $('#deskripsi').val(data.deskripsi);
+               $('#id').val(data.id);
             },
             error: function( jqXhr, textStatus, errorThrown ){
                console.log( errorThrown );
@@ -158,6 +170,8 @@
          },
       });
    })
+
+
 
 </script>
 @endsection

@@ -23,7 +23,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('package','Admin\PackageSoalController@index')->name('package.view');
     Route::post('package','Admin\PackageSoalController@add')->name('package.post');
-    Route::get('package/{id}','Admin\PackageSoalController@first');
+    Route::get('package/{id}','Admin\PackageSoalController@first')->name('package.first');
+    Route::delete('package/{id}','Admin\PackageSoalController@delete')->name('package.delete');
 
     Route::get('master_soal','Admin\MasterSoalController@index')->name('soal.view');
     Route::post('master_soal','Admin\MasterSoalController@addSoal')->name('soal.post');
