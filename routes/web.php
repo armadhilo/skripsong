@@ -21,7 +21,11 @@ Route::prefix('admin')->group(function () {
 
 	Route::get('/', 'Admin\DashboardController@index')->name('dashboard.admin');
 
-    Route::get('master_soal','Admin\MasterSoalController@index');
+    Route::get('package','Admin\PackageSoalController@index')->name('package.view');
+    Route::post('package','Admin\PackageSoalController@add')->name('package.post');
+    Route::get('package/{id}','Admin\PackageSoalController@first');
+
+    Route::get('master_soal','Admin\MasterSoalController@index')->name('soal.view');
     Route::post('master_soal','Admin\MasterSoalController@addSoal')->name('soal.post');
 
 });
