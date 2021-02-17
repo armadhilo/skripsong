@@ -14,4 +14,8 @@ class PackageSoal extends Model
     public $timestamps = false;
     protected $table = 'package_soal';
     protected $guarded = ['id'];
+
+    public function MasterSoal(){ 
+        return $this->belongsTo('App\Models\Admin\MasterSoal'); 
+    }
 }

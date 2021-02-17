@@ -234,7 +234,7 @@
        <ul class="sidebar-menu">
             <li class="menu-header">App</li>
             <li><a class="nav-link" href="blank.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Package Soal</span></a></li>
+            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Package</span></a></li>
             <li><a class="nav-link" href="{{ route('soal.view') }}"><i class="far fa-file-alt"></i> <span>Master Soal</span></a></li>
        </ul>
     </aside>

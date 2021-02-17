@@ -13,7 +13,7 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Package A</h2>
+         <h2 class="section-title">{{$PackageSoal->package}}</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -21,26 +21,24 @@
                      <div class="col-8 col-md-8 col-lg-8">
                         <h6 class="text-primary">List Soal</h6>
                      </div>
-                     <div class="col-4 col-md-4 col-lg-4 text-right">
-                        <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add_soal();"><i class="fa fa-plus"></i> Tambah Soal</a>
-                     </div>
                   </div>
-                  <div class="card-body pt-0">
-                     <div class="row">
-                        <div class="col-6 col-md-6 col-lg-6">
-                           <div class="form-group">
-                              <label>Tipe Soal</label>
-                              <select class="form-control" id="tipe_soal" onchange="pilih_tipe_soal();">
-                                 <option value="1">Pilihan Ganda</option>
-                                 <option value="2">True or False</option>
-                              </select>
+                  <form id="formMasterSoal">
+                     <input type="hidden" value="{{$PackageSoal->package}}" name="packageSoal">
+                     <div class="card-body pt-0">
+                        <div class="row">
+                           <div class="col-6 col-md-6 col-lg-6">
+                              <div class="form-group">
+                                 <label>Tipe Soal</label>
+                                 <select class="form-control" id="tipe_soal" name="tipeSoal" onchange="pilih_tipe_soal();">
+                                    <option value="1">Pilihan Ganda</option>
+                                    <option value="2">True or False</option>
+                                 </select>
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                           <div class="form-group">
-                              <label id="soal_pernyataan">Soal</label>
-                              {{-- <textarea type="text" class="form-control" style="height: 100px;"></textarea> --}}
-                              <textarea type="text" class="form-control ckeditor-text" name="soal" id="soal" autocomplete="off"></textarea>
+                              <div class="col-12 col-md-12 col-lg-12">
+                                 <div class="form-group">
+                                    <label id="soal_pernyataan">Soal</label>
+                                    <textarea type="text" class="form-control ckeditor-text" name="soal" id="soal" autocomplete="off"></textarea>
                                  <script type="text/javascript">
                                        CKEDITOR.replace( 'soal',
                                        {
@@ -48,75 +46,74 @@
                                           filebrowserUploadUrl: "base64",
                                        });
                                  </script>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 true-false">
-                           <div class="form-group">
-                              <label>Jawaban</label>
-                              <div class="selectgroup w-100">
-                                 <label class="selectgroup-item">
-                                   <input type="radio" name="value" value="50" class="selectgroup-input" checked="">
-                                   <span class="selectgroup-button">True</span>
-                                 </label>
-                                 <label class="selectgroup-item">
-                                   <input type="radio" name="value" value="100" class="selectgroup-input">
-                                   <span class="selectgroup-button">False</span>
-                                 </label>
-                               </div>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Opsi Jawaban A</label>
-                              <textarea type="text" class="form-control" style="height: 60px;"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Opsi Jawaban B</label>
-                              <textarea type="text" class="form-control" style="height: 60px;"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Opsi Jawaban C</label>
-                              <textarea type="text" class="form-control" style="height: 60px;"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Opsi Jawaban D</label>
-                              <textarea type="text" class="form-control" style="height: 60px;"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Opsi Jawaban E</label>
-                              <textarea type="text" class="form-control" style="height: 60px;"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
-                           <div class="form-group">
-                              <label>Jawaban Benar</label>
-                              <select class="form-control">
-                                 <option>- Pilih -</option>
-                                 <option>Opsi A</option>
-                                 <option>Opsi B</option>
-                                 <option>Opsi C</option>
-                                 <option>Opsi D</option>
-                                 <option>Opsi E</option>
-                              </select>
-                           </div>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 true-false">
+                                 <div class="form-group">
+                                    <label>Jawaban</label>
+                                    <div class="selectgroup w-100">
+                                       <label class="selectgroup-item">
+                                       <input type="radio" name="TrueFalse" value="True" class="selectgroup-input" checked="">
+                                       <span class="selectgroup-button">True</span>
+                                       </label>
+                                       <label class="selectgroup-item">
+                                       <input type="radio" name="TrueFalse" value="False" class="selectgroup-input">
+                                       <span class="selectgroup-button">False</span>
+                                       </label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Opsi Jawaban A</label>
+                                    <textarea type="text" class="form-control" name="jawabanA" style="height: 60px;"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Opsi Jawaban B</label>
+                                    <textarea type="text" class="form-control" name="jawabanB" style="height: 60px;"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Opsi Jawaban C</label>
+                                    <textarea type="text" class="form-control" name="jawabanC" style="height: 60px;"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Opsi Jawaban D</label>
+                                    <textarea type="text" class="form-control" name="jawabanD" style="height: 60px;"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Opsi Jawaban E</label>
+                                    <textarea type="text" class="form-control" name="jawabanE" style="height: 60px;"></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
+                                 <div class="form-group">
+                                    <label>Jawaban Benar</label>
+                                    <select class="form-control" name="jawabanBenar">
+                                       <option>- Pilih -</option>
+                                       <option value="A">Opsi A</option>
+                                       <option value="B">Opsi B</option>
+                                       <option value="C">Opsi C</option>
+                                       <option value="D">Opsi D</option>
+                                       <option value="E">Opsi E</option>
+                                    </select>
+                                 </div>
+                              </div>
                         </div>
                      </div>
-                    
-                  </div>
-                  <div class="card-footer text-right">
-                     <button class="btn btn-primary">Save</button>
-                   </div>
+                     <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                     </div>
+                     </form>
                 </div>
             </div>
-            
          </div>
       </div>
    </section>
@@ -138,5 +135,25 @@
          $(".true-false").attr("hidden", false);
       }
    }
+
+   $('#formMasterSoal').submit(function(e){
+      e.preventDefault();
+      $.ajax({
+         url: "{{ route('soal.post') }}",
+         type: "POST",
+         data: $('#formMasterSoal').serialize(),
+         dataType: 'JSON',
+         success: function( data, textStatus, jQxhr ){
+            if(data.status == 'success'){
+               console.log('success');
+               $('#formMasterSoal').trigger("reset");
+            }
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
+   });
 </script>
 @endsection

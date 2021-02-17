@@ -11,8 +11,9 @@
             <div class="breadcrumb-item">Advanced Forms</div>
          </div>
       </div>
+
       <div class="section-body">
-         <h2 class="section-title">Package A</h2>
+         <h2 class="section-title">{{ $PackageSoal->package }}</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -21,7 +22,7 @@
                         <h6 class="text-primary">List Soal</h6>
                      </div>
                      <div class="col-4 col-md-4 col-lg-4 text-right">
-                        <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success"><i class="fa fa-plus"></i> Tambah Soal</a>
+                        <a href="/admin/master_soal/create/{{ $PackageSoal->id }}" class="btn btn-icon icon-left btn-success"><i class="fa fa-plus"></i> Tambah Soal</a>
                      </div>
                   </div>
                   <div class="card-body pt-0">
@@ -50,20 +51,25 @@
                               </tr>
                            </thead>
                            <tbody>
+
+                              @foreach ($PilihanGanda as $item)
+                     
                               <tr>
-                                 <th class="text-center">1</th>
-                                 <td>PHP Merupakan singkatan dari?</td>
-                                 <td>Private Home Page</td>
-                                 <td>Personal Hypertext Processor</td>
-                                 <td>PHP: Hypertext Processor</td>
-                                 <td>Program Hypertext Processor</td>
-                                 <td>Pemberian Harapan Palsu</td>
-                                 <td class="text-center">C</td>
+                                 <th class="text-center">{{ $loop->iteration }}</th>
+                                 <td>{{ $item->soal }}</td>
+                                 <td>{{ $item->jawabanA }}</td>
+                                 <td>{{ $item->jawabanB }}</td>
+                                 <td>{{ $item->jawabanC }}</td>
+                                 <td>{{ $item->jawabanD }}</td>
+                                 <td>{{ $item->jawabanE }}</td>
+                                 <td class="text-center">{{ $item->jawabanBenar }}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
+
+                              @endforeach    
                               
                            </tbody>
                         </table>
@@ -79,15 +85,18 @@
                               </tr>
                            </thead>
                            <tbody>
+
+                              @foreach ($TrueFalse as $item)
                               <tr>
-                                 <th class="text-center">1</th>
-                                 <td>PHP Merupakan singkatan dari PHP: Hypertext Processor</td>
-                                 <td class="text-center">True</td>
+                                 <th class="text-center">{{ $loop->iteration }}</th>
+                                 <td>{{$item->soal}}</td>
+                                 <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
+                              @endforeach
                               
                            </tbody>
                         </table>  

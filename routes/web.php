@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','Login\LoginController@index');
+Route::view('/','user.ambil-package.index');
+// Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
 
@@ -27,6 +28,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('package/{id}','Admin\PackageSoalController@delete')->name('package.delete');
 
     Route::get('master_soal','Admin\MasterSoalController@index')->name('soal.view');
+    Route::get('master_soal/{id}','Admin\MasterSoalController@goPackage')->name('soal.goPackage');
+    Route::get('master_soal/create/{id}','Admin\MasterSoalController@goCreate')->name('soal.goCreate');
     Route::post('master_soal','Admin\MasterSoalController@addSoal')->name('soal.post');
 
 });

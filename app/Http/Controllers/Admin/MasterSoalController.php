@@ -6,12 +6,33 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Models\MasterSoal\MasterSoal;
+use App\Models\Admin\MasterSoal;
+use App\Models\Admin\PackageSoal;
 
 class MasterSoalController extends Controller
 {
     public function index(){
-        return view('master_soal.master_soal');
+
+        $data['PackageSoal'] = PackageSoal::all();
+
+        return view('admin.master-soal.pilih_package',$data);
+    }
+
+    public function goPackage($id){
+
+        $packageSoal = PackageSoal::find($id);
+
+        $data['PackageSoal'] = $packageSoal;
+        $data['PilihanGanda'] = MasterSoal::where(['packageSoal' => $packageSoal->package, 'type' => 1])->get();
+        $data['TrueFalse'] = MasterSoal::where(['packageSoal' => $packageSoal->package, 'type' => 2])->get();
+
+        return view('admin.master-soal.index',$data);
+    }
+
+    public function goCreate($id){
+        $data['PackageSoal'] = PackageSoal::find($id);
+
+        return view('admin.master-soal.create_soal',$data);
     }
 
     public function addSoal(Request $request){
