@@ -64,13 +64,8 @@
                                  <td>{{ $item->jawabanE }}</td>
                                  <td class="text-center">{{ $item->jawabanBenar }}</td>
                                  <td class="text-center">
-<<<<<<< HEAD
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal('4')"><i class="fa fa-trash"></i></a>
-=======
-                                    <button onclick="editSoal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
->>>>>>> d9ded2c802f4307a40787f056cecff685d6b1a1d
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal({{$item->id}})"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
 
@@ -98,10 +93,10 @@
                                  <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal()"><i class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal({{$item->id}})"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
-                              @endforeachs
+                              @endforeach
                               
                            </tbody>
                         </table>  
@@ -156,7 +151,7 @@
          .then((willDelete) => {
                if (willDelete) {
                         $.ajax({
-                           url: "/admin/soal/" + id,
+                           url: "/admin/master_soal/" + id,
                            type: "DELETE",
                            dataType: 'JSON',
                            success: function( data, textStatus, jQxhr ){
