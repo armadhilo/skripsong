@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Models\Admin\PackageSoal;
-use Facade\Ignition\Support\Packagist\Package;
+use App\Models\Admin\Package;
 
 class PackageSoalController extends Controller
 {
     public function index(){
 
-        $data['dataAll'] = PackageSoal::all();
+        $data['dataAll'] = Package::all();
         return view('admin.package-soal.index',$data);
     }
 
@@ -21,7 +20,7 @@ class PackageSoalController extends Controller
 
         $id = $request->id;
 
-        $create = PackageSoal::updateOrCreate([
+        $create = Package::updateOrCreate([
             'id' => $id
         ],[
             'package' => $request->package,
@@ -36,11 +35,11 @@ class PackageSoalController extends Controller
     }
 
     public function first($id){
-        return PackageSoal::find($id);
+        return Package::find($id);
     }
 
     public function delete($id){
-        $delete = PackageSoal::find($id);
+        $delete = Package::find($id);
         $delete->delete();
 
         

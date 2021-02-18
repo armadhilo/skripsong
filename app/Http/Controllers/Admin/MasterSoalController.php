@@ -6,31 +6,33 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Models\Admin\MasterSoal;
-use App\Models\Admin\PackageSoal;
+use App\Models\Admin\Soal;
+use App\Models\Admin\Package;
 
 class MasterSoalController extends Controller
 {
     public function index(){
 
-        $data['PackageSoal'] = PackageSoal::all();
+        $data['PackageSoal'] = Package::all();
+
+        $data['MasterSoal'] = Soal::all();
 
         return view('admin.master-soal.pilih_package',$data);
     }
 
     public function goPackage($id){
 
-        $packageSoal = PackageSoal::find($id);
+        $packageSoal = Package::find($id);
 
         $data['PackageSoal'] = $packageSoal;
-        $data['PilihanGanda'] = MasterSoal::where(['packageSoal' => $packageSoal->package, 'type' => 1])->get();
-        $data['TrueFalse'] = MasterSoal::where(['packageSoal' => $packageSoal->package, 'type' => 2])->get();
+        $data['PilihanGanda'] = Soal::where(['package_id' => $packageSoal->id, 'type' => 1])->get();
+        $data['TrueFalse'] = Soal::where(['package_id' => $packageSoal->id, 'type' => 2])->get();
 
         return view('admin.master-soal.index',$data);
     }
 
     public function goCreate($id){
-        $data['PackageSoal'] = PackageSoal::find($id);
+        $data['PackageSoal'] = Package::find($id);
 
         return view('admin.master-soal.create_soal',$data);
     }
@@ -40,9 +42,9 @@ class MasterSoalController extends Controller
         $TipeSoal = $request->tipeSoal;
 
         if($TipeSoal == 1){
-            $create = MasterSoal::create($request->except(['TrueFalse']));
+            $create = Soal::create($request->except(['TrueFalse']));
         }else{
-            $create = MasterSoal::create($request->only(['type','packageSoal','soal','TrueFalse']));
+            $create = Soal::create($request->only(['type','package_id','soal','TrueFalse']));
         }
         
         if($create){

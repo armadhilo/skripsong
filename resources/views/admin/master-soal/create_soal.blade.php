@@ -23,7 +23,7 @@
                      </div>
                   </div>
                   <form id="formMasterSoal">
-                     <input type="hidden" value="{{$PackageSoal->package}}" name="packageSoal">
+                     <input type="text" value="{{$PackageSoal->id  }}" name="package_id">
                      <div class="card-body pt-0">
                         <div class="row">
                            <div class="col-6 col-md-6 col-lg-6">
@@ -138,6 +138,9 @@
 
    $('#formMasterSoal').submit(function(e){
       e.preventDefault();
+      for (instance in CKEDITOR.instances) {
+                CKEDITOR.instances[instance].updateElement();
+            }
       $.ajax({
          url: "{{ route('soal.post') }}",
          type: "POST",
