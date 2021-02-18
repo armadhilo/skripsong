@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackageSoal extends Migration
+class CreateUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreatePackageSoal extends Migration
      */
     public function up()
     {
-        Schema::create('package', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('package');
-            $table->text('deskripsi');
-            $table->dateTime('publish')->nullable();
-            $table->integer('durasi')->nullable();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('email');
+            $table->string('password');
+            $table->enum('role', ['Admin', 'User']);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreatePackageSoal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package');
+        Schema::dropIfExists('user');
     }
 }

@@ -18,13 +18,13 @@ class CreateSoalTable extends Migration
             $table->foreignId('package_id')->constrained('package')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('type', ['1', '2']);
             $table->text('soal');
-            $table->text('jawabanA');
-            $table->text('jawabanB');
-            $table->text('jawabanC');
-            $table->text('jawabanD');
-            $table->text('jawabanE');
-            $table->string('jawabanBenar',1);
-            $table->enum('TrueFalse', ['True', 'False']);
+            $table->text('jawabanA')->nullable();
+            $table->text('jawabanB')->nullable();
+            $table->text('jawabanC')->nullable();
+            $table->text('jawabanD')->nullable();
+            $table->text('jawabanE')->nullable();
+            $table->string('jawabanBenar',1)->nullable();
+            $table->enum('TrueFalse', ['True', 'False'])->nullable();
             $table->timestamps();
         });
     }

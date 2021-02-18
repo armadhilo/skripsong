@@ -23,13 +23,13 @@
                      </div>
                   </div>
                   <form id="formMasterSoal">
-                     <input type="text" value="{{$PackageSoal->id  }}" name="package_id">
+                     <input type="hidden" value="{{$PackageSoal->id  }}" name="package_id">
                      <div class="card-body pt-0">
                         <div class="row">
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group">
                                  <label>Tipe Soal</label>
-                                 <select class="form-control" id="tipe_soal" name="tipeSoal" onchange="pilih_tipe_soal();">
+                                 <select class="form-control" id="tipe_soal" name="type" onchange="pilih_tipe_soal();">
                                     <option value="1">Pilihan Ganda</option>
                                     <option value="2">True or False</option>
                                  </select>

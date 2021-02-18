@@ -32,16 +32,6 @@
                </div>
             </div>
 
-           <h2>asdasd</h2>
-           @dump($MasterSoal)
-
-           <h3>asdad</h3>
-            @foreach ($PackageSoal as $item)
-                @foreach ($item->soal as $item2)
-                    <h4>{{ $item2->soal }}</h4>
-                @endforeach
-            @endforeach
-
             @foreach ($PackageSoal as $item)
                <div class="col-3 col-md-3 col-lg-3" style="cursor: pointer;" onclick="goPackage({{$item->id}})">  
                      <div class="card card-primary"> 

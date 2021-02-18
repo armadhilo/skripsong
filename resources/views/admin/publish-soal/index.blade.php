@@ -39,16 +39,19 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td class="text-center">60 menit</td>
-                                 <td class="text-center">27 Januari 2021 12:00</td>
-                                 <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                 </td>
-                              </tr>
+                              @foreach ($listPublish as $item)
+                                 <tr>
+                                    <th class="text-center">{{$loop->iteration}}</th>
+                                    <td>{{$item->package}}</td>
+                                    <td class="text-center">{{$item->durasi}} Menit</td>
+                                    <td class="text-center">{{ date('d F Y H:i:s', strtotime($item->publish)) }}</td>
+                                    <td class="text-center">
+                                       <button onclick="publish_soal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
+                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                 </tr>
+                              @endforeach
+                              
                               
                            </tbody>
                         </table>
@@ -72,34 +75,42 @@
                  <span aria-hidden="true">&times;</span>
                </button>
              </div>
-             <div class="modal-body pb-0">
-               <div class="col-12 col-md-12 col-lg-12">
-                  <div class="form-group mb-4">
-                     <label>Package</label>
-                     <select class="form-control">
-                        <option>- Pilih -</option>
-                        <option>Package A</option>
-                        <option>Package B</option>
-                     </select>
+             <form id="formPublish">
+               <div class="modal-body pb-0">
+                  <div class="col-12 col-md-12 col-lg-12">
+                     <div class="form-group mb-4">
+                        <label>Package</label>
+                        <div id="placeForm"></div>
+                        <select class="form-control" id="id" name="id">
+                           <option selected disabled>- Pilih -</option>
+                           @if (count($dataPackage) > 0)
+                              @foreach ($dataPackage as $item)
+                                 <option value="{{$item->id}}">{{$item->package}}</option>
+                              @endforeach 
+                           @else
+                              <option disabled>Tidak Ada Package</option>
+                           @endif
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-12 col-lg-12">
+                     <div class="form-group mb-4">
+                        <label>Durasi (menit)</label>
+                        <input type="number" name="durasi" id="durasi" class="form-control"/>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-12 col-lg-12">
+                     <div class="form-group mb-4">
+                        <label>Waktu Publish</label>
+                        <input type="datetime-local" onchange="checkDate()" required="" class="form-control" id="deadline" name="publish">
+                     </div>
                   </div>
                </div>
-               <div class="col-12 col-md-12 col-lg-12">
-                  <div class="form-group mb-4">
-                     <label>Durasi (menit)</label>
-                     <input type="number" class="form-control"/>
-                  </div>
+               <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                </div>
-               <div class="col-12 col-md-12 col-lg-12">
-                  <div class="form-group mb-4">
-                     <label>Waktu Publish</label>
-                     <input type="datetime-local" onchange="checkDate()" required="" class="form-control" id="deadline" name="deadline">
-                  </div>
-               </div>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-primary">Save</button>
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
+            </form>
            </div>
          </div>
        </div>
@@ -113,9 +124,77 @@
       $("#tb_publish").DataTable();
    });
 
-   function publish_soal(){
-      $("#modal_publish").modal('show');
-      $(".modal-backdrop").remove();
+   $('#formPublish').submit(function(e){
+      e.preventDefault();
+      $.ajax({
+         url: "{{ route('publish.publish') }}",
+         type: "POST",
+         data: $('#formPublish').serialize(),
+         dataType: 'JSON',
+         success: function( data, textStatus, jQxhr ){
+            if(data.status == 'success'){
+               alert('success');
+               $('#formPublish').trigger("reset");
+            }
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
+   })
+
+   function publish_soal(id = null){
+      if(id){
+         $("#modal_publish").modal('show');
+         $(".modal-backdrop").remove();
+         document.getElementById('id').remove();
+         $.ajax({
+            url: "/admin/publish_package/" + id,
+            type: "GET",
+            dataType: 'JSON',
+            success: function( data, textStatus, jQxhr ){
+               console.log(data);
+               $('#placeForm').html(`
+                  <input type="text" name="id" value="${data.id}" class="form-control" readonly/>
+               `);
+               $('#durasi').val(data.durasi);
+               var dateVal = new Date(data.publish);
+               var day = dateVal.getDate().toString().padStart(2, "0");
+               var month = (1 + dateVal.getMonth()).toString().padStart(2, "0");
+               var hour = dateVal.getHours().toString().padStart(2, "0");
+               var minute = dateVal.getMinutes().toString().padStart(2, "0");
+               var sec = dateVal.getSeconds().toString().padStart(2, "0");
+               var ms = dateVal.getMilliseconds().toString().padStart(3, "0");
+               var inputDate = dateVal.getFullYear() + "-" + (month) + "-" + (day) + "T" + (hour) + ":" + (minute) + ":" + (sec) + "." + (ms);
+               $('#deadline').val(inputDate);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+               console.log( errorThrown );
+               console.warn(jqXhr.responseText);
+            },
+         });
+
+      }else{
+         $("#modal_publish").modal('show');
+         $(".modal-backdrop").remove();
+      }
+      
+   }
+
+   function delete_publish(id){
+      $.ajax({
+         url: "/admin/publish_package/" + id,
+         type: "DELETE",
+         dataType: 'JSON',
+         success: function( data, textStatus, jQxhr ){
+            console.log(data);
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
    }
 
    function checkDate(){

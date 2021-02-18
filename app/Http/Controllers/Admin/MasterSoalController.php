@@ -15,8 +15,6 @@ class MasterSoalController extends Controller
 
         $data['PackageSoal'] = Package::all();
 
-        $data['MasterSoal'] = Soal::all();
-
         return view('admin.master-soal.pilih_package',$data);
     }
 

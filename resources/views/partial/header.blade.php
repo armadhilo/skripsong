@@ -239,8 +239,9 @@
             <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Package</span></a></li>
             <li><a class="nav-link" href="{{ route('soal.view') }}"><i class="far fa-file-alt"></i> <span>Master Soal</span></a></li>
 
-            <li class="menu-header">List</li>
+            <li class="menu-header">List and Publish</li>
             <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
+            <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
        </ul>
     </aside>
  </div>
