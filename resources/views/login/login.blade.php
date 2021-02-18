@@ -168,7 +168,7 @@
             success: function( data, textStatus, jQxhr ){
               if(data.status == 'success'){
                 console.log(data.url);
-                window.location.href = `/admin`;
+                window.location.href = data.url;
               }else{
                 alert('gagal');
               }

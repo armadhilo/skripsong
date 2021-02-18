@@ -164,7 +164,8 @@
             success: function( data, textStatus, jQxhr ){
                console.log(data);
                $('#placeForm').html(`
-                  <input type="text" name="id" value="${data.id}" class="form-control" readonly/>
+                  <input type="hidden" name="id" value="${data.id}" class="form-control" readonly/>
+                  <input type="text" value="${data.package}" class="form-control" readonly/>
                `);
                $('#durasi').val(data.durasi);
                var dateVal = new Date(data.publish);
