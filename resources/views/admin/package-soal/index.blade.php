@@ -66,7 +66,7 @@
       <div class="modal" tabindex="-1" role="dialog" id="modal_package" data-backdrop="static" data-keyboard="false">
          <div class="modal-dialog" role="document">
          <form id="formPackage">
-         <input type="hidden" name="id" id="id">
+            
            <div class="modal-content">
              <div class="modal-header">
                <h5 class="modal-title" id="modalTitle"></h5>
@@ -75,6 +75,7 @@
                </button>
              </div>
              <div class="modal-body pb-0">
+               <input type="text" hidden name="id" id="id">
                <div class="col-12 col-md-12 col-lg-12">
                   <div class="form-group mb-4">
                      <label>Judul Package</label>
@@ -108,18 +109,36 @@
    });
 
    function delete_package(id){
-      $.ajax({
-         url: "/admin/package/" + id,
-         type: "DELETE",
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            console.log(data);
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+         swal({
+         title: "Are you sure?",
+         text: "Once deleted, you will not be able to recover this data!",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                        $.ajax({
+                           url: "/admin/package/" + id,
+                           type: "DELETE",
+                           dataType: 'JSON',
+                           success: function( data, textStatus, jQxhr ){
+                              if(data.status == 'success'){
+                                 swal("Success!", "Data berhasil dihapus", "success");
+                              }else{
+                                 swal("Failed!", "Data gagal dihapus", "error");
+                              }
+                              location.reload();
+                           },
+                           error: function( jqXhr, textStatus, errorThrown ){
+                              console.log( errorThrown );
+                              console.warn(jqXhr.responseText);
+                           },
+                        });
+               } else {
+                  swal("Your imaginary file is safe!");
+               }
+         });
    }
 
    function add_package(id = null){
@@ -147,6 +166,7 @@
          $('#modalTitle').html('Add Package');
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
+         $('#formPackage')[0].reset();
       }
       
    }
@@ -160,8 +180,13 @@
          dataType: 'JSON',
          success: function( data, textStatus, jQxhr ){
             if(data.status == 'success'){
+               swal("Success!", "Proses berhasil", "success");
                console.log('success');
                $('#formPackage').trigger("reset");
+               $("#modal_package").modal('hide');
+               location.reload();
+            }else{
+               swal("Failed!", "Proses gagal", "error");
             }
          },
          error: function( jqXhr, textStatus, errorThrown ){
