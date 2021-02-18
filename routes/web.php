@@ -38,6 +38,7 @@ Route::prefix('admin')->group(function () {
         Route::get('publish_package','Admin\PublishPackageController@index')->name('publish.view');
         Route::post('publish_package','Admin\PublishPackageController@publish')->name('publish.publish');
         route::get('publish_package/{id}','Admin\PublishPackageController@first')->name('publish.first');
+        Route::delete('publish_package/{id}','Admin\PublishPackageController@delete')->name('publish.delete');
     });
 });
 

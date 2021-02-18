@@ -41,4 +41,17 @@ class PublishPackageController extends Controller
     public function first($id){
         return Package::find($id);
     }
+
+    public function delete($id){
+        $package = Package::find($id);
+        $package->publish = NULL ;
+        $package->durasi = NULL ;
+        $package->save();
+
+        if(!$package->save()){
+            return response()->json(['status' => 'fail']);
+        }else{
+            return response()->json(['status' => 'success']);
+        }
+    }
 }
