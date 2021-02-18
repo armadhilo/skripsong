@@ -65,7 +65,7 @@
                                  <td class="text-center">{{ $item->jawabanBenar }}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal('4')"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
 
@@ -93,7 +93,7 @@
                                  <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal('4')"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
                               @endforeach
@@ -139,6 +139,37 @@
       $("#tb_true_false").DataTable();
    });
 
+
+   function delete_soal(id){
+      swal({
+         title: "Are you sure?",
+         text: "Once deleted, you will not be able to recover this data!",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                        $.ajax({
+                           url: "/admin/soal/" + id,
+                           type: "DELETE",
+                           dataType: 'JSON',
+                           success: function( data, textStatus, jQxhr ){
+                              if(data.status == 'success'){
+                                 swal("Success!", "Data berhasil dihapus", "success");
+                              }else{
+                                 swal("Failed!", "Data gagal dihapus", "error");
+                              }
+                              location.reload();
+                           },
+                           error: function( jqXhr, textStatus, errorThrown ){
+                              console.log( errorThrown );
+                              console.warn(jqXhr.responseText);
+                           },
+                        });
+               }
+         });
+   }
   
 </script>
 @endsection

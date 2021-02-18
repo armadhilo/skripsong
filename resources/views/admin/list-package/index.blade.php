@@ -41,7 +41,6 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
-                                 <th scope="col" class="text-center" style="width: 12%">Actions</th>
                               </tr>
                            </thead>
                            <tbody>
@@ -51,10 +50,6 @@
                                     <th class="text-center">{{ $loop->iteration }}</th>
                                     <td>{{$item->package}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td class="text-center">
-                                       <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                    </td>
                                  </tr>
                               @endforeach
                            
@@ -68,7 +63,7 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
-                                 <th scope="col" class="text-center" style="width: 12%">Actions</th>
+                                 
                               </tr>
                            </thead>
                            <tbody>
@@ -77,10 +72,7 @@
                                  <th class="text-center">{{ $loop->iteration }}</th>
                                  <td>{{$item->package}}</td>
                                  <td>{{$item->deskripsi}}</td>
-                                 <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                 </td>
+                                 
                               </tr>
                            @endforeach
                            </tbody>
@@ -93,7 +85,7 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
-                                 <th scope="col" class="text-center" style="width: 12%">Actions</th>
+                                
                               </tr>
                            </thead>
                            <tbody>
@@ -102,10 +94,6 @@
                                     <th class="text-center">{{ $loop->iteration }}</th>
                                     <td>{{$item->package}}</td>
                                     <td>{{$item->deskripsi}}</td>
-                                    <td class="text-center">
-                                       <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                    </td>
                                  </tr>
                               @endforeach                              
                            </tbody>

@@ -47,7 +47,7 @@
                                     <td class="text-center">{{ date('d F Y H:i:s', strtotime($item->publish)) }}</td>
                                     <td class="text-center">
                                        <button onclick="publish_soal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
-                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                       <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_publish({{$item->id}})"><i class="fa fa-trash"></i></a>
                                     </td>
                                  </tr>
                               @endforeach
@@ -82,7 +82,7 @@
                         <label>Package</label>
                         <div id="placeForm"></div>
                         <select class="form-control" id="id" name="id">
-                           <option selected disabled>- Pilih -</option>
+                           <option selected value="">- Pilih -</option>
                            @if (count($dataPackage) > 0)
                               @foreach ($dataPackage as $item)
                                  <option value="{{$item->id}}">{{$item->package}}</option>
@@ -96,7 +96,7 @@
                   <div class="col-12 col-md-12 col-lg-12">
                      <div class="form-group mb-4">
                         <label>Durasi (menit)</label>
-                        <input type="number" name="durasi" id="durasi" class="form-control"/>
+                        <input type="number" name="durasi" id="durasi" class="form-control" required/>
                      </div>
                   </div>
                   <div class="col-12 col-md-12 col-lg-12">
@@ -126,22 +126,30 @@
 
    $('#formPublish').submit(function(e){
       e.preventDefault();
-      $.ajax({
-         url: "{{ route('publish.publish') }}",
-         type: "POST",
-         data: $('#formPublish').serialize(),
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            if(data.status == 'success'){
-               alert('success');
-               $('#formPublish').trigger("reset");
-            }
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+      if($("#id").val() == ""){
+         swal("Info!", "Mohon pilih package soal", "info");
+      }else{
+            $.ajax({
+                  url: "{{ route('publish.publish') }}",
+                  type: "POST",
+                  data: $('#formPublish').serialize(),
+                  dataType: 'JSON',
+                  success: function( data, textStatus, jQxhr ){
+                     if(data.status == 'success'){
+                        swal("Success!", "Proses berhasil", "success");
+                        $('#formPublish').trigger("reset");
+                        location.reload();
+                     }else{
+                        swal("Failed!", "Proses gagal", "error");
+                     }
+                  },
+                  error: function( jqXhr, textStatus, errorThrown ){
+                     console.log( errorThrown );
+                     console.warn(jqXhr.responseText);
+                  },
+               });
+      }
+      
    })
 
    function publish_soal(id = null){
@@ -183,18 +191,36 @@
    }
 
    function delete_publish(id){
-      $.ajax({
-         url: "/admin/publish_package/" + id,
-         type: "DELETE",
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            console.log(data);
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+      swal({
+         title: "Are you sure?",
+         text: "Once deleted, you will not be able to recover this data!",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                        $.ajax({
+                              url: "/admin/publish_package/" + id,
+                              type: "DELETE",
+                              dataType: 'JSON',
+                              success: function( data, textStatus, jQxhr ){
+                                 if(data.status == 'success'){
+                                    swal("Success!", "Data berhasil dihapus", "success");
+                                 }else{
+                                    swal("Failed!", "Data gagal dihapus", "error");
+                                 }
+                                 location.reload();
+                                 alert(data);
+                              },
+                              error: function( jqXhr, textStatus, errorThrown ){
+                                 console.log( errorThrown );
+                                 console.warn(jqXhr.responseText);
+                              },
+                           });
+               }
+         });
+      
    }
 
    function checkDate(){

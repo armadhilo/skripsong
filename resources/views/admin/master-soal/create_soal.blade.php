@@ -23,7 +23,7 @@
                      </div>
                   </div>
                   <form id="formMasterSoal">
-                     <input type="hidden" value="{{$PackageSoal->id  }}" name="package_id">
+                     <input type="hidden" value="{{$PackageSoal->id  }}" name="package_id" id="package_id">
                      <div class="card-body pt-0">
                         <div class="row">
                            <div class="col-6 col-md-6 col-lg-6">
@@ -130,18 +130,32 @@
       if(tipe_soal === "1"){
          $(".pilihan-ganda").attr("hidden", false);
          $(".true-false").attr("hidden", true);
+         $('[name ="jawabanA"]').attr("required", true);
+         $('[name ="jawabanB"]').attr("required", true);
+         $('[name ="jawabanC"]').attr("required", true);
+         $('[name ="jawabanD"]').attr("required", true);
+         $('[name ="jawabanE"]').attr("required", true);
       }else{
          $(".pilihan-ganda").attr("hidden", true);
          $(".true-false").attr("hidden", false);
+         $('[name ="jawabanA"]').attr("required", false);
+         $('[name ="jawabanB"]').attr("required", false);
+         $('[name ="jawabanC"]').attr("required", false);
+         $('[name ="jawabanD"]').attr("required", false);
+         $('[name ="jawabanE"]').attr("required", false);
       }
    }
 
    $('#formMasterSoal').submit(function(e){
       e.preventDefault();
+      $("#demoInside iframe").contents().find("body").length;
       for (instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].updateElement();
-            }
-      $.ajax({
+            CKEDITOR.instances[instance].updateElement();
+      }
+      if($("#soal").val().length < 1){
+         swal("Info", "Soal tidak boleh kosong", "info");
+      }else{
+         $.ajax({
          url: "{{ route('soal.post') }}",
          type: "POST",
          data: $('#formMasterSoal').serialize(),
@@ -151,6 +165,7 @@
                swal("Success!", "Proses berhasil", "success");
                console.log('success');
                $('#formMasterSoal').trigger("reset");
+               goListSoal();
             }else{
                swal("Success!", "Proses gagal", "error");
             }
@@ -160,10 +175,13 @@
             console.warn(jqXhr.responseText);
          },
       });
+      }
+      
    });
 
-   function goListSoal($id){
-      window.location.href="/admin/master_soal/" + $id;
+   function goListSoal(){
+      var id = $("#package_id").val();
+      window.location.href="/admin/master_soal/" + id;
    }
 </script>
 @endsection

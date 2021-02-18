@@ -79,14 +79,14 @@
                <div class="col-12 col-md-12 col-lg-12">
                   <div class="form-group mb-4">
                      <label>Judul Package</label>
-                     <input type="text" name="package" id="package" class="form-control"/>
+                     <input type="text" name="package" id="package" class="form-control" required/>
                   </div>
                </div>
                
                <div class="col-12 col-md-12 col-lg-12">
                   <div class="form-group mb-4">
                      <label>Deskripsi</label>
-                     <textarea type="text" name="deskripsi" id="deskripsi" class="form-control" style="height: 60px;"></textarea>
+                     <textarea type="text" name="deskripsi" id="deskripsi" class="form-control" style="height: 60px;" required></textarea>
                   </div>
                </div>
              </div>
@@ -135,8 +135,6 @@
                               console.warn(jqXhr.responseText);
                            },
                         });
-               } else {
-                  swal("Your imaginary file is safe!");
                }
          });
    }
