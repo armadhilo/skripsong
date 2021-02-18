@@ -30,13 +30,14 @@ class LoginController extends Controller
                 Session::put('lastname',$findEmail->lastname);
                 Session::put('email',$findEmail->email);
                 Session::put('password',$findEmail->password);
+                session::put('role',$findEmail->role);
 
                 $callback['status'] = 'success';
 
                 if($findEmail->role == 'User'){
-                    $callback['url'] = "{!! route('user.dashboard') !!}";
+                    $callback['url'] = "/user";
                 }else{
-                    $callback['url'] = "{!! route('admin.dashboard') !!}";
+                    $callback['url'] = "/admin";
                 }
 
                 $callback['status'] = 'success';

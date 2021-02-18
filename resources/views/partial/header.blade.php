@@ -231,9 +231,11 @@
        <div class="sidebar-brand sidebar-brand-sm">
           <a href="index.html">St</a>
        </div>
-       <ul class="sidebar-menu">
+
+       @if (session()->get('role') == 'Admin')
+         <ul class="sidebar-menu">
             <li class="menu-header">App</li>
-            <li><a class="nav-link" href="blank.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="{{route('dashboard.admin')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
             <li class="menu-header">Master</li>
             <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Package</span></a></li>
@@ -242,6 +244,14 @@
             <li class="menu-header">List and Publish</li>
             <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
-       </ul>
+         </ul>
+       @else
+       <ul class="sidebar-menu">
+         <li class="menu-header">App</li>
+            <li><a class="nav-link" href="{{ route('dashboard.user') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+         </ul>
+       @endif
+
+      
     </aside>
  </div>
