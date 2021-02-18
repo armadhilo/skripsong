@@ -148,8 +148,11 @@
          dataType: 'JSON',
          success: function( data, textStatus, jQxhr ){
             if(data.status == 'success'){
+               swal("Success!", "Proses berhasil", "success");
                console.log('success');
                $('#formMasterSoal').trigger("reset");
+            }else{
+               swal("Success!", "Proses gagal", "error");
             }
          },
          error: function( jqXhr, textStatus, errorThrown ){
@@ -158,5 +161,9 @@
          },
       });
    });
+
+   function goListSoal($id){
+      window.location.href="/admin/master_soal/" + $id;
+   }
 </script>
 @endsection

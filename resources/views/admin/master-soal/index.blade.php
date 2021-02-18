@@ -56,7 +56,7 @@
                      
                               <tr>
                                  <th class="text-center">{{ $loop->iteration }}</th>
-                                 <td>{{ $item->soal }}</td>
+                                 <td>{{ strip_tags($item->soal) }}</td>
                                  <td>{{ $item->jawabanA }}</td>
                                  <td>{{ $item->jawabanB }}</td>
                                  <td>{{ $item->jawabanC }}</td>
@@ -89,7 +89,7 @@
                               @foreach ($TrueFalse as $item)
                               <tr>
                                  <th class="text-center">{{ $loop->iteration }}</th>
-                                 <td>{{$item->soal}}</td>
+                                 <td>{{ strip_tags($item->soal)}}</td>
                                  <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
