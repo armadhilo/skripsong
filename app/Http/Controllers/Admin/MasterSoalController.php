@@ -52,5 +52,12 @@ class MasterSoalController extends Controller
         }
     }
 
+    public function editSoal($id){
+
+        $data['soal'] = Soal::find($id);
+
+        return view('admin.master-soal.edit_soal',$data);
+    }
+
 
 }

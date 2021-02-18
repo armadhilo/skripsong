@@ -64,7 +64,7 @@
                                  <td>{{ $item->jawabanE }}</td>
                                  <td class="text-center">{{ $item->jawabanBenar }}</td>
                                  <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                    <button onclick="editSoal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
                                     <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
@@ -92,7 +92,7 @@
                                  <td>{{ strip_tags($item->soal)}}</td>
                                  <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                    <button onclick="editSoal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
@@ -138,6 +138,10 @@
       $("#tb_pilihan_ganda").DataTable();
       $("#tb_true_false").DataTable();
    });
+
+   function editSoal(id){
+      window.location.href = "/admin/master_soal/edit/" + id;
+   }
 
   
 </script>
