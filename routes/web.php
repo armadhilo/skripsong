@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','user.ambil-package.index');
-// Route::get('/','Login\LoginController@index');
+// Route::view('/','user.ambil-package.index');
+Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
 
