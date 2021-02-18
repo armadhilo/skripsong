@@ -212,7 +212,6 @@
                                     swal("Failed!", "Data gagal dihapus", "error");
                                  }
                                  location.reload();
-                                 alert(data);
                               },
                               error: function( jqXhr, textStatus, errorThrown ){
                                  console.log( errorThrown );
