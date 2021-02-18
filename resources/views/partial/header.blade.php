@@ -234,8 +234,14 @@
        <ul class="sidebar-menu">
             <li class="menu-header">App</li>
             <li><a class="nav-link" href="blank.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Package</span></a></li>
+
+            <li class="menu-header">Master</li>
+            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Package</span></a></li>
             <li><a class="nav-link" href="{{ route('soal.view') }}"><i class="far fa-file-alt"></i> <span>Master Soal</span></a></li>
+
+            <li class="menu-header">List and Publish</li>
+            <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
+            <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
        </ul>
     </aside>
  </div>

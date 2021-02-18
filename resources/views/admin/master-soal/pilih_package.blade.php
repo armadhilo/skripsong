@@ -33,16 +33,16 @@
             </div>
 
             @foreach ($PackageSoal as $item)
-            <div class="col-3 col-md-3 col-lg-3" style="cursor: pointer;" onclick="goPackage({{$item->id}})">  
-                  <div class="card card-primary"> 
-                     <div class="card-body">
-                        <h6 class="text-primary">{{$item->package}}</h6>
-                        <p class="mb-0">
-                           {{ $item->deskripsi }}
-                        </p>
+               <div class="col-3 col-md-3 col-lg-3" style="cursor: pointer;" onclick="goPackage({{$item->id}})">  
+                     <div class="card card-primary"> 
+                        <div class="card-body">
+                           <h6 class="text-primary">{{$item->package}}</h6>
+                           <p class="mb-0">
+                              {{ $item->deskripsi }}
+                           </p>
+                        </div>
                      </div>
-                  </div>
-            </div>
+               </div>
             @endforeach
          </div>
       </div>

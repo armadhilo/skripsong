@@ -4,18 +4,19 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PackageSoal extends Model
+// use App\Models\Admin\MasterSoal;
+
+class Package extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    public $timestamps = false;
-    protected $table = 'package_soal';
+    protected $table = 'package';
     protected $guarded = ['id'];
 
-    public function MasterSoal(){ 
-        return $this->belongsTo('App\Models\Admin\MasterSoal'); 
+    public function soal(){ 
+        return $this->hasMany(Soal::class); 
     }
 }

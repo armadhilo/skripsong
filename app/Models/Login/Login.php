@@ -11,7 +11,6 @@ class Login extends Model
      *
      * @var string
      */
-    public $timestamps = false;
     protected $table = 'user';
     protected $guarded = ['id'];
 }

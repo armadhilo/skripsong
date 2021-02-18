@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::view('/','user.ambil-package.index');
+// Route::view('/','admin.publish-soal.index');
 Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
@@ -31,5 +31,11 @@ Route::prefix('admin')->group(function () {
     Route::get('master_soal/{id}','Admin\MasterSoalController@goPackage')->name('soal.goPackage');
     Route::get('master_soal/create/{id}','Admin\MasterSoalController@goCreate')->name('soal.goCreate');
     Route::post('master_soal','Admin\MasterSoalController@addSoal')->name('soal.post');
+
+    Route::get('list_package','Admin\ListPackageController@index')->name('listpack.view');
+
+    Route::get('publish_package','Admin\PublishPackageController@index')->name('publish.view');
+    Route::post('publish_package','Admin\PublishPackageController@publish')->name('publish.publish');
+    route::get('publish_package/{id}','Admin\PublishPackageController@first')->name('publish.first');
 
 });

@@ -45,16 +45,19 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
-                                 <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                 </td>
-                              </tr>
                               
+                              @foreach ($belumRilis as $item)
+                                 <tr>
+                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                    <td>{{$item->package}}</td>
+                                    <td>{{$item->deskripsi}}</td>
+                                    <td class="text-center">
+                                       <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                 </tr>
+                              @endforeach
+                           
                            </tbody>
                         </table>
                       </div>
@@ -69,16 +72,17 @@
                               </tr>
                            </thead>
                            <tbody>
+                              @foreach ($soalRilis as $item)
                               <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
+                                 <th class="text-center">{{ $loop->iteration }}</th>
+                                 <td>{{$item->package}}</td>
+                                 <td>{{$item->deskripsi}}</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
-                              
+                           @endforeach
                            </tbody>
                         </table>
                       </div>
@@ -93,16 +97,17 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
-                                 <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
-                                 </td>
-                              </tr>
-                              
+                              @foreach ($soalExpired as $item)
+                                 <tr>
+                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                    <td>{{$item->package}}</td>
+                                    <td>{{$item->deskripsi}}</td>
+                                    <td class="text-center">
+                                       <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                       <a href="#" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                 </tr>
+                              @endforeach                              
                            </tbody>
                         </table>
                       </div>
