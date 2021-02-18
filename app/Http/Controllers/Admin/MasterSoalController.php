@@ -29,15 +29,22 @@ class MasterSoalController extends Controller
         return view('admin.master-soal.index',$data);
     }
 
-    public function goCreate($id){
-        $data['PackageSoal'] = Package::find($id);
+    public function goCreate($id, $type){
+
+        if($type == 'create'){
+            $data['data'] = Package::find($id);
+            $data['type'] = 'create';
+        }else{
+            $data['data'] = Soal::find($id);
+            $data['type'] = 'edit';
+        }
 
         return view('admin.master-soal.create_soal',$data);
     }
 
     public function addSoal(Request $request){
 
-        $TipeSoal = $request->tipeSoal;
+        $TipeSoal = $request->type;
 
         if($TipeSoal == 1){
             $create = Soal::create($request->except(['TrueFalse']));
@@ -56,7 +63,7 @@ class MasterSoalController extends Controller
 
         $data['soal'] = Soal::find($id);
 
-        return view('admin.master-soal.edit_soal',$data);
+        return view('admin.master-soal.create_soal',$data);
     }
 
     public function delete($id){

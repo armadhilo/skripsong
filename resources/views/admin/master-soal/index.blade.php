@@ -22,7 +22,7 @@
                         <h6 class="text-primary">List Soal</h6>
                      </div>
                      <div class="col-4 col-md-4 col-lg-4 text-right">
-                        <a href="/admin/master_soal/create/{{ $PackageSoal->id }}" class="btn btn-icon icon-left btn-success"><i class="fa fa-plus"></i> Tambah Soal</a>
+                        <a href="/admin/master_soal/{{ $PackageSoal->id }}/create" class="btn btn-icon icon-left btn-success"><i class="fa fa-plus"></i> Tambah Soal</a>
                      </div>
                   </div>
                   <div class="card-body pt-0">
@@ -64,7 +64,7 @@
                                  <td>{{ $item->jawabanE }}</td>
                                  <td class="text-center">{{ $item->jawabanBenar }}</td>
                                  <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-sm mr-1 btn-icon btn-success" onclick="edit_soal({{$item->id}})"><i class="fa fa-edit"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal({{$item->id}})"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
@@ -92,7 +92,7 @@
                                  <td>{{ strip_tags($item->soal)}}</td>
                                  <td class="text-center">{{$item->TrueFalse}}</td>
                                  <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-sm mr-1 btn-icon btn-success" onclick="edit_soal({{$item->id}})"><i class="fa fa-edit"></i></a>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-icon btn-danger" onclick="delete_soal({{$item->id}})"><i class="fa fa-trash"></i></a>
                                  </td>
                               </tr>
@@ -139,6 +139,9 @@
       $("#tb_true_false").DataTable();
    });
 
+   function edit_soal(id){
+      window.location.href = "/admin/master_soal/" + id + "/edit";
+   }
 
    function delete_soal(id){
       swal({
@@ -151,7 +154,7 @@
          .then((willDelete) => {
                if (willDelete) {
                         $.ajax({
-                           url: "/admin/master_soal/" + id,
+                           url: "/admin/master_soal/delete/" + id,
                            type: "DELETE",
                            dataType: 'JSON',
                            success: function( data, textStatus, jQxhr ){

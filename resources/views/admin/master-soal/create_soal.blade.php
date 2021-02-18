@@ -13,7 +13,7 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">{{$PackageSoal->package}}</h2>
+         <h2 class="section-title"> @if($type == 'create') {{$data->package}} @else {{$data->package->package}}  @endif </h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -23,22 +23,23 @@
                      </div>
                   </div>
                   <form id="formMasterSoal">
-                     <input type="hidden" value="{{$PackageSoal->id  }}" name="package_id" id="package_id">
+                     <input type="hidden" value="@if($type == 'create') {{$data->id}} @else {{$data->package->id}} @endif" name="package_id" id="package_id">
                      <div class="card-body pt-0">
                         <div class="row">
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group">
                                  <label>Tipe Soal</label>
                                  <select class="form-control" id="tipe_soal" name="type" onchange="pilih_tipe_soal();">
-                                    <option value="1">Pilihan Ganda</option>
-                                    <option value="2">True or False</option>
+                                    <option value="1" @if($type == 'edit' && $data->type == '1') selected  @endif>Pilihan Ganda</option>
+                                    <option value="2" @if($type == 'edit' && $data->type == '2') selected  @endif>True or False</option>
                                  </select>
                               </div>
                            </div>
                               <div class="col-12 col-md-12 col-lg-12">
                                  <div class="form-group">
                                     <label id="soal_pernyataan">Soal</label>
-                                    <textarea type="text" class="form-control ckeditor-text" name="soal" id="soal" autocomplete="off"></textarea>
+                                    
+                                    <textarea type="text" class="form-control ckeditor-text" name="soal" id="soal" autocomplete="off">@if($type == 'create') @else {!! $data->soal !!} @endif</textarea>
                                  <script type="text/javascript">
                                        CKEDITOR.replace( 'soal',
                                        {
@@ -53,11 +54,11 @@
                                     <label>Jawaban</label>
                                     <div class="selectgroup w-100">
                                        <label class="selectgroup-item">
-                                       <input type="radio" name="TrueFalse" value="True" class="selectgroup-input" checked="">
+                                       <input type="radio" name="TrueFalse" value="True" class="selectgroup-input" @if($type == 'edit' && $data->TrueFalse == 'True') checked @else  checked=""  @endif>
                                        <span class="selectgroup-button">True</span>
                                        </label>
                                        <label class="selectgroup-item">
-                                       <input type="radio" name="TrueFalse" value="False" class="selectgroup-input">
+                                       <input type="radio" name="TrueFalse" value="False" class="selectgroup-input"  @if($type == 'edit' && $data->TrueFalse == 'False') checked @else @endif>
                                        <span class="selectgroup-button">False</span>
                                        </label>
                                     </div>
@@ -66,31 +67,31 @@
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
                                  <div class="form-group">
                                     <label>Opsi Jawaban A</label>
-                                    <textarea type="text" class="form-control" name="jawabanA" style="height: 60px;"></textarea>
+                                    <textarea type="text" class="form-control" name="jawabanA" style="height: 60px;">@if($type == 'edit') {{ $data->jawabanA }}@endif</textarea>
                                  </div>
                               </div>
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
                                  <div class="form-group">
                                     <label>Opsi Jawaban B</label>
-                                    <textarea type="text" class="form-control" name="jawabanB" style="height: 60px;"></textarea>
+                                    <textarea type="text" class="form-control" name="jawabanB" style="height: 60px;">@if($type == 'edit') {{ $data->jawabanB }}@endif</textarea>
                                  </div>
                               </div>
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
                                  <div class="form-group">
                                     <label>Opsi Jawaban C</label>
-                                    <textarea type="text" class="form-control" name="jawabanC" style="height: 60px;"></textarea>
+                                    <textarea type="text" class="form-control" name="jawabanC" style="height: 60px;">@if($type == 'edit') {{ $data->jawabanC }}@endif</textarea>
                                  </div>
                               </div>
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
                                  <div class="form-group">
                                     <label>Opsi Jawaban D</label>
-                                    <textarea type="text" class="form-control" name="jawabanD" style="height: 60px;"></textarea>
+                                    <textarea type="text" class="form-control" name="jawabanD" style="height: 60px;">@if($type == 'edit') {{ $data->jawabanD }}@endif</textarea>
                                  </div>
                               </div>
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
                                  <div class="form-group">
                                     <label>Opsi Jawaban E</label>
-                                    <textarea type="text" class="form-control" name="jawabanE" style="height: 60px;"></textarea>
+                                    <textarea type="text" class="form-control" name="jawabanE" style="height: 60px;">@if($type == 'edit') {{ $data->jawabanE }}@endif</textarea>
                                  </div>
                               </div>
                               <div class="col-6 col-md-6 col-lg-6 pilihan-ganda">
@@ -98,11 +99,11 @@
                                     <label>Jawaban Benar</label>
                                     <select class="form-control" name="jawabanBenar">
                                        <option>- Pilih -</option>
-                                       <option value="A">Opsi A</option>
-                                       <option value="B">Opsi B</option>
-                                       <option value="C">Opsi C</option>
-                                       <option value="D">Opsi D</option>
-                                       <option value="E">Opsi E</option>
+                                       <option value="A" @if ($type == 'edit' && $data->jawabanBenar == 'A') selected @endif>Opsi A</option>
+                                       <option value="B" @if ($type == 'edit' && $data->jawabanBenar == 'B') selected @endif>Opsi B</option>
+                                       <option value="C" @if ($type == 'edit' && $data->jawabanBenar == 'C') selected @endif>Opsi C</option>
+                                       <option value="D" @if ($type == 'edit' && $data->jawabanBenar == 'D') selected @endif>Opsi D</option>
+                                       <option value="E" @if ($type == 'edit' && $data->jawabanBenar == 'E') selected @endif>Opsi E</option>
                                     </select>
                                  </div>
                               </div>
