@@ -32,6 +32,7 @@ Route::prefix('admin')->group(function () {
         Route::get('master_soal/create/{id}','Admin\MasterSoalController@goCreate')->name('soal.goCreate');
         Route::post('master_soal','Admin\MasterSoalController@addSoal')->name('soal.post');
         Route::get('master_soal/edit/{id}','Admin\MasterSoalController@editSoal')->name('soal.edit');
+        Route::delete('master_soal/delete/{id}','Admin\MasterSoalController@delete');
 
         Route::get('list_package','Admin\ListPackageController@index')->name('listpack.view');
 

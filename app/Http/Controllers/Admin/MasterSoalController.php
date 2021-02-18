@@ -59,5 +59,17 @@ class MasterSoalController extends Controller
         return view('admin.master-soal.edit_soal',$data);
     }
 
+    public function delete($id){
+        $delete = Soal::find($id);
+        $delete->delete();
+
+        
+        if($delete){
+            return response()->json(["status" => 'success']);
+        }else{
+            return response()->json(["status" => 'fail']);
+        }
+    }
+
 
 }
