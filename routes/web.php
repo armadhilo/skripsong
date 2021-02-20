@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user.pelajari-materi.index');
+    return view('user.pelajari-materi.detail');
 });
 // Route::view('/cek','user.user-package.index');
 // Route::get('/','Login\LoginController@index');

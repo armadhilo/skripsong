@@ -13,7 +13,7 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Buat Materi</h2>
+         <h2 class="section-title">Pelajari Materi</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -24,7 +24,6 @@
                                <h6 class="text-primary">List Materi</h6>
                            </div>
                            <div class="col-4 col-md-4 col-lg-4 text-right">
-                              <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add();"><i class="fa fa-plus"></i> Tambah Materi</a>
                            </div>
                         </div>
                      </div>
@@ -43,8 +42,7 @@
                               <td>Materi 1</td>
                               <td>Deskripsi</td>
                               <td class="text-center">
-                                 <button class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
-                                 <button class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></button>
+                                 <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="pelajari();"><i class="fa fa-edit"></i> Pelajari</button>
                               </td>
                            </tbody>
                         </table>
@@ -56,56 +54,6 @@
          </div>
       </div>
 
-      <!-- Modal -->
-      <div class="modal" tabindex="-1" role="dialog" id="modal" data-backdrop="static" data-keyboard="false">
-         <div class="modal-dialog modal-lg" role="document">
-         <form id="form">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="modalTitle"></h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body pb-0">
-                <div class="row">
-                     <input type="text" hidden name="id" id="id">
-                     <div class="col-6 col-md-6 col-lg-6">
-                        <div class="form-group mb-4">
-                           <label>Judul Materi</label>
-                           <input type="text" name="judul" id="judul" class="form-control" required/>
-                        </div>
-                     </div>
-                     <div class="col-6 col-md-6 col-lg-6">
-                        <div class="form-group mb-4">
-                           <label>Deskripsi Singkat</label>
-                           <textarea type="text" name="deskripsi" id="deskripsi" class="form-control" required></textarea>
-                        </div>
-                     </div>
-                     <div class="col-12 col-md-12 col-lg-12">
-                        <div class="form-group mb-4">
-                           <label>Materi</label>
-                           <textarea type="text" class="form-control ckeditor-text" name="materi" id="materi" autocomplete="off"></textarea>
-                           <script type="text/javascript">
-                                 CKEDITOR.replace( 'materi',
-                                 {
-                                    height: 200,
-                                    filebrowserUploadUrl: "base64",
-                                 });
-                           </script>
-                        </div>
-                     </div>
-                </div>
-               
-             </div>
-             <div class="modal-footer">
-               <button type="submit" class="btn btn-primary">Save</button>
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
-           </div>
-         </form>
-         </div>
-       </div>
 
    </section>
 </div>
@@ -116,95 +64,9 @@
       $("#tb").DataTable();
    });
 
-   function delete_package(id){
-         swal({
-         title: "Are you sure?",
-         text: "Once deleted, you will not be able to recover this data!",
-         icon: "warning",
-         buttons: true,
-         dangerMode: true,
-         })
-         .then((willDelete) => {
-               if (willDelete) {
-                        $.ajax({
-                           url: "/admin/package/" + id,
-                           type: "DELETE",
-                           dataType: 'JSON',
-                           success: function( data, textStatus, jQxhr ){
-                              if(data.status == 'success'){
-                                 swal("Success!", "Data berhasil dihapus", "success");
-                              }else{
-                                 swal("Failed!", "Data gagal dihapus", "error");
-                              }
-                              location.reload();
-                           },
-                           error: function( jqXhr, textStatus, errorThrown ){
-                              console.log( errorThrown );
-                              console.warn(jqXhr.responseText);
-                           },
-                        });
-               }
-         });
+   function pelajari(){
+      window.location.href = "";
    }
-
-   function add(id = null){
-      $('#modalTitle').html('Edit Package');
-      $("#modal").modal('show');
-      $(".modal-backdrop").remove();
-      // if(id){
-      //    $('#modalTitle').html('Edit Package');
-      //    $("#modal_package").modal('show');
-      //    $(".modal-backdrop").remove();
-
-      //    $.ajax({
-      //       url: "/admin/package/" + id,
-      //       type: "GET",
-      //       dataType: 'JSON',
-      //       success: function( data, textStatus, jQxhr ){
-      //          $('#package').val(data.package);
-      //          $('#deskripsi').val(data.deskripsi);
-      //          $('#id').val(data.id);
-      //       },
-      //       error: function( jqXhr, textStatus, errorThrown ){
-      //          console.log( errorThrown );
-      //          console.warn(jqXhr.responseText);
-      //       },
-      //    });
-
-      // }else{
-      //    $('#modalTitle').html('Add Package');
-      //    $("#modal_package").modal('show');
-      //    $(".modal-backdrop").remove();
-      //    $('#form')[0].reset();
-      // }
-      
-   }
-
-   $('#form').submit(function(e){
-      e.preventDefault();
-      $.ajax({
-         url: "{{ route('package.post') }}",
-         type: "POST",
-         data: $('#form').serialize(),
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            if(data.status == 'success'){
-               swal("Success!", "Proses berhasil", "success");
-               console.log('success');
-               $('#form').trigger("reset");
-               $("#modal_package").modal('hide');
-               location.reload();
-            }else{
-               swal("Failed!", "Proses gagal", "error");
-            }
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
-   })
-
 
 
 </script>
