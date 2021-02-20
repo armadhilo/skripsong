@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('user.pelajari-materi.index');
+});
 // Route::view('/cek','user.user-package.index');
-Route::get('/','Login\LoginController@index');
+// Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
 
