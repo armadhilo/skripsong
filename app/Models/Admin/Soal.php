@@ -21,4 +21,8 @@ class Soal extends Model
     { 
         return $this->belongsTo(Package::class); 
     }
+
+    public function header(){
+        return $this->hasOne(Header::class);
+    }
 }

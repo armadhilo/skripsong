@@ -6,21 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 // use App\Models\Admin\MasterSoal;
 
-class Package extends Model
+class Header extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'package';
+    protected $table = 'header';
     protected $guarded = ['id'];
 
     public function soal(){ 
-        return $this->hasMany(Soal::class); 
+        return $this->belongsTo(Soal::class); 
     }
 
-    public function header(){
-        return $this->hasOne(Header::class);
+    public function package(){
+        return $this->belongsTo(Package::class); 
+    }
+
+    public function body(){
+        return $this->hasMany(Body::class); 
     }
 }

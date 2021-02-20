@@ -246,9 +246,14 @@
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
          </ul>
        @else
-       <ul class="sidebar-menu">
-         <li class="menu-header">App</li>
+         <ul class="sidebar-menu">
+            <li class="menu-header">App</li>
             <li><a class="nav-link" href="{{ route('dashboard.user') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+
+            <li class="menu-header">Package</li>
+            <li><a class="nav-link" href="{{ route('user_package.view') }}"><i class="fa fa-home"></i> <span>Package</span></a></li>
+            <li><a class="nav-link" href="{{ route('kerjakan_soal.view') }}"><i class="fa fa-home"></i> <span>Kerjakan Soal</span></a></li>
+            <li><a class="nav-link" href="{{ route('sudah_dikerjakan.view') }}"><i class="fa fa-home"></i> <span>Hasil</span></a></li>
          </ul>
        @endif
 

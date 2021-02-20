@@ -47,9 +47,32 @@ class MasterSoalController extends Controller
         $TipeSoal = $request->type;
 
         if($TipeSoal == 1){
-            $create = Soal::create($request->except(['TrueFalse']));
+            // $create = Soal::create($request->except(['TrueFalse']));
+            
+            $create = Soal::updateOrCreate([
+                'id' => $request->id
+            ],[
+                'package_id' => $request->package_id,
+                'type' => $request->type,
+                'soal' => $request->soal,
+                'jawabanA' => $request->jawabanA,
+                'jawabanB' => $request->jawabanB,
+                'jawabanC' => $request->jawabanC,
+                'jawabanD' => $request->jawabanD,
+                'jawabanE' => $request->jawabanE,
+                'jawabanBenar' => $request->jawabanBenar,
+            ]);
         }else{
-            $create = Soal::create($request->only(['type','package_id','soal','TrueFalse']));
+            // $create = Soal::create($request->only(['type','package_id','soal','TrueFalse']));
+
+            $create = Soal::updateOrCreate([
+                'id' => $request->id
+            ],[
+                'package_id' => $request->package_id,
+                'type' => $request->type,
+                'soal' => $request->soal,
+                'TrueFalse' => $request->TrueFalse,
+            ]);
         }
         
         if($create){
