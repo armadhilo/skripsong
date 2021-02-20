@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.pelajari-materi.index');
-});
-// Route::view('/cek','user.user-package.index');
-// Route::get('/','Login\LoginController@index');
+Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
 
@@ -43,11 +39,18 @@ Route::prefix('admin')->group(function () {
         Route::post('publish_package','Admin\PublishPackageController@publish')->name('publish.publish');
         route::get('publish_package/{id}','Admin\PublishPackageController@first')->name('publish.first');
         Route::delete('publish_package/{id}','Admin\PublishPackageController@delete')->name('publish.delete');
+
+        Route::get('buat_materi','Admin\BuatMateriController@index')->name('buat_materi.view');
+        Route::post('buat_materi','Admin\BuatMateriController@add_update')->name('buat_materi.post');
+        Route::get('buat_materi/{id}','Admin\BuatMateriController@first')->name('buat_materi.first');
+        Route::delete('buat_materi/{id}','Admin\BuatMateriController@delete');
     });
 });
 
 Route::prefix('user')->group(function () {
     Route::get('/', 'User\DashboardController@index')->name('dashboard.user');
+
+    Route::get('list_materi','User\ListMateriController@index')->name('list_materi.view');
 
     Route::get('user_package','User\UserPackageController@index')->name('user_package.view');
     Route::get('user_package/ambil/{id}','User\UserPackageController@ambil_package');

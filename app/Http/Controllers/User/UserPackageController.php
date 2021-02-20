@@ -35,22 +35,29 @@ class UserPackageController extends Controller
 
         foreach($soal as $item){ 
 
-            $arrayJawaban = [$item->jawabanA, $item->jawabanB, $item->jawabanC, $item->jawabanD, $item->jawabanE];
+            $arrayJawaban = [[$item->jawabanA,'A'],[$item->jawabanB,'B'],[$item->jawabanC,'C'],[$item->jawabanD,'D'],[$item->jawabanE,'E']];
             shuffle($arrayJawaban);
+
+            $arrayAbjad = ['A','B','C','D','E'];
+
+            foreach($arrayJawaban as $key => $value){
+                if($item->jawabanBenar == $arrayJawaban[$key][1]){
+                    $jawabanBenar = $arrayAbjad[$key];
+                }
+            }
 
             Body::create([
                 "header_id" => $idHeader,
                 "type" => $item->type,
                 "soal" => $item->soal,
-                "jawabanA" => $arrayJawaban[0],
-                "jawabanB" => $arrayJawaban[1],
-                "jawabanC" => $arrayJawaban[2],
-                "jawabanD" => $arrayJawaban[3],
-                "jawabanE" => $arrayJawaban[4],
-                "jawabanBenar" => "D",
+                "jawabanA" => $arrayJawaban[0][0],
+                "jawabanB" => $arrayJawaban[1][0],
+                "jawabanC" => $arrayJawaban[2][0],
+                "jawabanD" => $arrayJawaban[3][0],
+                "jawabanE" => $arrayJawaban[4][0],
+                "jawabanBenar" => $jawabanBenar,
                 "TrueFalse" => $item->TrueFalse,
             ]);
         }
-    
     }
 }

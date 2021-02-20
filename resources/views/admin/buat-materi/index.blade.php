@@ -39,13 +39,17 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <td>1</td>
-                              <td>Materi 1</td>
-                              <td>Deskripsi</td>
-                              <td class="text-center">
-                                 <button class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>
-                                 <button class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></button>
-                              </td>
+                              @foreach ($list as $item)
+                              <tr>
+                                 <td>{{ $loop->iteration }}</td>
+                                 <td>{{ $item->judul }}</td>
+                                 <td>{{ $item->deskripsi }}</td>
+                                 <td class="text-center">
+                                    <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="add({{$item->id}})"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-icon btn-danger" onclick="delete_materi({{$item->id}})"><i class="fa fa-trash"></i></button>
+                                 </td>
+                              </tr>
+                              @endforeach
                            </tbody>
                         </table>
                      </div>
@@ -116,7 +120,7 @@
       $("#tb").DataTable();
    });
 
-   function delete_package(id){
+   function delete_materi(id){
          swal({
          title: "Are you sure?",
          text: "Once deleted, you will not be able to recover this data!",
@@ -126,23 +130,23 @@
          })
          .then((willDelete) => {
                if (willDelete) {
-                        $.ajax({
-                           url: "/admin/package/" + id,
-                           type: "DELETE",
-                           dataType: 'JSON',
-                           success: function( data, textStatus, jQxhr ){
-                              if(data.status == 'success'){
-                                 swal("Success!", "Data berhasil dihapus", "success");
-                              }else{
-                                 swal("Failed!", "Data gagal dihapus", "error");
-                              }
-                              location.reload();
-                           },
-                           error: function( jqXhr, textStatus, errorThrown ){
-                              console.log( errorThrown );
-                              console.warn(jqXhr.responseText);
-                           },
-                        });
+                  $.ajax({
+                     url: "/admin/buat_materi/" + id,
+                     type: "DELETE",
+                     dataType: 'JSON',
+                     success: function( data, textStatus, jQxhr ){
+                        if(data.status == 'success'){
+                           swal("Success!", "Data berhasil dihapus", "success");
+                        }else{
+                           swal("Failed!", "Data gagal dihapus", "error");
+                        }
+                        location.reload();
+                     },
+                     error: function( jqXhr, textStatus, errorThrown ){
+                        console.log( errorThrown );
+                        console.warn(jqXhr.responseText);
+                     },
+                  });
                }
          });
    }
@@ -151,39 +155,43 @@
       $('#modalTitle').html('Edit Package');
       $("#modal").modal('show');
       $(".modal-backdrop").remove();
-      // if(id){
-      //    $('#modalTitle').html('Edit Package');
-      //    $("#modal_package").modal('show');
-      //    $(".modal-backdrop").remove();
+      if(id){
+         $('#modalTitle').html('Edit Package');
+         $("#modal_package").modal('show');
+         $(".modal-backdrop").remove();
 
-      //    $.ajax({
-      //       url: "/admin/package/" + id,
-      //       type: "GET",
-      //       dataType: 'JSON',
-      //       success: function( data, textStatus, jQxhr ){
-      //          $('#package').val(data.package);
-      //          $('#deskripsi').val(data.deskripsi);
-      //          $('#id').val(data.id);
-      //       },
-      //       error: function( jqXhr, textStatus, errorThrown ){
-      //          console.log( errorThrown );
-      //          console.warn(jqXhr.responseText);
-      //       },
-      //    });
+         $.ajax({
+            url: "/admin/buat_materi/" + id,
+            type: "GET",
+            dataType: 'JSON',
+            success: function( data, textStatus, jQxhr ){
+               $('#judul').val(data.judul);
+               $('#deskripsi').val(data.deskripsi);
+               $('#id').val(data.id);
+               CKEDITOR.instances['materi'].setData(data.materi);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+               console.log( errorThrown );
+               console.warn(jqXhr.responseText);
+            },
+         });
 
-      // }else{
-      //    $('#modalTitle').html('Add Package');
-      //    $("#modal_package").modal('show');
-      //    $(".modal-backdrop").remove();
-      //    $('#form')[0].reset();
-      // }
+      }else{
+         $('#modalTitle').html('Add Package');
+         $("#modal_package").modal('show');
+         $(".modal-backdrop").remove();
+         $('#form')[0].reset();
+      }
       
    }
 
    $('#form').submit(function(e){
       e.preventDefault();
+      for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+      }
       $.ajax({
-         url: "{{ route('package.post') }}",
+         url: "{{ route('buat_materi.post') }}",
          type: "POST",
          data: $('#form').serialize(),
          dataType: 'JSON',
