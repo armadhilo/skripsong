@@ -26,6 +26,7 @@ class LoginController extends Controller
             $findPassword = Login::where('password','=',$password)->first();
 
             if($findPassword){
+                Session::put('id',$findEmail->id);
                 Session::put('firstname',$findEmail->firstname);
                 Session::put('lastname',$findEmail->lastname);
                 Session::put('email',$findEmail->email);

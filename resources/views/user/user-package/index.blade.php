@@ -35,14 +35,18 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
-                                 <td class="text-center">
-                                    <a href="#" onclick="add_package();" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Ambil Package</a>
-                                 </td>
-                              </tr>
+
+                              @foreach ($list as $item)
+                                 <tr>
+                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                    <td>{{ $item->package }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td class="text-center">
+                                       <a href="javascript:void(0)" onclick="ambil_package({{$item->id}});" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Ambil Package</a>
+                                    </td>
+                                 </tr>
+                              @endforeach
+                              
                               
                            </tbody>
                         </table>
@@ -98,9 +102,24 @@
       $("#tb_package").DataTable();
    });
 
-   function add_package(){
-      $("#modal_package").modal('show');
-      $(".modal-backdrop").remove();
+   // function ambil_package(){
+   //    $("#modal_package").modal('show');
+   //    $(".modal-backdrop").remove();
+   // }
+
+   function ambil_package($id){
+      $.ajax({
+         url: '/user/user_package/ambil/' + $id,
+         type: "GET",
+         dataType: 'JSON',
+         success: function( data, textStatus, jQxhr ){
+         
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
    }
 
 </script>
