@@ -109,6 +109,36 @@
                               <input type="file" class="form-control" id="img_kompetensi" required/>
                            </div>
                         </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                           <div class="form-group mb-4">
+                              <label>Pas Foto</label>
+                              <input type="file" class="form-control" id="img_pas_foto" required/>
+                           </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                           <div class="form-group mb-4">
+                              <label>KTP</label>
+                              <input type="file" class="form-control" id="img_ktp" required/>
+                           </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                           <div class="form-group mb-4">
+                              <label>Sertifikat Kesehatan</label>
+                              <input type="file" class="form-control" id="img_sertifikat_kesehatan" required/>
+                           </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                           <div class="form-group mb-4">
+                              <label>Bukti Pembayaran</label>
+                              <input type="file" class="form-control" id="img_bukti_pembayaran" required/>
+                           </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6">
+                           <div class="form-group mb-4">
+                              <label>Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan</label>
+                              <input type="file" class="form-control" id="img_ijazah" required/>
+                           </div>
+                        </div>
                      </div>
              </div>
              <div class="modal-footer">
@@ -138,13 +168,18 @@
    $('#form').submit(function(e){
       e.preventDefault();
       
-      var id               = $('#id').val();
-      var lokasi_ujian     = $('#lokasi_ujian').val();
-      var profesi          = $('#profesi').val();
-      var rating           = $('#rating').val();
-      var img_license      = $('#img_license').prop('files')[0];
-      var img_ielp         = $('#img_ielp').prop('files')[0];
-      var img_kompetensi   = $('#img_kompetensi').prop('files')[0];
+      var id                        = $('#id').val();
+      var lokasi_ujian              = $('#lokasi_ujian').val();
+      var profesi                   = $('#profesi').val();
+      var rating                    = $('#rating').val();
+      var img_license               = $('#img_license').prop('files')[0];
+      var img_ielp                  = $('#img_ielp').prop('files')[0];
+      var img_kompetensi            = $('#img_kompetensi').prop('files')[0];
+      var img_pas_foto              = $('#img_pas_foto').prop('files')[0];  
+      var img_ktp                   = $('#img_ktp').prop('files')[0];
+      var img_sertifikat_kesehatan  = $('#img_sertifikat_kesehatan').prop('files')[0];
+      var img_bukti_pembayaran      = $('#img_bukti_pembayaran').prop('files')[0]; 
+      var img_ijazah                = $('#img_ijazah').prop('files')[0];
 
       var data = new FormData();
           data.append('id',id );
@@ -154,6 +189,11 @@
           data.append('img_license', img_license);
           data.append('img_ielp', img_ielp);
           data.append('img_kompetensi', img_kompetensi);
+          data.append('img_pas_foto', img_pas_foto);
+          data.append('img_ktp', img_ktp);
+          data.append('img_sertifikat_kesehatan', img_sertifikat_kesehatan);
+          data.append('img_bukti_pembayaran', img_bukti_pembayaran);
+          data.append('img_ijazah', img_ijazah);
 
       $.ajax({
          url: "{{ route('user_package.post') }}",
