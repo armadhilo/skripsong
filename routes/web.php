@@ -56,10 +56,10 @@ Route::prefix('user')->group(function () {
     Route::get('user_package','User\UserPackageController@index')->name('user_package.view');
     Route::post('user_package','User\UserPackageController@ambil_package')->name('user_package.post');
     
-    Route::get('sudah_dikerjakan','User\SudahDikerjakanController@index')->name('sudah_dikerjakan.view');
-    
     Route::get('kerjakan_soal','User\KerjakanSoalController@index')->name('kerjakan_soal.view');
     Route::get('kerjakan_soal/kerjakan/{id}','User\KerjakanSoalController@kerjakan')->name('kerjakan_soal.detail');
     Route::post('kerjakan_soal/jawab','User\KerjakanSoalController@jawab');
     Route::post('kerjakan_soal/finish','User\KerjakanSoalController@finish');
+
+    Route::get('sudah_dikerjakan','User\SudahDikerjakanController@index')->name('sudah_dikerjakan.view');
 });

@@ -37,16 +37,18 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
-                                 <td class="text-center">60 Menit</td>
-                                 <td class="text-center">90</td>
-                                 {{-- <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
-                                 </td> --}}
-                              </tr>
+
+                              @foreach ($list as $item)
+                                 <tr>
+                                    <th class="text-center">{{$loop->iteration}}</th>
+                                    <td>{{$item->package->package}}</td>
+                                    <td>{{$item->package->deskripsi}}</td>
+                                    <td class="text-center">{{$item->package->durasi}} Menit</td>
+                                    <td class="text-center"> {{ (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah)) * 100) }} </td>
+                                 </tr>
+                              @endforeach
+
+                              
                               
                            </tbody>
                         </table>

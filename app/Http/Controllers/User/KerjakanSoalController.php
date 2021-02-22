@@ -17,9 +17,10 @@ class KerjakanSoalController extends Controller
     public function index(){
         $mytime = Carbon::now();
         $datetime = $mytime->toDateTimeString();
+        $date = $mytime->toDateString();
 
-        $data['list'] = Header::where('user_id',session()->get('id'))->whereHas('package', function ($query) use ($datetime) {
-            return $query->whereRaw('publish >= ? and user_id = ?',[$datetime, session()->get('id')]);
+        $data['list'] = Header::whereRaw('user_id = ? and status = ?',[session()->get('id'),'Y'])->whereHas('package', function ($query) use ($datetime, $date) {
+            return $query->whereRaw('publish >= ? and user_id = ? and date(publish) = ? ',[$datetime, session()->get('id'),$date]);
         })->get();
         
         return view('user.kerjakan-soal.index',$data);
