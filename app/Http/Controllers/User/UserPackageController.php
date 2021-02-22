@@ -40,6 +40,26 @@ class UserPackageController extends Controller
         $photo =  time().$file->getClientOriginalName();
         $file->move('berkas/kompetensi',$photo);
 
+        $file = $request->file('img_ijazah');
+        $photo =  time().$file->getClientOriginalName();
+        $file->move('berkas/ijazah',$photo);
+
+        $file = $request->file('img_pas_foto');
+        $photo =  time().$file->getClientOriginalName();
+        $file->move('berkas/foto',$photo);
+
+        $file = $request->file('img_bukti_pembayaran');
+        $photo =  time().$file->getClientOriginalName();
+        $file->move('berkas/bukti_pembayaran',$photo);
+
+        $file = $request->file('img_sertifikat_kesehatan');
+        $photo =  time().$file->getClientOriginalName();
+        $file->move('berkas/sertifikat_kesehatan',$photo);
+
+        $file = $request->file('img_ktp');
+        $photo =  time().$file->getClientOriginalName();
+        $file->move('berkas/ktp',$photo);
+
         $count_soal = Soal::where('package_id',$request->id)->count();
         $soal = Soal::whereRaw('package_id = ? ORDER BY RAND()',$request->id)->get();
 
@@ -53,6 +73,11 @@ class UserPackageController extends Controller
             "img_license" => $request->img_license,
             "img_ielp" => $request->img_ielp,
             "img_kompetensi" => $request->img_kompetensi,
+            "img_ijazah" => $request->img_ijazah,
+            "img_pas_foto" => $request->img_pas_foto,
+            "img_bukti_pembayaran" => $request->img_bukti_pembayaran,
+            "img_sertifikat_kesehatan" => $request->img_sertifikat_kesehatan,
+            "img_ktp" => $request->img_ktp,
             "status" => 'Y'
         ]);
 
