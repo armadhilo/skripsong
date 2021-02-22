@@ -16,6 +16,7 @@ class Soal extends Model
     
     protected $table = 'soal';
     protected $guarded = ['id'];
+    protected $hidden = ['jawabanBenar'];
 
     public function package()
     { 

@@ -15,6 +15,7 @@ class Body extends Model
      */
     protected $table = 'body';
     protected $guarded = ['id'];
+    protected $hidden = ['jawabanBenar'];
 
     public function header(){ 
         return $this->belongsTo(Header::class); 

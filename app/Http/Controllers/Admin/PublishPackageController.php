@@ -17,8 +17,8 @@ class PublishPackageController extends Controller
         $mytime = Carbon::now();
         $date = $mytime->toDateString();
 
-        $data['listPublish'] = Package::whereRaw('publish IS NOT NULL and date(publish) >= ?',[$date])->get();
-        $data['dataPackage'] = Package::whereRaw('publish IS NULL')->get();
+        $data['listPublish'] = Package::whereRaw('publish IS NOT NULL and date(publish) >= ?',[$date])->has('soal')->get();
+        $data['dataPackage'] = Package::whereRaw('publish IS NULL')->has('soal')->get();
 
         return view('admin.publish-soal.index',$data);
     }

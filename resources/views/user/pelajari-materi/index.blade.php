@@ -38,12 +38,16 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <td>1</td>
-                              <td>Materi 1</td>
-                              <td>Deskripsi</td>
-                              <td class="text-center">
-                                 <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="pelajari();"><i class="fa fa-edit"></i> Pelajari</button>
-                              </td>
+                              @foreach ($list as $item)
+                              <tr>
+                                 <td>{{$loop->iteration}}</td>
+                                 <td>{{$item->judul}}</td>
+                                 <td>{{$item->deskripsi}}</td>
+                                 <td class="text-center">
+                                    <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="pelajari({{$item->id}});"><i class="fa fa-edit"></i> Pelajari</button>
+                                 </td>
+                              </tr>
+                              @endforeach
                            </tbody>
                         </table>
                      </div>
@@ -64,8 +68,8 @@
       $("#tb").DataTable();
    });
 
-   function pelajari(){
-      window.location.href = "";
+   function pelajari(id){
+      window.location.href = "/user/list_materi/" + id;
    }
 
 

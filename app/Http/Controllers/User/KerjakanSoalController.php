@@ -9,18 +9,73 @@ use Carbon\Carbon;
 
 use App\Models\Admin\Soal;
 use App\Models\Admin\Package;
+use App\Models\Admin\Header;
+use App\Models\Admin\Body;
 
 class KerjakanSoalController extends Controller
 {
     public function index(){
         $mytime = Carbon::now();
-        $date = $mytime->toDateString();
+        $datetime = $mytime->toDateTimeString();
 
-        $data['list'] = Package::where('date(publish) = ?',[$date]);
+        $data['list'] = Header::where('user_id',session()->get('id'))->whereHas('package', function ($query) use ($datetime) {
+            return $query->whereRaw('publish >= ? and user_id = ?',[$datetime, session()->get('id')]);
+        })->get();
+        
         return view('user.kerjakan-soal.index',$data);
     }
 
-    public function kerjakan(){
-        return view('user.kerjakan-soal.kerjakan_soal');
+    public function kerjakan($id){
+
+        $data['soal'] = Body::whereHas('header', function ($query) use ($id) {
+            return $query->where('package_id',$id);
+            })->get();
+        $data['package'] = Package::find($id);
+
+        return view('user.kerjakan-soal.kerjakan_soal',$data);
     }
+
+    public function jawab(Request $request){
+        $data = explode("-", $request->data);
+        $jawaban = $data[0];
+        $body_id = $data[1];
+    
+        $body = Body::find($body_id);
+
+        if($jawaban == 'True' || $jawaban == 'False'){
+            $jawabanBenar = $body->TrueFalse;
+        }else{
+            $jawabanBenar = $body->jawabanBenar;
+        }
+        
+        if($jawabanBenar == $jawaban){
+            $body->jawaban = 'correct';
+        }else{
+            $body->jawaban = 'wrong';
+        }
+
+        $body->jawabanUser = $jawaban;
+        $body->save();
+    }
+
+    public function finish(Request $request){
+        $data = $request->data;
+
+        $countCorrect = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
+            return $query->where('jawaban','correct');
+            })->count();
+
+        $countWrong = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
+            return $query->where('jawaban','wrong');
+            })->count();
+
+        $header = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->first();
+        $header->status = 'Y';
+        $header->jumlahBenar = $countCorrect;
+        $header->jumlahSalah = $countWrong;
+
+        $header->save();
+
+    }
+
 }

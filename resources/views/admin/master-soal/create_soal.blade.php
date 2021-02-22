@@ -23,6 +23,7 @@
                      </div>
                   </div>
                   <form id="formMasterSoal">
+                     <input type="hidden" value="@if($type == 'create') @else {{$data->id}} @endif" name="id">
                      <input type="hidden" value="@if($type == 'create') {{$data->id}} @else {{$data->package->id}} @endif" name="package_id" id="package_id">
                      <div class="card-body pt-0">
                         <div class="row">

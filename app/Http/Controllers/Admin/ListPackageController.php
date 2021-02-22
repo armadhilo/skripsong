@@ -19,8 +19,8 @@ class ListPackageController extends Controller
         $date = $mytime->toDateString();
 
         $data['belumRilis'] = Package::whereRaw('date(publish) < ? OR publish IS NULL',[$date])->get();
-        $data['soalRilis'] = Package::whereRaw('date(publish) = ?',[$date])->get();
-        $data['soalExpired'] = Package::whereRaw('date(publish) > ? AND publish IS NOT NULL',[$date])->get();
+        $data['soalRilis'] = Package::whereRaw('date(publish) = ?',[$date])->has('soal')->get();
+        $data['soalExpired'] = Package::whereRaw('date(publish) > ? AND publish IS NOT NULL',[$date])->has('soal')->get();
 
         return view('admin.list-package.index',$data);
     }

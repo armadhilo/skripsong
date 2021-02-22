@@ -51,12 +51,15 @@ Route::prefix('user')->group(function () {
     Route::get('/', 'User\DashboardController@index')->name('dashboard.user');
 
     Route::get('list_materi','User\ListMateriController@index')->name('list_materi.view');
+    Route::get('list_materi/{id}','User\ListMateriController@detail')->name('list_materi','detail');
 
     Route::get('user_package','User\UserPackageController@index')->name('user_package.view');
-    Route::get('user_package/ambil/{id}','User\UserPackageController@ambil_package');
+    Route::post('user_package','User\UserPackageController@ambil_package')->name('user_package.post');
     
     Route::get('sudah_dikerjakan','User\SudahDikerjakanController@index')->name('sudah_dikerjakan.view');
     
     Route::get('kerjakan_soal','User\KerjakanSoalController@index')->name('kerjakan_soal.view');
-    Route::get('kerjakan_soal/kerjakan','User\KerjakanSoalController@kerjakan')->name('kerjakan_soal.detail');
+    Route::get('kerjakan_soal/kerjakan/{id}','User\KerjakanSoalController@kerjakan')->name('kerjakan_soal.detail');
+    Route::post('kerjakan_soal/jawab','User\KerjakanSoalController@jawab');
+    Route::post('kerjakan_soal/finish','User\KerjakanSoalController@finish');
 });

@@ -37,17 +37,18 @@
                               </tr>
                            </thead>
                            <tbody>
+                              @foreach ($list as $item)
                               <tr>
-                                 <th class="text-center">1</th>
-                                 <td>Package A</td>
-                                 <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
-                                 <td>60 Menit</td>
-                                 <td>28 Feb 2021 17:00</td>
+                                 <th class="text-center">{{$loop->iteration}}</th>
+                                 <td>{{$item->package->package}}</td>
+                                 <td>{{$item->package->deskripsi}}</td>
+                                 <td>{{$item->package->durasi}} Menit</td>
+                                 <td>{{ date('d F Y H:i:s', strtotime($item->package->publish)) }}</td>
                                  <td class="text-center">
-                                    <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
+                                    <a href="/user/kerjakan_soal/kerjakan/{{$item->package->id}}" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
                                  </td>
                               </tr>
-                              
+                              @endforeach
                            </tbody>
                         </table>
                      </div>
@@ -57,11 +58,6 @@
             </div>
          </div>
       </div>
-
-
-
-      
-
    </section>
 </div>
 @endsection
@@ -70,6 +66,5 @@
    $(document).ready(function() {
       $("#tb_package").DataTable();
    });
-
 </script>
 @endsection

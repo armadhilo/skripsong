@@ -23,8 +23,10 @@ class CreateBodyTable extends Migration
             $table->text('jawabanC')->nullable();
             $table->text('jawabanD')->nullable();
             $table->text('jawabanE')->nullable();
+            $table->string('jawabanUser')->nullable();
             $table->string('jawabanBenar',1)->nullable();
             $table->enum('TrueFalse', ['True', 'False'])->nullable();
+            $table->enum('jawaban', ['correct', 'wrong'])->nullable();
             $table->timestamps();
         });
     }

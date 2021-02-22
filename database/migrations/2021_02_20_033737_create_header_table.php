@@ -20,6 +20,13 @@ class CreateHeaderTable extends Migration
             $table->integer('jumlahSoal');
             $table->integer('jumlahBenar')->nullable();
             $table->integer('jumlahSalah')->nullable();
+            $table->string('lokasi');
+            $table->string('profesi');
+            $table->string('rating');
+            $table->text('img_license');
+            $table->text('img_ielp');
+            $table->text('img_kompetensi');
+            $table->string('status',1)->default('N');
             $table->timestamps();
         });
     }

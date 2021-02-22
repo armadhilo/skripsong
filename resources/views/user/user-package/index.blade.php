@@ -47,7 +47,6 @@
                                  </tr>
                               @endforeach
                               
-                              
                            </tbody>
                         </table>
                      </div>
@@ -72,6 +71,7 @@
              </div>
              <div class="modal-body pb-0">
                 <form id="form">
+                   <input type="text" hidden id="id" name="id">
                      <div class="row">
                         <div class="col-6 col-md-6 col-lg-6">
                            <div class="form-group mb-4">
@@ -110,13 +110,12 @@
                            </div>
                         </div>
                      </div>
-                </form>
-                
              </div>
              <div class="modal-footer">
                <button type="submit" class="btn btn-primary">Submit</button>
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
              </div>
+            </form>
            </div>
          </div>
        </div>
@@ -130,31 +129,16 @@
       $("#tb_package").DataTable();
    });
 
-   // function ambil_package(){
-   //    $("#modal_package").modal('show');
-   //    $(".modal-backdrop").remove();
-   // }
-
-   function ambil_package($id){
+   function ambil_package(id){
       $("#modal_package").modal('show');
       $(".modal-backdrop").remove();
-      $.ajax({
-         url: '/user/user_package/ambil/' + $id,
-         type: "GET",
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-         
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+      $('#id').val(id)
    }
 
    $('#form').submit(function(e){
       e.preventDefault();
       
+      var id               = $('#id').val();
       var lokasi_ujian     = $('#lokasi_ujian').val();
       var profesi          = $('#profesi').val();
       var rating           = $('#rating').val();
@@ -163,7 +147,8 @@
       var img_kompetensi   = $('#img_kompetensi').prop('files')[0];
 
       var data = new FormData();
-          data.append('lokasi_ujian', lokasi_ujian);
+          data.append('id',id );
+          data.append('lokasi', lokasi_ujian);
           data.append('profesi', profesi);
           data.append('rating', rating);
           data.append('img_license', img_license);
@@ -171,7 +156,7 @@
           data.append('img_kompetensi', img_kompetensi);
 
       $.ajax({
-         url: "{{ route('package.post') }}",
+         url: "{{ route('user_package.post') }}",
          dataType: 'JSON',
          cache: false,
          contentType: false,
