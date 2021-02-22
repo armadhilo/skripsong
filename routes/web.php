@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view("/lihat-berkas", "admin.lihat-berkas.detail");
 Route::get('/','Login\LoginController@index');
 Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
 Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
