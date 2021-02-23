@@ -33,6 +33,7 @@
                                  <th scope="col" class="text-center">Deskripsi Packgae</th>
                                  <th scope="col" class="text-center">User</th>
                                  <th scope="col" class="text-center">Nama User</th>
+                                 <th scope="col" class="text-center">Status</th>
                                  <th scope="col" class="text-center" style="width: 18%">Actions</th>
                               </tr>
                            </thead>
@@ -44,9 +45,16 @@
                                     <td>{{$item->package->deskripsi}}</td>
                                     <td>{{$item->user->email}}</td>
                                     <td>{{$item->user->firstname . " " . $item->user->lastname }}</td>
-                                    <td class="text-center">
-                                       <a href="lihat_berkas/{{$item->id}}/detail" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-eye"></i> Detail Berkas</a>
+                                    <td>
+                                       {{-- pilihen dewe --}}
+                                       <div class="badge badge-success"><i class="fa fa-check"></i> Verified</div>
+                                       <div class="badge badge-info"><i class="fa fa-tasks"></i> Unprocessed</div>
+                                       <div class="badge badge-danger"><i class="fa fa-times"></i> Decline</div>
                                     </td>
+                                    <td class="text-center">
+                                       <a href="lihat_berkas/{{$item->id}}/detail" class="btn btn-sm mr-1 btn-icon btn-primary"><i class="fa fa-eye"></i> Detail Berkas</a>
+                                    </td>
+                                    
                                  </tr>
                               @endforeach
                              

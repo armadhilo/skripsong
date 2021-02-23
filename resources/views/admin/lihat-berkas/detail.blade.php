@@ -148,6 +148,9 @@
                                  </div>
                               </div>
                            </div>
+                           <div class="col-12 col-md-12 col-lg-12 text-right">
+                              <button type="submit" class="btn btn-primary">Validasi</button>
+                            </div>
                         </div>
                      </div>
                   </div>
