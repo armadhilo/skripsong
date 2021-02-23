@@ -45,6 +45,9 @@ Route::prefix('admin')->group(function () {
         Route::post('buat_materi','Admin\BuatMateriController@add_update')->name('buat_materi.post');
         Route::get('buat_materi/{id}','Admin\BuatMateriController@first')->name('buat_materi.first');
         Route::delete('buat_materi/{id}','Admin\BuatMateriController@delete');
+
+        Route::get('lihat_berkas','Admin\LihatBerkasController@index')->name('lihat_berkas.view');
+        Route::get('lihat_berkas/{header}/detail','Admin\LihatBerkasController@detail')->name('lihat_berkas.detail');
     });
 });
 

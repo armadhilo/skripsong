@@ -26,16 +26,16 @@
                      </div>
                      <div class="col-12 col-md-12 col-lg-12">
                         <div class="row">
-                           <div class="col-6 col-md-6 col-lg-6">
+                           <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
                                  <label>Package</label>
-                                 <input type="text" class="form-control" value="Package A" readonly/>
+                                 <input type="text" class="form-control" value="{{ $header->package->package }}" readonly/>
                               </div>
                            </div>
-                           <div class="col-6 col-md-6 col-lg-6">
+                           <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
                                  <label>Deskripsi</label>
-                                 <textarea type="text" class="form-control"readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. </textarea>
+                                 <textarea type="text"  class="form-control" readonly>{{ $header->package->deskripsi }} </textarea>
                               </div>
                            </div>
                         </div>
@@ -57,38 +57,38 @@
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Email User</label>
-                                 <input type="text" class="form-control" id="email" readonly/>
+                                 <input type="text" class="form-control" id="email" value="{{ $header->user->email }}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Nama User</label>
-                                 <input type="text" class="form-control" id="nama_user" readonly/>
+                                 <input type="text" class="form-control" id="nama_user" value="{{$header->user->firstname . " " .$header->user->lastname}}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Lokasi Ujian</label>
-                                 <input type="text" class="form-control" id="lokasi_ujian" readonly/>
+                                 <input type="text" class="form-control" id="lokasi_ujian" value="{{$header->lokasi}}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Profesi</label>
-                                 <input type="text" class="form-control" id="profesi" readonly/>
+                                 <input type="text" class="form-control" id="profesi" value="{{$header->profesi}}"  readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Rating yang Diujikan</label>
-                                 <input type="text" class="form-control" id="rating" readonly/>
+                                 <input type="text" class="form-control" id="rating" value="{{$header->rating}}"  readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Foto Lembar License</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_license');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_license" value="{{asset('berkas/license/'.$header->img_license)}}" onclick="showImage('img_license');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -96,7 +96,7 @@
                               <div class="form-group mb-4">
                                  <label>IELP Min Lev 4</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_ielp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_ielp" value="{{asset('berkas/ielp/'.$header->img_ielp)}}" onclick="showImage('img_ielp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -104,7 +104,7 @@
                               <div class="form-group mb-4">
                                  <label>Surat Kompetensi</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_kompetensi');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_kompetensi" value="{{asset('berkas/kompetensi/'.$header->img_kompetensi)}}" onclick="showImage('img_kompetensi');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -112,7 +112,7 @@
                               <div class="form-group mb-4">
                                  <label>Pas Foto</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_pas_foto');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_pas_foto" value="{{asset('berkas/foto/'.$header->img_pas_foto)}}" onclick="showImage('img_pas_foto');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -120,7 +120,7 @@
                               <div class="form-group mb-4">
                                  <label>KTP</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_ktp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_ktp" value="{{asset('berkas/ktp/'.$header->img_ktp)}}" onclick="showImage('img_ktp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -128,7 +128,7 @@
                               <div class="form-group mb-4">
                                  <label>Sertifikat Kesehatan</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_sertifikat_kesehatan');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_sertifikat_kesehatan" value="{{asset('berkas/sertifikat_kesehatan/'.$header->img_sertifikat_kesehatan)}}" onclick="showImage('img_sertifikat_kesehatan');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -136,7 +136,7 @@
                               <div class="form-group mb-4">
                                  <label>Bukti Pembayaran</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_bukti_pembayaran');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_bukti_pembayaran" value="{{ asset('berkas/bukti_pembayaran/'.$header->img_bukti_pembayaran)}}" onclick="showImage('img_bukti_pembayaran');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -144,7 +144,7 @@
                               <div class="form-group mb-4">
                                  <label>Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan</label>
                                  <div>
-                                    <a href="javascript:void(0)" onclick="showImage('img_ijazah');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</a>
+                                    <button id="img_ijazah" value="{{ asset('berkas/ijazah/'.$header->img_ijazah)}}" onclick="showImage('img_ijazah');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -198,34 +198,38 @@
       $("#img_place").attr("src","");
 
       if(id === "img_license"){
+
+         var a = document.getElementById('img_license');
+         var src = a.value;
+
          $(".modal-title").text("Foto Lembar License");
-         $("#img_place").attr("src", "https://pbs.twimg.com/media/EYT23TRVcAMHybk.jpg");
+         $("#img_place").attr("src", src);
       }else if(id === "img_ielp"){
          $(".modal-title").text("IELP Min Lev 4");
-         $("#img_place").attr("src", "https://i.ytimg.com/vi/DSKmRln-cxE/maxresdefault.jpg");
+         $("#img_place").attr("src", src);
       }else if(id === "img_kompetensi"){
          $(".modal-title").text("Surat Kompetensi");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }else if(id === "img_pas_foto"){
          $(".modal-title").text("Pas Foto");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }else if(id === "img_ktp"){
          $(".modal-title").text("KTP");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }else if(id === "img_sertifikat_kesehatan"){
          $(".modal-title").text("Sertifikat Kesehatan");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }else if(id === "img_bukti_pembayaran"){
          $(".modal-title").text("Bukti Pembayaran");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }else if(id === "img_ijazah"){
          $(".modal-title").text("Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan");
-         $("#img_place").attr("src", "");
+         $("#img_place").attr("src", src);
 
       }
    }

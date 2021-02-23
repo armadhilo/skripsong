@@ -19,7 +19,7 @@ class UserPackageController extends Controller
         $mytime = Carbon::now();
         $datetime = $mytime->toDateTimeString();
         
-        $data['list'] = Package::where('publish','>=',$datetime)->has('soal')->whereDoesntHave('header', function($query) {
+        $data['list'] = Package::whereRaw('publish >= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
             $query->where('user_id',session()->get('id'));
           })->get();
         
@@ -29,36 +29,36 @@ class UserPackageController extends Controller
     public function ambil_package(Request $request){
 
         $file = $request->file('img_license');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/license',$photo);
+        $photoA =  time().$file->getClientOriginalName();
+        $file->move('berkas/license',$photoA);
 
         $file = $request->file('img_ielp');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/ielp',$photo);
+        $photoB =  time().$file->getClientOriginalName();
+        $file->move('berkas/ielp',$photoB);
 
         $file = $request->file('img_kompetensi');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/kompetensi',$photo);
+        $photoC =  time().$file->getClientOriginalName();
+        $file->move('berkas/kompetensi',$photoC);
 
         $file = $request->file('img_ijazah');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/ijazah',$photo);
+        $photoD =  time().$file->getClientOriginalName();
+        $file->move('berkas/ijazah',$photoD);
 
         $file = $request->file('img_pas_foto');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/foto',$photo);
+        $photoE =  time().$file->getClientOriginalName();
+        $file->move('berkas/foto',$photoE);
 
         $file = $request->file('img_bukti_pembayaran');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/bukti_pembayaran',$photo);
+        $photoF =  time().$file->getClientOriginalName();
+        $file->move('berkas/bukti_pembayaran',$photoF);
 
         $file = $request->file('img_sertifikat_kesehatan');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/sertifikat_kesehatan',$photo);
+        $photoG =  time().$file->getClientOriginalName();
+        $file->move('berkas/sertifikat_kesehatan',$photoG);
 
         $file = $request->file('img_ktp');
-        $photo =  time().$file->getClientOriginalName();
-        $file->move('berkas/ktp',$photo);
+        $photoH =  time().$file->getClientOriginalName();
+        $file->move('berkas/ktp',$photoH);
 
         $count_soal = Soal::where('package_id',$request->id)->count();
         $soal = Soal::whereRaw('package_id = ? ORDER BY RAND()',$request->id)->get();
@@ -70,14 +70,14 @@ class UserPackageController extends Controller
             "lokasi" => $request->lokasi,
             "profesi" => $request->profesi,
             "rating" => $request->rating,
-            "img_license" => $request->img_license,
-            "img_ielp" => $request->img_ielp,
-            "img_kompetensi" => $request->img_kompetensi,
-            "img_ijazah" => $request->img_ijazah,
-            "img_pas_foto" => $request->img_pas_foto,
-            "img_bukti_pembayaran" => $request->img_bukti_pembayaran,
-            "img_sertifikat_kesehatan" => $request->img_sertifikat_kesehatan,
-            "img_ktp" => $request->img_ktp,
+            "img_license" => $photoA,
+            "img_ielp" => $photoB,
+            "img_kompetensi" => $photoC,
+            "img_ijazah" => $photoD,
+            "img_pas_foto" => $photoE,
+            "img_bukti_pembayaran" => $photoF,
+            "img_sertifikat_kesehatan" => $photoG,
+            "img_ktp" => $photoH,
             "status" => 'Y'
         ]);
 

@@ -37,16 +37,19 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <td class="text-center">1</td>
-                                 <td>Package A</td>
-                                 <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. At facilis explicabo voluptatum cumque minima. Veritatis blanditiis exercitationem aspernatur ratione accusamus totam, ad ipsa, facilis debitis, itaque quasi numquam nesciunt magnam?</td>
-                                 <td>dinda.ang@gmail.com</td>
-                                 <td>Dinda Anggraini</td>
-                                 <td class="text-center">
-                                    <a href="javascript:void(0)" onclick="detail()" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-eye"></i> Detail Berkas</a>
-                                 </td>
-                              </tr>
+                              @foreach ($list as $item)
+                                 <tr>
+                                    <td class="text-center">{{$loop->iteration}}</td>
+                                    <td>{{$item->package->package}}</td>
+                                    <td>{{$item->package->deskripsi}}</td>
+                                    <td>{{$item->user->email}}</td>
+                                    <td>{{$item->user->firstname . " " . $item->user->lastname }}</td>
+                                    <td class="text-center">
+                                       <a href="lihat_berkas/{{$item->id}}/detail" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-eye"></i> Detail Berkas</a>
+                                    </td>
+                                 </tr>
+                              @endforeach
+                             
                            </tbody>
                         </table>
                      </div>

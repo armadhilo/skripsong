@@ -27,4 +27,8 @@ class Header extends Model
     public function body(){
         return $this->hasMany(Body::class); 
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
