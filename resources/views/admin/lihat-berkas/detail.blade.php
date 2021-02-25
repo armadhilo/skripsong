@@ -194,15 +194,16 @@
 <script>
 
    function showImage(id){
+
+      console.log('aa');
       $("#modal_img").modal('show');
       $(".modal-backdrop").remove();
       $("#img_place").attr("src","");
 
+      var a = document.getElementById(id);
+      var src = a.value;
+
       if(id === "img_license"){
-
-         var a = document.getElementById('img_license');
-         var src = a.value;
-
          $(".modal-title").text("Foto Lembar License");
          $("#img_place").attr("src", src);
       }else if(id === "img_ielp"){
