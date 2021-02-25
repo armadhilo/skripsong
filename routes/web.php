@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("/lihat-berkas", "admin.lihat-berkas.detail");
 Route::get('/','Login\LoginController@index');
-Route::post('/login','Login\LoginController@actionLogin')->name('login.post');
-Route::post('/register','Login\LoginController@actionRegister')->name('register.post');
+Route::post('login','Login\LoginController@actionLogin')->name('login.post');
+Route::post('register','Login\LoginController@actionRegister')->name('register.post');
+Route::get('logout','Login\LoginController@logout')->name('logout');
 
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'cekLoginAdmin'], function () {
@@ -48,6 +48,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('lihat_berkas','Admin\LihatBerkasController@index')->name('lihat_berkas.view');
         Route::get('lihat_berkas/{header}/detail','Admin\LihatBerkasController@detail')->name('lihat_berkas.detail');
+        Route::post('lihat_berkas/persetujuan','Admin\LihatBerkasController@validasi')->name('lihat_berkas.validasi');
     });
 });
 

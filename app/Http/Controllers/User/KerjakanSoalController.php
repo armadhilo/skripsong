@@ -19,7 +19,7 @@ class KerjakanSoalController extends Controller
         $datetime = $mytime->toDateTimeString();
         $date = $mytime->toDateString();
 
-        $data['list'] = Header::whereRaw('user_id = ? and status = ?',[session()->get('id'),'Y'])->whereHas('package', function ($query) use ($datetime, $date) {
+        $data['list'] = Header::whereRaw('user_id = ? and acc = ? and status <> ?',[session()->get('id'),'Y','Y'])->whereHas('package', function ($query) use ($datetime, $date) {
             return $query->whereRaw('publish >= ? and user_id = ? and date(publish) = ? ',[$datetime, session()->get('id'),$date]);
         })->get();
         
@@ -29,9 +29,10 @@ class KerjakanSoalController extends Controller
     public function kerjakan($id){
 
         $data['soal'] = Body::whereHas('header', function ($query) use ($id) {
-            return $query->where('package_id',$id);
+            return $query->where('header_id',$id);
             })->get();
-        $data['package'] = Package::find($id);
+
+        $data['package'] = header::where('id',$id)->has('package')->first();
 
         return view('user.kerjakan-soal.kerjakan_soal',$data);
     }
@@ -62,20 +63,22 @@ class KerjakanSoalController extends Controller
     public function finish(Request $request){
         $data = $request->data;
 
-        $countCorrect = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
+        $countCorrect = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
             return $query->where('jawaban','correct');
             })->count();
 
-        $countWrong = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
+        $countWrong = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
             return $query->where('jawaban','wrong');
             })->count();
 
-        $header = header::whereRaw('package_id = ? and user_id = ?',[$data,session()->get('id')])->first();
+        $header = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->first();
         $header->status = 'Y';
         $header->jumlahBenar = $countCorrect;
         $header->jumlahSalah = $countWrong;
 
         $header->save();
+
+        return response()->json(['status' => 'success']);
 
     }
 

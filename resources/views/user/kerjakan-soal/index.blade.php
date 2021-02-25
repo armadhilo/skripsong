@@ -45,7 +45,7 @@
                                  <td>{{$item->package->durasi}} Menit</td>
                                  <td>{{ date('d F Y H:i:s', strtotime($item->package->publish)) }}</td>
                                  <td class="text-center">
-                                    <a href="/user/kerjakan_soal/kerjakan/{{$item->package->id}}" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
+                                    <a href="/user/kerjakan_soal/kerjakan/{{$item->id}}" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
                                  </td>
                               </tr>
                               @endforeach

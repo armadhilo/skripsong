@@ -12,8 +12,8 @@
          </div>
       </div>
       <div class="section-body">
-         <p hidden id="demo">{{$package->durasi}}</p>
-         <h2 class="section-title">{{$package->package}} - <span id="time"></span></h2>
+         <p hidden id="demo">{{$package->package->durasi}}</p>
+         <h2 class="section-title">{{$package->package->package}} - <span id="time"></span></h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -29,22 +29,22 @@
                         @foreach ($soal as $item)
                               <div class="row mb-2">
                                  <div class="col-2 col-md-1 col-lg-1 pr-0 text-center">
-                                    <p>1. </p>
+                                    <p> {{$loop->iteration}} </p>
                                  </div>
                                  <div class="col-10 col-md-11 col-lg-11 pl-0">
                                     <p style="margin-bottom: 6px;">
                                        {!!$item->soal!!}
                                     </p>
                                     @if ($item->type == '1')
-                                       <input type="radio" id="opsiA" name="opsiJawaban" value="A-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'A') checked @endif>
+                                       <input type="radio" id="opsiA" name="opsiJawaban-{{$item->id}}" value="A-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'A') checked @endif>
                                        <label style="padding-left: 10px;"> {{$item->jawabanA}} </label><br>
-                                       <input type="radio" id="opsiB" name="opsiJawaban" value="B-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'B') checked @endif>
+                                       <input type="radio" id="opsiB" name="opsiJawaban-{{$item->id}}" value="B-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'B') checked @endif>
                                        <label style="padding-left: 10px;"> {{$item->jawabanB}} </label><br>
-                                       <input type="radio" id="opsiD" name="opsiJawaban" value="C-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'C') checked @endif>
+                                       <input type="radio" id="opsiD" name="opsiJawaban-{{$item->id}}" value="C-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'C') checked @endif>
                                        <label style="padding-left: 10px;"> {{$item->jawabanC}} </label><br>
-                                       <input type="radio" id="opsiD" name="opsiJawaban" value="D-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'D') checked @endif>
+                                       <input type="radio" id="opsiD" name="opsiJawaban-{{$item->id}}" value="D-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'D') checked @endif>
                                        <label style="padding-left: 10px;"> {{$item->jawabanD}} </label><br>
-                                       <input type="radio" id="opsiD" name="opsiJawaban" value="E-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'E') checked @endif>
+                                       <input type="radio" id="opsiD" name="opsiJawaban-{{$item->id}}" value="E-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'E') checked @endif>
                                        <label style="padding-left: 10px;"> {{$item->jawabanE}} </label><br>
                                     @else
                                        <div class="selectgroup w-50">

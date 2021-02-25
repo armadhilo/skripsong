@@ -19,7 +19,7 @@
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
                   <div class="card-header text-center">
-                     <h4>About Compeny</h4>
+                     <h4>About AirNav</h4>
                   </div>
                   <div class="card-body">
                      <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
@@ -30,13 +30,13 @@
                         </ol>
                         <div class="carousel-inner">
                            <div class="carousel-item">
-                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/news/sample-01.jpg') }}" alt="First slide">
+                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/bg1.jpg') }}" alt="First slide">
                            </div>
                            <div class="carousel-item">
-                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/news/sample-02.jpg') }}" alt="Second slide">
+                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/bg2.png') }}" alt="Second slide">
                            </div>
                            <div class="carousel-item active">
-                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/news/sample-03.jpg') }}" alt="Third slide">
+                              <img class="d-block w-100" style="height: 350px;" src="{{ asset('assets/img/bg3.jpg') }}" alt="Third slide">
                            </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -49,10 +49,14 @@
                         </a>
                      </div>
                      <p class="mb-2 mt-4 text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Lembaga Penyelenggara Pelayanan Navigasi Penerbangan Indonesia (AirNav Indonesia) adalah BUMN Indonesia yang bergerak di bidang usaha pelayanan navigasi udara. Airnav didirikan pada 13 September 2012 melalui PP No 77 tahun 2012. Airnav Indonesia terbagi menjadi dua ruang udara berdasarkan Flight Information Region (FIR) yaitu, FIR Jakarta dan FIR Ujung Pandang.
+                        
+                        <hr>
+
+                        <h6 class="text-center">Visi</h6>
+                        <p class="text-center">"Menjadi penyedia jasa navigasi penerbangan bertaraf internasional".</p>
+                        <h6 class="text-center">Misi</h6>
+                        <p class="text-center">"Menyediakan layanan navigasi penerbangan yang mengutamakan keselamatan, efisiensi penerbangan dan ramah lingkungan demi memenuhi ekspektasi pengguna jasa ".</p>
                      </p>
                   </div>
                </div>

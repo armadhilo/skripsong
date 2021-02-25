@@ -63,6 +63,19 @@ class LoginController extends Controller
             return response()->json(["status" => 'fail']);
         }
     }
+
+    public function logout(Request $request){
+
+        $request->session()->forget('id');
+        $request->session()->forget('firstname');
+        $request->session()->forget('lastname');
+        $request->session()->forget('email');
+        $request->session()->forget('password');
+        $request->session()->forget('role');
+        $request->session()->flush();
+
+        return redirect('/')->with('msg','Anda berhasil logout !');
+    }
 }
 
 ?>

@@ -46,10 +46,13 @@
                                     <td>{{$item->user->email}}</td>
                                     <td>{{$item->user->firstname . " " . $item->user->lastname }}</td>
                                     <td>
-                                       {{-- pilihen dewe --}}
-                                       <div class="badge badge-success"><i class="fa fa-check"></i> Verified</div>
-                                       <div class="badge badge-info"><i class="fa fa-tasks"></i> Unprocessed</div>
-                                       <div class="badge badge-danger"><i class="fa fa-times"></i> Decline</div>
+                                       @if ($item->acc == "Y")
+                                          <div class="badge badge-success"><i class="fa fa-check"></i> Verified</div>
+                                       @elseif($item->acc == "N")
+                                          <div class="badge badge-danger"><i class="fa fa-times"></i> Decline</div>
+                                       @else
+                                          <div class="badge badge-info"><i class="fa fa-tasks"></i> Unprocessed</div>
+                                       @endif
                                     </td>
                                     <td class="text-center">
                                        <a href="lihat_berkas/{{$item->id}}/detail" class="btn btn-sm mr-1 btn-icon btn-primary"><i class="fa fa-eye"></i> Detail Berkas</a>
