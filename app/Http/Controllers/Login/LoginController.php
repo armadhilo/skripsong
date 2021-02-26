@@ -55,12 +55,18 @@ class LoginController extends Controller
 
     public function actionRegister(Request $request){
         
-        $create = Login::create($request->all());
-
-        if($create){
-            return response()->json(["status" => 'success']);
-        }else{
+        $cek = Login::where('email',$request->email)->first();
+        
+        if($cek){
             return response()->json(["status" => 'fail']);
+        }else{   
+            $create = Login::create($request->all());
+
+            if($create){
+                return response()->json(["status" => 'success']);
+            }else{
+                return response()->json(["status" => 'fail']);
+            }
         }
     }
 
