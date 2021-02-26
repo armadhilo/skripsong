@@ -19,7 +19,7 @@ class UserPackageController extends Controller
         $mytime = Carbon::now();
         $datetime = $mytime->toDateTimeString();
         
-        $data['list'] = Package::whereRaw('publish >= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
+        $data['list'] = Package::whereRaw('publish <= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
             $query->where('user_id',session()->get('id'));
           })->get();
         
@@ -78,7 +78,7 @@ class UserPackageController extends Controller
             "img_bukti_pembayaran" => $photoF,
             "img_sertifikat_kesehatan" => $photoG,
             "img_ktp" => $photoH,
-            "status" => 'Y'
+            "status" => 'N'
         ]);
 
         foreach($soal as $item){ 

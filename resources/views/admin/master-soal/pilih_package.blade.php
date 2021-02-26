@@ -20,14 +20,6 @@
                <div class="card" style="background-color: #f4f6f9; box-shadow: none; margin: 0px;">
                   <div class="card-header" style="padding: 0px;">
                   <h4></h4>
-                  <form class="card-header-form">
-                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                        <button class="btn btn-primary btn-icon"><i class="fas fa-search"></i></button>
-                        </div>
-                     </div>
-                  </form>
                   </div>
                </div>
             </div>
@@ -54,8 +46,8 @@
    $(document).ready(function() {
    });
 
-   function goPackage($id){
-      window.location.href="/admin/master_soal/" + $id;
+   function goPackage(id){
+      window.location.href="{{URL::to('/admin/master_soal')}}/" + id;
    }
 
 </script>

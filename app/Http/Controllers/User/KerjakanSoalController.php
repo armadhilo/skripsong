@@ -20,7 +20,7 @@ class KerjakanSoalController extends Controller
         $date = $mytime->toDateString();
 
         $data['list'] = Header::whereRaw('user_id = ? and acc = ? and status <> ?',[session()->get('id'),'Y','Y'])->whereHas('package', function ($query) use ($datetime, $date) {
-            return $query->whereRaw('publish >= ? and user_id = ? and date(publish) = ? ',[$datetime, session()->get('id'),$date]);
+            return $query->whereRaw('date(publish) = ? and user_id = ? and date(publish) = ? ',[$date, session()->get('id'),$date]);
         })->get();
         
         return view('user.kerjakan-soal.index',$data);
@@ -63,13 +63,13 @@ class KerjakanSoalController extends Controller
     public function finish(Request $request){
         $data = $request->data;
 
-        $countCorrect = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
-            return $query->where('jawaban','correct');
-            })->count();
+        $countCorrect = Body::where('jawaban','correct')->whereHas('header', function($query) use ($data) {
+            return $query->whereRaw('id = ? and user_id = ?',[$data,session()->get('id')]);
+        })->count();
 
-        $countWrong = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->whereHas('body', function ($query) {
-            return $query->where('jawaban','wrong');
-            })->count();
+        $countWrong = Body::where('jawaban','wrong')->whereHas('header', function($query) use ($data) {
+            return $query->whereRaw('id = ? and user_id = ?',[$data,session()->get('id')]);
+        })->count();
 
         $header = header::whereRaw('id = ? and user_id = ?',[$data,session()->get('id')])->first();
         $header->status = 'Y';
