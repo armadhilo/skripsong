@@ -19,7 +19,7 @@ class UserPackageController extends Controller
         $mytime = Carbon::now();
         $datetime = $mytime->toDateTimeString();
         
-        $data['list'] = Package::whereRaw('publish >= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
+        $data['list'] = Package::whereRaw('publish <= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
             $query->where('user_id',session()->get('id'));
           })->get();
         
