@@ -33,7 +33,7 @@
                                  </div>
                                  <div class="col-10 col-md-11 col-lg-11 pl-0">
                                     <p style="margin-bottom: 6px;">
-                                       {!!$item->soal!!}
+                                       {!! $item->soal !!}
                                     </p>
                                     @if ($item->type == '1')
                                        <input type="radio" id="opsiA" name="opsiJawaban-{{$item->id}}" value="A-{{$item->id}}" onclick="jawab(this.value)" @if ($item->jawabanUser == 'A') checked @endif>
@@ -49,11 +49,11 @@
                                     @else
                                        <div class="selectgroup w-50">
                                           <label class="selectgroup-item">
-                                             <input type="radio" name="opsi_pic" value="True-{{$item->id}}" class="selectgroup-input" onclick="jawab(this.value)" @if ($item->jawabanUser == 'True') checked @endif>
+                                             <input type="radio" name="opsi_pic-{{$item->id}}" value="True-{{$item->id}}" class="selectgroup-input" onclick="jawab(this.value)" @if ($item->jawabanUser == 'True') checked @endif>
                                              <span class="selectgroup-button">True</span>
                                           </label>
                                           <label class="selectgroup-item">
-                                             <input type="radio" name="opsi_pic" value="False-{{$item->id}}" class="selectgroup-input" onclick="jawab(this.value)" @if ($item->jawabanUser == 'False') checked @endif>
+                                             <input type="radio" name="opsi_pic-{{$item->id}}" value="False-{{$item->id}}" class="selectgroup-input" onclick="jawab(this.value)" @if ($item->jawabanUser == 'False') checked @endif>
                                              <span class="selectgroup-button">False</span>
                                           </label>
                                        </div>
@@ -67,7 +67,7 @@
 
                   </div>
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" onclick="finish({{$package->id}})">Finish</button>
+                     <button type="button" class="btn btn-primary" id="btn_finish" onclick="finish({{$package->id}})">Finish</button>
                    </div>
                </div>
             </div>
@@ -128,7 +128,7 @@
 
         if (--timer < 0) {
             timer = duration;
-            // alert('finish');
+            $('#btn_finish').click();
         } 
     }, 1000);
 }

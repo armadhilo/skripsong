@@ -78,7 +78,7 @@ class UserPackageController extends Controller
             "img_bukti_pembayaran" => $photoF,
             "img_sertifikat_kesehatan" => $photoG,
             "img_ktp" => $photoH,
-            "status" => 'Y'
+            "status" => 'N'
         ]);
 
         foreach($soal as $item){ 

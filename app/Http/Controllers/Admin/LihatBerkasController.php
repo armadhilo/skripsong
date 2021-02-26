@@ -12,7 +12,7 @@ class LihatBerkasController extends Controller
 {
     public function index(){
 
-        $data['list'] = Header::whereNull('acc')->get();
+        $data['list'] = Header::all()->sortByDesc('acc');
 
         return view('admin.lihat-berkas.index',$data);
     }

@@ -36,9 +36,9 @@ class LoginController extends Controller
                 $callback['status'] = 'success';
 
                 if($findEmail->role == 'User'){
-                    $callback['url'] = "/user";
+                    $callback['url'] = route('dashboard.user');
                 }else{
-                    $callback['url'] = "/admin";
+                    $callback['url'] = route('dashboard.admin');
                 }
 
                 $callback['status'] = 'success';

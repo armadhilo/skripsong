@@ -32,7 +32,7 @@
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
                                  <th scope="col" class="text-center">Durasi</th>
-                                 <th scope="col" class="text-center">Expired</th>
+                                 <th scope="col" class="text-center">Publish</th>
                                  <th scope="col" class="text-center" style="width: 18%">Actions</th>
                               </tr>
                            </thead>
@@ -45,7 +45,12 @@
                                  <td>{{$item->package->durasi}} Menit</td>
                                  <td>{{ date('d F Y H:i:s', strtotime($item->package->publish)) }}</td>
                                  <td class="text-center">
-                                    <a href="/user/kerjakan_soal/kerjakan/{{$item->id}}" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</a>
+                                    @if ($item->package->publish > date("Y-m-d H:i:s"))
+                                       <button onclick="goToExam({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success" disabled><i class="fa fa-check"></i> Kerjakan</button>
+                                    @else
+                                       <button onclick="goToExam({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Kerjakan</button>
+                                    @endif
+                                    
                                  </td>
                               </tr>
                               @endforeach
@@ -66,5 +71,9 @@
    $(document).ready(function() {
       $("#tb_package").DataTable();
    });
+
+   function goToExam(id){
+      window.location.href = "/user/kerjakan_soal/kerjakan/" + id;
+   }
 </script>
 @endsection
