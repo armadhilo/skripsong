@@ -253,7 +253,7 @@
                         dataType: 'JSON',
                         success: function( data, textStatus, jQxhr ){
                            swal("Success!", "Data berhasil diproses", "success");
-                           window.location.href = "{{ route('publish.view') }}";
+                           window.location.href = "{{ route('lihat_berkas.view') }}";
                         },
                         error: function( jqXhr, textStatus, errorThrown ){
                            console.log( errorThrown );
