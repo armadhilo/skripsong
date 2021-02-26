@@ -237,20 +237,48 @@
    }
 
    function validasi(id,acc){
-      $.ajax({
-         url: "{{ route('lihat_berkas.validasi') }}",
-         type: "POST",
-         data: {"id" : id, "acc" : acc},
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            alert(data.status);
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+         swal({
+         title: "Are you sure?",
+         text: "",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                     $.ajax({
+                        url: "{{ route('lihat_berkas.validasi') }}",
+                        type: "POST",
+                        data: {"id" : id, "acc" : acc},
+                        dataType: 'JSON',
+                        success: function( data, textStatus, jQxhr ){
+                           swal("Success!", "Data berhasil diproses", "success");
+                           window.location.href = "{{ route('publish.view') }}";
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                           console.log( errorThrown );
+                           console.warn(jqXhr.responseText);
+                        },
+                     });
+               }
+         });
    }
+
+   // function validasi(id,acc){
+   //    $.ajax({
+   //       url: "{{ route('lihat_berkas.validasi') }}",
+   //       type: "POST",
+   //       data: {"id" : id, "acc" : acc},
+   //       dataType: 'JSON',
+   //       success: function( data, textStatus, jQxhr ){
+   //          alert(data.status);
+   //       },
+   //       error: function( jqXhr, textStatus, errorThrown ){
+   //          console.log( errorThrown );
+   //          console.warn(jqXhr.responseText);
+   //       },
+   //    });
+   // }
 
 </script>
 @endsection
