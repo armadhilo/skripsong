@@ -148,10 +148,14 @@
                                  </div>
                               </div>
                            </div>
+
+                           @if ($header->acc = NULL)
                            <div class="col-12 col-md-12 col-lg-12 text-right">
                               <button type="button" onclick="validasi({{$header->id}},'N')" class="btn btn-danger mr-1">Tolak</button>
                               <button type="button" onclick="validasi({{$header->id}},'Y')" class="btn btn-primary">Validasi</button>
-                            </div>
+                            </div> 
+                           @endif
+                           
                         </div>
                      </div>
                   </div>
@@ -263,22 +267,6 @@
                }
          });
    }
-
-   // function validasi(id,acc){
-   //    $.ajax({
-   //       url: "{{ route('lihat_berkas.validasi') }}",
-   //       type: "POST",
-   //       data: {"id" : id, "acc" : acc},
-   //       dataType: 'JSON',
-   //       success: function( data, textStatus, jQxhr ){
-   //          alert(data.status);
-   //       },
-   //       error: function( jqXhr, textStatus, errorThrown ){
-   //          console.log( errorThrown );
-   //          console.warn(jqXhr.responseText);
-   //       },
-   //    });
-   // }
 
 </script>
 @endsection
