@@ -181,6 +181,7 @@
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
          $('#form')[0].reset();
+         CKEDITOR.instances['materi'].setData("");
       }
       
    }
