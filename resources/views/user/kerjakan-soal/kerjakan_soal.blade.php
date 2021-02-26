@@ -81,6 +81,14 @@
    $(document).ready(function() {
       $("#tb_package").DataTable();
       document.getElementById("timer");
+      var page_url = "{{ Request::segment(2) }}";
+      if(page_url === "kerjakan_soal"){
+         $(".main-sidebar").attr("hidden", true);
+         $(".main-content").css("padding-left", "30px");
+      }else{
+         $(".main-sidebar").attr("hidden", false);
+         $(".main-content").css("padding-left", "280px");
+      }
    });
 
    function jawab(answer){
@@ -99,21 +107,33 @@
    }
 
    function finish(id){
-      $.ajax({
-         url: '/user/kerjakan_soal/finish',
-         type: "POST",
-         data: {data : id},
-         dataType: 'JSON',
-         success: function( data, textStatus, jQxhr ){
-            swal("Success!", "Berhasil Mengerjakan Soal", "success");
-            window.setTimeout(function(){location.href="/user/sudah_dikerjakan"},2000);
-         },
-         error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-            console.warn(jqXhr.responseText);
-         },
-      });
+         swal({
+         title: "Are you sure?",
+         text: "Are you sure of your answer?",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                     $.ajax({
+                        url: '/user/kerjakan_soal/finish',
+                        type: "POST",
+                        data: {data : id},
+                        dataType: 'JSON',
+                        success: function( data, textStatus, jQxhr ){
+                           swal("Success!", "Berhasil Mengerjakan Soal", "success");
+                           window.setTimeout(function(){location.href="/user/sudah_dikerjakan"},2000);
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                           console.log( errorThrown );
+                           console.warn(jqXhr.responseText);
+                        },
+                     });
+               }
+         });
    }
+
 
    function startTimer(duration, display) {
     var timer = duration, minutes, seconds;

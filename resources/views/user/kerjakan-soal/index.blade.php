@@ -73,7 +73,18 @@
    });
 
    function goToExam(id){
-      window.location.href = "/user/kerjakan_soal/kerjakan/" + id;
+         swal({
+         title: "Are you sure?",
+         text: "Are you sure you will work on this package?",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+         })
+         .then((willDelete) => {
+               if (willDelete) {
+                     window.location.href = "/user/kerjakan_soal/kerjakan/" + id;
+               }
+         });
    }
 </script>
 @endsection

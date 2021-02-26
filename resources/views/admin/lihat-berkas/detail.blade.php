@@ -149,7 +149,7 @@
                               </div>
                            </div>
 
-                           @if ($header->acc = NULL)
+                           @if ($header->acc != "Y" || $header->acc != "N")
                            <div class="col-12 col-md-12 col-lg-12 text-right">
                               <button type="button" onclick="validasi({{$header->id}},'N')" class="btn btn-danger mr-1">Tolak</button>
                               <button type="button" onclick="validasi({{$header->id}},'Y')" class="btn btn-primary">Validasi</button>
