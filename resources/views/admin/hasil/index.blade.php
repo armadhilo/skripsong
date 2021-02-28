@@ -12,7 +12,7 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Package Sudah Dikerjakan</h2>
+         <h2 class="section-title">Hasil Ujian</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -29,21 +29,18 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
+                                 <th scope="col" class="text-center">Nama</th>
                                  <th scope="col" class="text-center">Package</th>
-                                 <th scope="col" class="text-center">Deskripsi</th>
-                                 <th scope="col" class="text-center">Durasi</th>
                                  <th scope="col" class="text-center">Nilai</th>
                                  {{-- <th scope="col" class="text-center" style="width: 18%">Actions</th> --}}
                               </tr>
                            </thead>
                            <tbody>
-
                               @foreach ($list as $item)
                                  <tr>
                                     <th class="text-center">{{$loop->iteration}}</th>
+                                    <td>{{$item->user->firstname}}</td>
                                     <td>{{$item->package->package}}</td>
-                                    <td>{{$item->package->deskripsi}}</td>
-                                    <td class="text-center">{{$item->package->durasi}} Menit</td>
                                     <td class="text-center"> {{ (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah)) * 100) }} </td>
                                  </tr>
                               @endforeach   
@@ -56,11 +53,6 @@
             </div>
          </div>
       </div>
-
-
-
-      
-
    </section>
 </div>
 @endsection

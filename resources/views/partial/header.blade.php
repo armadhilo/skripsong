@@ -47,6 +47,9 @@
             <li class="menu-header">View</li>
             <li><a class="nav-link" href="{{ route('lihat_berkas.view') }}"><i class="far fa-file-alt"></i> <span>List Berkas</span></a></li>
             <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
+
+            <li class="menu-header">Hasil</li>
+            <li><a class="nav-link" href="{{ route('hasil.view') }}"><i class="far fa-file-alt"></i> <span>Hasil</span></a></li>
             
          </ul>
        @else

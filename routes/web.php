@@ -49,6 +49,8 @@ Route::prefix('admin')->group(function () {
         Route::get('lihat_berkas','Admin\LihatBerkasController@index')->name('lihat_berkas.view');
         Route::get('lihat_berkas/{header}/detail','Admin\LihatBerkasController@detail')->name('lihat_berkas.detail');
         Route::post('lihat_berkas/persetujuan','Admin\LihatBerkasController@validasi')->name('lihat_berkas.validasi');
+
+        Route::get('hasil','Admin\HasilController@index')->name('hasil.view');
     });
 });
 

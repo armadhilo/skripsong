@@ -111,7 +111,7 @@
                         </div>
                      </div>
                      <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" id="btn_submit" class="btn btn-primary">Save</button>
                      </div>
                      </form>
                 </div>
@@ -157,6 +157,7 @@
       if($("#soal").val().length < 1){
          swal("Info", "Soal tidak boleh kosong", "info");
       }else{
+         $('#btn_submit').prop('disabled', true);
          $.ajax({
          url: "{{ route('soal.post') }}",
          type: "POST",
