@@ -17,7 +17,7 @@ class CreateBodyTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('header_id')->constrained('header')->onDelete('NO ACTION')->onUpdate('NO ACTION');;
             $table->enum('type', ['1', '2']);
-            $table->text('soal');
+            $table->longText('soal');
             $table->text('jawabanA')->nullable();
             $table->text('jawabanB')->nullable();
             $table->text('jawabanC')->nullable();
