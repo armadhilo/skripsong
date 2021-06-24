@@ -55,7 +55,7 @@
                                        @endif
                                     </td>
                                     <td class="text-center">
-                                       <a href="lihat_berkas/{{$item->id}}/detail" class="btn btn-sm mr-1 btn-icon btn-primary"><i class="fa fa-eye"></i> Detail Berkas</a>
+                                       <a href="/checker/checking/lihat_berkas/detail/{{$item->id}}" class="btn btn-sm mr-1 btn-icon btn-primary"><i class="fa fa-eye"></i> Detail Berkas</a>
                                     </td>
                                     
                                  </tr>

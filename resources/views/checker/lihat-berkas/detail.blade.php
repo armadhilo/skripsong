@@ -29,13 +29,13 @@
                            <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
                                  <label>Package</label>
-                                 <input type="text" class="form-control" value="{{ $header->package->package }}" readonly/>
+                                 <input type="text" class="form-control" value="{{ $data->package->package }}" readonly/>
                               </div>
                            </div>
                            <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
                                  <label>Deskripsi</label>
-                                 <textarea type="text"  class="form-control" readonly>{{ $header->package->deskripsi }} </textarea>
+                                 <textarea type="text"  class="form-control" readonly>{{ $data->package->deskripsi }} </textarea>
                               </div>
                            </div>
                         </div>
@@ -57,103 +57,55 @@
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Email User</label>
-                                 <input type="text" class="form-control" id="email" value="{{ $header->user->email }}" readonly/>
+                                 <input type="text" class="form-control" id="email" value="{{ $data->user->email }}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Nama User</label>
-                                 <input type="text" class="form-control" id="nama_user" value="{{$header->user->firstname . " " .$header->user->lastname}}" readonly/>
+                                 <input type="text" class="form-control" id="nama_user" value="{{$data->user->firstname . " " .$data->user->lastname}}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Lokasi Ujian</label>
-                                 <input type="text" class="form-control" id="lokasi_ujian" value="{{$header->lokasi}}" readonly/>
+                                 <input type="text" class="form-control" id="lokasi_ujian" value="{{$data->lokasi}}" readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
                                  <label>Profesi</label>
-                                 <input type="text" class="form-control" id="profesi" value="{{$header->profesi}}"  readonly/>
+                                 <input type="text" class="form-control" id="profesi" value="{{$data->profesi}}"  readonly/>
                               </div>
                            </div>
-                           <div class="col-6 col-md-6 col-lg-6">
+                           <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
                                  <label>Rating yang Diujikan</label>
-                                 <input type="text" class="form-control" id="rating" value="{{$header->rating}}"  readonly/>
+                                 <input type="text" class="form-control" id="rating" value="{{$data->rating}}"  readonly/>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
-                                 <label>Foto Lembar License</label>
+                                 <label>Foto New English Proficiency</label>
                                  <div>
-                                    <button id="img_license" value="{{asset('berkas/license/'.$header->img_license)}}" onclick="showImage('img_license');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
+                                    <button id="img_license" value="{{asset('berkas/nep/'.$data->img_nep)}}" onclick="showImage('img_nep');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
                            <div class="col-6 col-md-6 col-lg-6">
                               <div class="form-group mb-4">
-                                 <label>IELP Min Lev 4</label>
+                                 <label>Foto Medical Eximanination</label>
                                  <div>
-                                    <button id="img_ielp" value="{{asset('berkas/ielp/'.$header->img_ielp)}}" onclick="showImage('img_ielp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>Surat Kompetensi</label>
-                                 <div>
-                                    <button id="img_kompetensi" value="{{asset('berkas/kompetensi/'.$header->img_kompetensi)}}" onclick="showImage('img_kompetensi');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>Pas Foto</label>
-                                 <div>
-                                    <button id="img_pas_foto" value="{{asset('berkas/foto/'.$header->img_pas_foto)}}" onclick="showImage('img_pas_foto');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>KTP</label>
-                                 <div>
-                                    <button id="img_ktp" value="{{asset('berkas/ktp/'.$header->img_ktp)}}" onclick="showImage('img_ktp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>Sertifikat Kesehatan</label>
-                                 <div>
-                                    <button id="img_sertifikat_kesehatan" value="{{asset('berkas/sertifikat_kesehatan/'.$header->img_sertifikat_kesehatan)}}" onclick="showImage('img_sertifikat_kesehatan');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>Bukti Pembayaran</label>
-                                 <div>
-                                    <button id="img_bukti_pembayaran" value="{{ asset('berkas/bukti_pembayaran/'.$header->img_bukti_pembayaran)}}" onclick="showImage('img_bukti_pembayaran');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-6 col-md-6 col-lg-6">
-                              <div class="form-group mb-4">
-                                 <label>Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan</label>
-                                 <div>
-                                    <button id="img_ijazah" value="{{ asset('berkas/ijazah/'.$header->img_ijazah)}}" onclick="showImage('img_ijazah');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
+                                    <button id="img_ielp" value="{{asset('berkas/ielp/'.$data->img_ielp)}}" onclick="showImage('img_ielp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
 
-                           @if ($header->acc != "Y" || $header->acc != "N")
-                           <div class="col-12 col-md-12 col-lg-12 text-right">
-                              <button type="button" onclick="validasi({{$header->id}},'N')" class="btn btn-danger mr-1">Tolak</button>
-                              <button type="button" onclick="validasi({{$header->id}},'Y')" class="btn btn-primary">Validasi</button>
-                            </div> 
+                           @if (empty($data->acc))
+                              <div class="col-12 col-md-12 col-lg-12 text-right">
+                                 <button type="button" onclick="validasi({{$data->id}},'N')" class="btn btn-danger mr-1">Tolak</button>
+                                 <button type="button" onclick="verifikasi({{$data->id}})" class="btn btn-primary">Validasi</button>
+                              </div> 
                            @endif
                            
                         </div>
@@ -187,6 +139,42 @@
          </div>
        </div>
        <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       </div>
+      </form>
+     </div>
+   </div>
+ </div>
+
+ <div class="modal" tabindex="-1" role="dialog" id="modal_upload" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog modal-lg" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Isi Data</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body pb-0">
+          <form id="form">
+             <input type="text" hidden id="id" name="id">
+               <div class="row">
+                  <div class="col-6 col-md-6 col-lg-6">
+                     <div class="form-group mb-4">
+                        <label>New English Proficiency</label>
+                        <input type="file" class="form-control" id="img_nep" required/>
+                     </div>
+                  </div>
+                  <div class="col-6 col-md-6 col-lg-6">
+                     <div class="form-group mb-4">
+                        <label>Medical Examination</label>
+                        <input type="file" class="form-control" id="img_medex" required/>
+                     </div>
+                  </div>
+               </div>
+       </div>
+       <div class="modal-footer">
+         <button type="submit" class="btn btn-primary">Submit</button>
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
        </div>
       </form>
@@ -240,6 +228,11 @@
       }
    }
 
+   function verifikasi(id){
+      $('#modal_upload').modal('show');
+      $('#id').val(id);
+   }
+
    function validasi(id,acc){
          swal({
          title: "Are you sure?",
@@ -251,13 +244,13 @@
          .then((willDelete) => {
                if (willDelete) {
                      $.ajax({
-                        url: "{{ route('lihat_berkas.validasi') }}",
+                        url: "/checker/checking/lihat_berkas/persetujuan",
                         type: "POST",
                         data: {"id" : id, "acc" : acc},
                         dataType: 'JSON',
                         success: function( data, textStatus, jQxhr ){
                            swal("Success!", "Data berhasil diproses", "success");
-                           window.location.href = "{{ route('lihat_berkas.view') }}";
+                           window.location.href = "/checker/checking/lihat_berkas";
                         },
                         error: function( jqXhr, textStatus, errorThrown ){
                            console.log( errorThrown );
@@ -267,6 +260,44 @@
                }
          });
    }
+
+   $('#form').submit(function(e){
+      e.preventDefault();
+      
+      var id               = $('#id').val();
+      var img_nep          = $('#img_nep').prop('files')[0];
+      var img_medex        = $('#img_medex').prop('files')[0];
+
+      var data = new FormData();
+      data.append('id',id );
+      data.append('img_nep', img_nep);
+      data.append('img_medex', img_medex);
+
+      $.ajax({
+         url: "/checker/checking/verifikasi_berhasil",
+         dataType: 'JSON',
+         cache: false,
+         contentType: false,
+         processData: false,
+         data: data,
+         type: 'POST',
+         success: function( data, textStatus, jQxhr ){
+            if(data.status == 'success'){
+               swal("Success!", "Proses berhasil", "success");
+               console.log('success');
+               $('#form').trigger("reset");
+               $("#modal_package").modal('hide');
+               location.reload();
+            }else{
+               swal("Failed!", "Proses gagal", "error");
+            }
+         },
+         error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+            console.warn(jqXhr.responseText);
+         },
+      });
+   })
 
 </script>
 @endsection

@@ -85,13 +85,13 @@
                               <input type="text" class="form-control" id="profesi" required/>
                            </div>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-6">
+                        <div class="col-12 col-md-12 col-lg-12">
                            <div class="form-group mb-4">
                               <label>Rating yang Diujikan</label>
                               <input type="text" class="form-control" id="rating" required/>
                            </div>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-6">
+                        {{-- <div class="col-6 col-md-6 col-lg-6">
                            <div class="form-group mb-4">
                               <label>Foto Lembar License</label>
                               <input type="file" class="form-control" id="img_license" required/>
@@ -138,7 +138,7 @@
                               <label>Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan</label>
                               <input type="file" class="form-control" id="img_ijazah" required/>
                            </div>
-                        </div>
+                        </div> --}}
                      </div>
              </div>
              <div class="modal-footer">
@@ -172,28 +172,28 @@
       var lokasi_ujian              = $('#lokasi_ujian').val();
       var profesi                   = $('#profesi').val();
       var rating                    = $('#rating').val();
-      var img_license               = $('#img_license').prop('files')[0];
-      var img_ielp                  = $('#img_ielp').prop('files')[0];
-      var img_kompetensi            = $('#img_kompetensi').prop('files')[0];
-      var img_pas_foto              = $('#img_pas_foto').prop('files')[0];  
-      var img_ktp                   = $('#img_ktp').prop('files')[0];
-      var img_sertifikat_kesehatan  = $('#img_sertifikat_kesehatan').prop('files')[0];
-      var img_bukti_pembayaran      = $('#img_bukti_pembayaran').prop('files')[0]; 
-      var img_ijazah                = $('#img_ijazah').prop('files')[0];
+      // var img_license               = $('#img_license').prop('files')[0];
+      // var img_ielp                  = $('#img_ielp').prop('files')[0];
+      // var img_kompetensi            = $('#img_kompetensi').prop('files')[0];
+      // var img_pas_foto              = $('#img_pas_foto').prop('files')[0];  
+      // var img_ktp                   = $('#img_ktp').prop('files')[0];
+      // var img_sertifikat_kesehatan  = $('#img_sertifikat_kesehatan').prop('files')[0];
+      // var img_bukti_pembayaran      = $('#img_bukti_pembayaran').prop('files')[0]; 
+      // var img_ijazah                = $('#img_ijazah').prop('files')[0];
 
       var data = new FormData();
           data.append('id',id );
           data.append('lokasi', lokasi_ujian);
           data.append('profesi', profesi);
           data.append('rating', rating);
-          data.append('img_license', img_license);
-          data.append('img_ielp', img_ielp);
-          data.append('img_kompetensi', img_kompetensi);
-          data.append('img_pas_foto', img_pas_foto);
-          data.append('img_ktp', img_ktp);
-          data.append('img_sertifikat_kesehatan', img_sertifikat_kesehatan);
-          data.append('img_bukti_pembayaran', img_bukti_pembayaran);
-          data.append('img_ijazah', img_ijazah);
+         //  data.append('img_license', img_license);
+         //  data.append('img_ielp', img_ielp);
+         //  data.append('img_kompetensi', img_kompetensi);
+         //  data.append('img_pas_foto', img_pas_foto);
+         //  data.append('img_ktp', img_ktp);
+         //  data.append('img_sertifikat_kesehatan', img_sertifikat_kesehatan);
+         //  data.append('img_bukti_pembayaran', img_bukti_pembayaran);
+         //  data.append('img_ijazah', img_ijazah);
 
       $.ajax({
          url: "{{ route('user_package.post') }}",

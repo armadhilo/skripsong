@@ -46,10 +46,6 @@ Route::prefix('admin')->group(function () {
         Route::get('buat_materi/{id}','Admin\BuatMateriController@first')->name('buat_materi.first');
         Route::delete('buat_materi/{id}','Admin\BuatMateriController@delete');
 
-        Route::get('lihat_berkas','Admin\LihatBerkasController@index')->name('lihat_berkas.view');
-        Route::get('lihat_berkas/{header}/detail','Admin\LihatBerkasController@detail')->name('lihat_berkas.detail');
-        Route::post('lihat_berkas/persetujuan','Admin\LihatBerkasController@validasi')->name('lihat_berkas.validasi');
-
         Route::get('hasil','Admin\HasilController@index')->name('hasil.view');
     });
 });
@@ -71,4 +67,17 @@ Route::prefix('user')->group(function () {
     
         Route::get('sudah_dikerjakan','User\SudahDikerjakanController@index')->name('sudah_dikerjakan.view');
     });
+});
+
+Route::prefix('checker')->group(function () {
+
+    Route::get('/', 'Checker\DashboardController@index')->name('dashboard.checker');
+
+    Route::prefix('checking')->group(function(){
+        Route::get('lihat_berkas','Checker\LihatBerkasController@index');
+        Route::get('lihat_berkas/detail/{id}','Checker\LihatBerkasController@detail');
+        Route::post('lihat_berkas/persetujuan','Checker\LihatBerkasController@verifikasi_gagal');
+        Route::post('verifikasi_berhasil','Checker\LihatBerkasController@verifikasi_berhasil');
+    });
+    
 });

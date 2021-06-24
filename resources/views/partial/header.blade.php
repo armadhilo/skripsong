@@ -45,11 +45,29 @@
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
 
             <li class="menu-header">View</li>
-            <li><a class="nav-link" href="{{ route('lihat_berkas.view') }}"><i class="far fa-file-alt"></i> <span>List Berkas</span></a></li>
             <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
 
             <li class="menu-header">Hasil</li>
             <li><a class="nav-link" href="{{ route('hasil.view') }}"><i class="far fa-file-alt"></i> <span>Hasil</span></a></li>
+            
+         </ul>
+       @elseif (session()->get('role') == 'Checker')
+         <ul class="sidebar-menu">
+            <li class="menu-header">App</li>
+            <li><a class="nav-link" href="{{route('dashboard.checker')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+
+            <li class="menu-header">Checker</li>
+            <li><a class="nav-link" href="/checker/checking/lihat_berkas"><i class="far fa-file-alt"></i> <span>List Checker</span></a></li>
+
+            {{--<li class="menu-header">Publish</li>
+            <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
+
+            <li class="menu-header">View</li>
+            <li><a class="nav-link" href="{{ route('lihat_berkas.view') }}"><i class="far fa-file-alt"></i> <span>List Berkas</span></a></li>
+            <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
+
+            <li class="menu-header">Hasil</li>
+            <li><a class="nav-link" href="{{ route('hasil.view') }}"><i class="far fa-file-alt"></i> <span>Hasil</span></a></li> --}}
             
          </ul>
        @else
