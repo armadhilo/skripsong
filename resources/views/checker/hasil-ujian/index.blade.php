@@ -6,7 +6,8 @@
       <div class="section-header">
          <h1>Hasil Ujian Checker</h1>
          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Hasil Ujian</a></div>
+            <div class="breadcrumb-item active"><a href="#">Ujian</a></div>
+            <div class="breadcrumb-item">Hasil Ujian Checke</div>
          </div>
       </div>
       <div class="section-body">

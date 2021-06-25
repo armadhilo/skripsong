@@ -123,7 +123,7 @@
                         dataType: 'JSON',
                         success: function( data, textStatus, jQxhr ){
                            swal("Success!", "Berhasil Mengerjakan Soal", "success");
-                           window.setTimeout(function(){location.href="/checker/sudah_ujian/"},2000);
+                           window.setTimeout(function(){location.href="/checker/sudah-ujian/"},2000);
                         },
                         error: function( jqXhr, textStatus, errorThrown ){
                            console.log( errorThrown );

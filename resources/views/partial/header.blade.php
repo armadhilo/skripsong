@@ -57,7 +57,7 @@
             <li><a class="nav-link" href="{{route('dashboard.checker')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
             <li class="menu-header">Checker</li>
-            <li><a class="nav-link" href="/checker/checking/lihat_berkas"><i class="far fa-file-alt"></i> <span>List Checker</span></a></li>
+            <li><a class="nav-link" href="/checker/checking/lihat_berkas"><i class="far fa-file-alt"></i> <span>Verifikasi Peserta</span></a></li>
 
             <li class="menu-header">Ujian</li>
             <li><a class="nav-link" href="/checker/daftar-ujian/"><i class="far fa-file-alt"></i> <span>Ambil Package Ujian</span></a></li>

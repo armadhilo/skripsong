@@ -11,7 +11,7 @@ use App\Models\Admin\Package;
 use App\Models\Admin\Header;
 use App\Models\Admin\Body;
 
-class SudahDikerjakanController extends Controller
+class SudahUjianController extends Controller
 {
     public function index(){
         $data['list'] = Header::whereRaw("user_id = ? and status = 'Y'",[session()->get('id')])->with('package')->get();
