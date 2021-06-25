@@ -79,5 +79,20 @@ Route::prefix('checker')->group(function () {
         Route::post('lihat_berkas/persetujuan','Checker\LihatBerkasController@verifikasi_gagal');
         Route::post('verifikasi_berhasil','Checker\LihatBerkasController@verifikasi_berhasil');
     });
+
+    Route::prefix('daftar-ujian')->group(function(){
+        Route::get('/','Checker\DaftarUjianController@index');
+        Route::post('/ambil-package','Checker\DaftarUjianController@ambil_package');
+    });
     
+    Route::prefix('kerjakan-ujian')->group(function(){
+        Route::get('/','Checker\KerjakanUjianController@index');
+        Route::get('/kerjakan_soal/kerjakan/{id}','Checker\KerjakanUjianController@kerjakan');
+        Route::post('/kerjakan_soal/jawab','Checker\KerjakanUjianController@jawab');
+        Route::post('/kerjakan_soal/finish','Checker\KerjakanUjianController@finish');
+    });
+
+    Route::prefix('sudah-ujian')->group(function(){
+        Route::get('/','Checker\SudahUjianController@index');
+    });
 });

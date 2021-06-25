@@ -88,7 +88,7 @@
                               <div class="form-group mb-4">
                                  <label>Foto New English Proficiency</label>
                                  <div>
-                                    <button id="img_license" value="{{asset('berkas/nep/'.$data->img_nep)}}" onclick="showImage('img_nep');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
+                                    <button id="img_nep" value="{{asset('berkas/nep/'.$data->img_nep)}}" onclick="showImage('img_nep');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -96,7 +96,7 @@
                               <div class="form-group mb-4">
                                  <label>Foto Medical Eximanination</label>
                                  <div>
-                                    <button id="img_ielp" value="{{asset('berkas/ielp/'.$data->img_ielp)}}" onclick="showImage('img_ielp');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
+                                    <button id="img_medex" value="{{asset('berkas/medex/'.$data->img_medex)}}" onclick="showImage('img_medex');" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-image"></i> Lihat Gambar</button>
                                  </div>
                               </div>
                            </div>
@@ -187,7 +187,8 @@
 
    function showImage(id){
 
-      console.log('aa');
+      console.log(id);
+
       $("#modal_img").modal('show');
       $(".modal-backdrop").remove();
       $("#img_place").attr("src","");
@@ -195,36 +196,14 @@
       var a = document.getElementById(id);
       var src = a.value;
 
-      if(id === "img_license"){
-         $(".modal-title").text("Foto Lembar License");
-         $("#img_place").attr("src", src);
-      }else if(id === "img_ielp"){
-         $(".modal-title").text("IELP Min Lev 4");
-         $("#img_place").attr("src", src);
-      }else if(id === "img_kompetensi"){
-         $(".modal-title").text("Surat Kompetensi");
-         $("#img_place").attr("src", src);
+      console.log(a);
 
-      }else if(id === "img_pas_foto"){
-         $(".modal-title").text("Pas Foto");
+      if(id === "img_nep"){
+         $(".modal-title").text("New English Proficiency");
          $("#img_place").attr("src", src);
-
-      }else if(id === "img_ktp"){
-         $(".modal-title").text("KTP");
+      }else if(id === "img_medex"){
+         $(".modal-title").text("Medical Eximanination");
          $("#img_place").attr("src", src);
-
-      }else if(id === "img_sertifikat_kesehatan"){
-         $(".modal-title").text("Sertifikat Kesehatan");
-         $("#img_place").attr("src", src);
-
-      }else if(id === "img_bukti_pembayaran"){
-         $(".modal-title").text("Bukti Pembayaran");
-         $("#img_place").attr("src", src);
-
-      }else if(id === "img_ijazah"){
-         $(".modal-title").text("Sertifikat Kompetensi Ijazah Personil Komando Komunikasi Penerbangan");
-         $("#img_place").attr("src", src);
-
       }
    }
 

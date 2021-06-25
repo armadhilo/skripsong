@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,17 +12,18 @@ use App\Models\Admin\Package;
 use App\Models\Admin\Header;
 use App\Models\Admin\Body;
 
-class KerjakanSoalController extends Controller
+class KerjakanUjianController extends Controller
 {
     public function index(){
         $mytime = Carbon::now();
+        $datetime = $mytime->toDateTimeString();
         $date = $mytime->toDateString();
 
         $data['list'] = Header::whereRaw('user_id = ? and acc = ? and status <> ?',[session()->get('id'),'Y','Y'])->whereHas('package', function ($query) use ($date) {
             return $query->whereRaw('date(publish) = ? and user_id = ?',[$date, session()->get('id')]);
         })->get();
         
-        return view('user.kerjakan-soal.index',$data);
+        return view('checker.kerjakan-ujian.index',$data);
     }
 
     public function kerjakan($id){
@@ -33,7 +34,7 @@ class KerjakanSoalController extends Controller
 
         $data['package'] = header::where('id',$id)->has('package')->first();
 
-        return view('user.kerjakan-soal.kerjakan_soal',$data);
+        return view('checker.kerjakan-ujian.kerjakan-ujian',$data);
     }
 
     public function jawab(Request $request){
