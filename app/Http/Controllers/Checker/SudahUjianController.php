@@ -14,8 +14,7 @@ use App\Models\Admin\Body;
 class SudahDikerjakanController extends Controller
 {
     public function index(){
-
         $data['list'] = Header::whereRaw("user_id = ? and status = 'Y'",[session()->get('id')])->with('package')->get();
-        return view('checker.finish-ujian.index',$data);
+        return view('checker.hasil-ujian.index',$data);
     }
 }

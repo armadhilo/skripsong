@@ -62,6 +62,7 @@
             <li class="menu-header">Ujian</li>
             <li><a class="nav-link" href="/checker/daftar-ujian/"><i class="far fa-file-alt"></i> <span>Ambil Package Ujian</span></a></li>
             <li><a class="nav-link" href="/checker/kerjakan-ujian/"><i class="far fa-file-alt"></i> <span>Kerjakan Ujian</span></a></li>
+            <li><a class="nav-link" href="/checker/sudah-ujian/"><i class="far fa-file-alt"></i> <span>Hasil Ujian</span></a></li>
 
             {{--<li class="menu-header">Publish</li>
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
@@ -85,7 +86,7 @@
             <li class="menu-header">Ujian</li>
             <li><a class="nav-link" href="{{ route('user_package.view') }}"><i class="fa fa-home"></i> <span>Ambil Package Ujian</span></a></li>
             <li><a class="nav-link" href="{{ route('kerjakan_soal.view') }}"><i class="fa fa-home"></i> <span>Kerjakan Ujian</span></a></li>
-            <li><a class="nav-link" href="{{ route('sudah_dikerjakan.view') }}"><i class="fa fa-home"></i> <span>Hasil</span></a></li>
+            <li><a class="nav-link" href="{{ route('sudah_dikerjakan.view') }}"><i class="fa fa-home"></i> <span>Hasil Ujian</span></a></li>
          </ul>
        @endif
 
