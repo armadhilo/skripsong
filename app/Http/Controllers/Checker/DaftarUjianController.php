@@ -31,6 +31,18 @@ class DaftarUjianController extends Controller
 
     public function ambil_package(Request $request){
 
+        $validator = Validator::make($request->all(), [
+            'img_nep' => 'required|mimes:jpeg,jpg,png|size:1000',
+            'img_medex' => 'required|mimes:jpeg,jpg,png|size:1000',
+        ]);
+
+        if($validator->fails()) {
+            return [
+                'status' => 300,
+                'message' => $validator->errors()->first()
+            ];
+        }
+
         $file = $request->file('img_nep');
         $photoA =  time().$file->getClientOriginalName();
         $file->move('berkas/nep',$photoA);

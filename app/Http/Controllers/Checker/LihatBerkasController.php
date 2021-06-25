@@ -26,8 +26,8 @@ class LihatBerkasController extends Controller
     public function verifikasi_berhasil(request $request){
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'img_nep' => 'required',
-            'img_medex' => 'required',
+            'img_nep' => 'required|mimes:jpeg,jpg,png|size:1000',
+            'img_medex' => 'required|mimes:jpeg,jpg,png|size:1000',
         ]);
     
         if($validator->fails()) {
