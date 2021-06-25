@@ -97,4 +97,10 @@ Route::prefix('checker')->group(function () {
     Route::prefix('sudah-ujian')->group(function(){
         Route::get('/','Checker\SudahUjianController@index');
     });
+
+    Route::prefix('laporan-ujian')->group(function(){
+        Route::get('/','Checker\LaporanUjianController@index');
+        Route::get('/detail-hasil/{package_id}','Checker\LaporanUjianController@detail');
+        Route::get('/cetak-pdf/{package_id}','Checker\LaporanUjianController@cetak_pdf');
+    });
 });

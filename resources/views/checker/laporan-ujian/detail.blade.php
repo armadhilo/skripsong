@@ -6,7 +6,7 @@
       <div class="section-header">
          <h1>Detail Hasil Ujian</h1>
          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Hasil</a></div>
+            <div class="breadcrumb-item active"><a href="#">Laporan</a></div>
             <div class="breadcrumb-item">Detail Hasil Ujian</div>
          </div>
       </div>
@@ -40,7 +40,7 @@
                         
                     </div>
                 </div>
-                <a href="/admin/cetak-pdf/{{$data->id}}" target="_blank"><button class="btn btn-primary float-right"> <i class="fa fa-print"></i> Print Hasil Ujian</button></a>
+                <a href="/checker/laporan-ujian/cetak-pdf/{{$data->id}}" target="_blank"><button class="btn btn-primary float-right"> <i class="fa fa-print"></i> Print Hasil Ujian</button></a>
                 <br><br><br>
                <div class="card">
                   <div class="card-body" style="padding-bottom: 40px;">

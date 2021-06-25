@@ -4,9 +4,9 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>List Package</h1>
+         <h1>Laporan</h1>
          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Hasil</a></div>
+            <div class="breadcrumb-item active"><a href="#">Laporan</a></div>
             <div class="breadcrumb-item">List Package</div>
          </div>
       </div>
@@ -68,7 +68,7 @@
    });
 
    function detail(id){
-      window.location.href = "/admin/detail-hasil/" + id;
+      window.location.href = "/checker/laporan-ujian/detail-hasil/" + id;
    }
 
 </script>

@@ -8,7 +8,7 @@
     <ul class="navbar-nav navbar-right">
        <li class="dropdown">
           <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-             <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+             <img alt="image" src="{{asset('assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
              <div class="d-sm-none d-lg-inline-block">Hi, {{session()->get('firstname') ." ".session()->get('lastname')}}</div>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
@@ -63,6 +63,9 @@
             <li><a class="nav-link" href="/checker/daftar-ujian/"><i class="far fa-file-alt"></i> <span>Ambil Package Ujian</span></a></li>
             <li><a class="nav-link" href="/checker/kerjakan-ujian/"><i class="far fa-file-alt"></i> <span>Kerjakan Ujian</span></a></li>
             <li><a class="nav-link" href="/checker/sudah-ujian/"><i class="far fa-file-alt"></i> <span>Hasil Ujian</span></a></li>
+
+            <li class="menu-header">Laporan Ujian</li>
+            <li><a class="nav-link" href="checker/laporan-ujian/"><i class="fa fa-home"></i> <span>Laporan</span></a></li>
 
             {{--<li class="menu-header">Publish</li>
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
