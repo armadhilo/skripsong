@@ -47,6 +47,8 @@ Route::prefix('admin')->group(function () {
         Route::delete('buat_materi/{id}','Admin\BuatMateriController@delete');
 
         Route::get('hasil','Admin\HasilController@index')->name('hasil.view');
+        Route::get('detail-hasil/{package_id}','Admin\HasilController@detail');
+        Route::get('cetak-pdf/{package_id}','Admin\HasilController@cetak_pdf');
     });
 });
 

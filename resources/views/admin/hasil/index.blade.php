@@ -4,11 +4,10 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Package Sudah Dikerjakan</h1>
+         <h1>List Package</h1>
          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Forms</a></div>
-            <div class="breadcrumb-item">Advanced Forms</div>
+            <div class="breadcrumb-item active"><a href="#">Hasil</a></div>
+            <div class="breadcrumb-item">List Package</div>
          </div>
       </div>
       <div class="section-body">
@@ -29,9 +28,11 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Nama</th>
                                  <th scope="col" class="text-center">Package</th>
-                                 <th scope="col" class="text-center">Nilai</th>
+                                 <th scope="col" class="text-center">Deskripsi</th>
+                                 <th scope="col" class="text-center">Publish</th>
+                                 <th scope="col" class="text-center">Durasi</th>
+                                 <th scope="col" class="text-center">Action</th>
                                  {{-- <th scope="col" class="text-center" style="width: 18%">Actions</th> --}}
                               </tr>
                            </thead>
@@ -39,9 +40,13 @@
                               @foreach ($list as $item)
                                  <tr>
                                     <th class="text-center">{{$loop->iteration}}</th>
-                                    <td>{{$item->user->firstname}}</td>
-                                    <td>{{$item->package->package}}</td>
-                                    <td class="text-center"> {{ (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah)) * 100) }} </td>
+                                    <td>{{$item->package}}</td>
+                                    <td>{{$item->deskripsi}}</td>
+                                    <td class="text-center" >{{$item->publish}}</td>
+                                    <td class="text-center" >{{$item->durasi}} Menit</td>
+                                    <td class="text-center">
+                                       <button class="btn btn-primary" onclick="detail({{$item->id}})">Detail Nilai</button>
+                                    </td>
                                  </tr>
                               @endforeach   
                            </tbody>
@@ -61,6 +66,10 @@
    $(document).ready(function() {
       $("#tb_package").DataTable();
    });
+
+   function detail(id){
+      window.location.href = "/admin/detail-hasil/" + id;
+   }
 
 </script>
 @endsection
