@@ -162,13 +162,13 @@
                   <div class="col-6 col-md-6 col-lg-6">
                      <div class="form-group mb-4">
                         <label>New English Proficiency</label>
-                        <input type="file" class="form-control" id="img_nep" required/>
+                        <input type="file" class="form-control" id="img_nep" name="img_nep" required/>
                      </div>
                   </div>
                   <div class="col-6 col-md-6 col-lg-6">
                      <div class="form-group mb-4">
                         <label>Medical Examination</label>
-                        <input type="file" class="form-control" id="img_medex" required/>
+                        <input type="file" class="form-control" id="img_medex" name="img_medex" required/>
                      </div>
                   </div>
                </div>
@@ -243,14 +243,13 @@
    $('#form').submit(function(e){
       e.preventDefault();
       
-      var id               = $('#id').val();
-      var img_nep          = $('#img_nep').prop('files')[0];
-      var img_medex        = $('#img_medex').prop('files')[0];
+      // var id               = $('#id').val();
+      // var img_nep          = $('#img_nep').files[0];
+      // var img_medex        = $('#img_medex').files[0];
 
-      var data = new FormData();
-      data.append('id',id );
-      data.append('img_nep', img_nep);
-      data.append('img_medex', img_medex);
+      // console.log(img_nep);
+
+      var data = new FormData(this);
 
       $.ajax({
          url: "/checker/checking/verifikasi_berhasil",
@@ -267,8 +266,10 @@
                $('#form').trigger("reset");
                $("#modal_package").modal('hide');
                location.reload();
+            }else if(data.status == '300'){
+               swal("Failed!", data.message, "error");
             }else{
-               swal("Failed!", "Proses gagal", "error");
+               swal("Failed!", "Oops! Proses gagal silahkan coba lagi", "error");
             }
          },
          error: function( jqXhr, textStatus, errorThrown ){

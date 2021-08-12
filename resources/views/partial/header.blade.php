@@ -13,8 +13,11 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right">
              <div class="dropdown-divider"></div>
+             <a href="/view-change-password" class="dropdown-item has-icon">
+               <i class="fas fa-user"></i> Change Password
+             </a>
              <a href="{{route('logout')}}" class="dropdown-item has-icon text-danger">
-             <i class="fas fa-sign-out-alt"></i> Logout
+               <i class="fas fa-sign-out-alt"></i> Logout
              </a>
           </div>
        </li>
@@ -65,7 +68,7 @@
             <li><a class="nav-link" href="/checker/sudah-ujian/"><i class="far fa-file-alt"></i> <span>Hasil Ujian</span></a></li>
 
             <li class="menu-header">Laporan Ujian</li>
-            <li><a class="nav-link" href="checker/laporan-ujian/"><i class="fa fa-home"></i> <span>Laporan</span></a></li>
+            <li><a class="nav-link" href="/checker/laporan-ujian/"><i class="fa fa-home"></i> <span>Laporan</span></a></li>
 
             {{--<li class="menu-header">Publish</li>
             <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>

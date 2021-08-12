@@ -34,6 +34,7 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Durasi</th>
+                                 <th scope="col" class="text-center">Status</th>
                                  <th scope="col" class="text-center">Waktu Publish</th>
                                  <th scope="col" class="text-center" style="width: 12%">Actions</th>
                               </tr>
@@ -44,6 +45,16 @@
                                     <th class="text-center">{{$loop->iteration}}</th>
                                     <td>{{$item->package}}</td>
                                     <td class="text-center">{{$item->durasi}} Menit</td>
+
+                                    <td class="text-center">
+
+                                       @if (date('d F Y H:i:s', strtotime($item->publish)) > date('Y-m-d H:i:s'))
+                                          <span class="badge badge-success">sudah publish</span>
+                                       @else
+                                          <span class="badge badge-danger">belum publish</span>                                            
+                                       @endif
+                                        
+                                    </td>
                                     <td class="text-center">{{ date('d F Y H:i:s', strtotime($item->publish)) }}</td>
                                     <td class="text-center">
                                        <button onclick="publish_soal({{$item->id}})" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></button>

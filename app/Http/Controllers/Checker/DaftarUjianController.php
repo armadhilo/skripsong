@@ -19,12 +19,15 @@ use App\Models\Admin\Body;
 class DaftarUjianController extends Controller
 {
     public function index(){
+
         $mytime = Carbon::now();
         $datetime = $mytime->toDateTimeString();
         
         $data['list'] = Package::whereRaw('publish >= ?',[$datetime])->has('soal')->whereDoesntHave('header', function($query) {
             $query->where('user_id',session()->get('id'));
           })->get();
+
+         
         
         return view('checker.daftar-ujian.index',$data);
     }
@@ -32,8 +35,8 @@ class DaftarUjianController extends Controller
     public function ambil_package(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'img_nep' => 'required|mimes:jpeg,jpg,png|size:1000',
-            'img_medex' => 'required|mimes:jpeg,jpg,png|size:1000',
+            'img_nep' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'img_medex' => 'required|mimes:jpeg,jpg,png|max:1000',
         ]);
 
         if($validator->fails()) {

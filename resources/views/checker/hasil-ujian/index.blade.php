@@ -43,7 +43,7 @@
                                     <td>{{$item->package->package}}</td>
                                     <td>{{$item->package->deskripsi}}</td>
                                     <td class="text-center">{{$item->package->durasi}} Menit</td>
-                                    <td class="text-center"> {{ (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah)) * 100) }} </td>
+                                    <td class="text-center"> {{ ($item->jumlahBenar + $item->jumlahSalah == 0) ? "0" : (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah))) * 100 }}</td>
                                  </tr>
                               @endforeach   
                            </tbody>

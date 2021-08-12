@@ -21,6 +21,6 @@ class Package extends Model
     }
 
     public function header(){
-        return $this->hasMany(header::class);
+        return $this->hasMany(Header::class);
     }
 }

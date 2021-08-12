@@ -28,6 +28,7 @@ class HasilController extends Controller
     public function detail($package_id){
         $data['data'] = Package::find($package_id);
         $data['list'] = Header::whereRaw("status = ? and package_id = ?",["Y",$package_id])->with('user')->get();
+
         return view('admin.hasil.detail',$data);
     }
 

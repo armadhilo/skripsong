@@ -4,14 +4,14 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Hasil Ujian</h1>
+         <h1>Laporan</h1>
          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Ujian</a></div>
-            <div class="breadcrumb-item">Hasil Ujian</div>
+            <div class="breadcrumb-item active"><a href="#">Laporan</a></div>
+            <div class="breadcrumb-item">List Package</div>
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Package Sudah Dikerjakan</h2>
+         <h2 class="section-title">Hasil Ujian</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -30,20 +30,23 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Package</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
+                                 <th scope="col" class="text-center">Publish</th>
                                  <th scope="col" class="text-center">Durasi</th>
-                                 <th scope="col" class="text-center">Nilai</th>
+                                 <th scope="col" class="text-center">Action</th>
                                  {{-- <th scope="col" class="text-center" style="width: 18%">Actions</th> --}}
                               </tr>
                            </thead>
                            <tbody>
-
                               @foreach ($list as $item)
                                  <tr>
                                     <th class="text-center">{{$loop->iteration}}</th>
-                                    <td>{{$item->package->package}}</td>
-                                    <td>{{$item->package->deskripsi}}</td>
-                                    <td class="text-center">{{$item->package->durasi}} Menit</td>
-                                    <td class="text-center">{{ ($item->jumlahBenar + $item->jumlahSalah == 0) ? "0" : (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah))) * 100 }} </td>
+                                    <td>{{$item->package}}</td>
+                                    <td>{{$item->deskripsi}}</td>
+                                    <td class="text-center" >{{$item->publish}}</td>
+                                    <td class="text-center" >{{$item->durasi}} Menit</td>
+                                    <td class="text-center">
+                                       <button class="btn btn-primary" onclick="detail({{$item->id}})">Detail Nilai</button>
+                                    </td>
                                  </tr>
                               @endforeach   
                            </tbody>
@@ -55,7 +58,6 @@
             </div>
          </div>
       </div>
-
    </section>
 </div>
 @endsection
@@ -64,6 +66,10 @@
    $(document).ready(function() {
       $("#tb_package").DataTable();
    });
+
+   function detail(id){
+      window.location.href = "/admin/detail-hasil/" + id;
+   }
 
 </script>
 @endsection

@@ -40,7 +40,7 @@
                         
                     </div>
                 </div>
-                <a href="/checker/laporan-ujian/cetak-pdf/{{$data->id}}" target="_blank"><button class="btn btn-primary float-right"> <i class="fa fa-print"></i> Print Hasil Ujian</button></a>
+                <a href="/admin/cetak-pdf/{{$data->id}}" target="_blank"><button class="btn btn-primary float-right"> <i class="fa fa-print"></i> Print Hasil Ujian</button></a>
                 <br><br><br>
                <div class="card">
                   <div class="card-body" style="padding-bottom: 40px;">
@@ -77,7 +77,7 @@
                                             <span class="badge badge-info">Peserta</span>
                                         @endif
                                     </td>
-                                    <td class="text-center"> {{$item->jumlahBenar}} / {{$item->jumlahSalah}} / {{(intval($item->jumlahBenar) + intval($item->jumlahSalah))}} </td>
+                                    <td class="text-center"> {{intval($item->jumlahBenar)}} / {{intval($item->jumlahSalah)}} / {{(intval($item->jumlahBenar) + intval($item->jumlahSalah))}} </td>                          
                                     <td class="text-center"> {{ ($item->jumlahBenar + $item->jumlahSalah == 0) ? "0" : (intval($item->jumlahBenar) / (intval($item->jumlahBenar) + intval($item->jumlahSalah))) * 100 }} </td>                                  
                                  </tr>
                               @endforeach   
