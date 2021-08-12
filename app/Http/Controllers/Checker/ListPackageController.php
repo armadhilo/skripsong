@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -22,6 +22,6 @@ class ListPackageController extends Controller
         $data['soalRilis'] = Package::whereRaw('date(publish) = ?',[$date])->has('soal')->get();
         $data['soalExpired'] = Package::whereRaw('date(publish) > ? AND publish IS NOT NULL',[$date])->has('soal')->get();
 
-        return view('admin.list-package.index',$data);
+        return view('checker.list-package.index',$data);
     }
 }

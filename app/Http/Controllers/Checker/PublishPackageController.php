@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class PublishPackageController extends Controller
         $data['listPublish'] = Package::has('soal')->orderBy('id','desc')->get();
         $data['dataPackage'] = Package::whereRaw('publish IS NULL')->has('soal')->get();
 
-        return view('admin.publish-soal.index',$data);
+        return view('checker.publish-soal.index',$data);
     }
 
     public function publish(Request $request){

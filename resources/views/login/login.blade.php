@@ -21,9 +21,8 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white id-login">
                     <div class="p-4 m-3">
                       <img src="{{asset('assets/img/logo.jpg')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-                      <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">AirNav</span></h4>
-                      <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
-
+                      <h4 class="text-dark font-weight-normal">Selamat datang <span class="font-weight-bold">AirNav</span></h4>
+                      <p class="text-muted"> Sebelum login pastikan anda telah mempunyai akun, apabila belum silahkan registrasi terlebih dahulu.</p>
                       <div id="alert"></div>
                       @if ($message = Session::get('msg'))
                         <div class="alert alert-success alert-block">
@@ -47,7 +46,7 @@
                             <label for="email">Email</label>
                             <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                             <div class="invalid-feedback">
-                                Please fill in your email
+                                Mohon isi email anda
                             </div>
                           </div>
                           <div class="form-group">
@@ -56,7 +55,7 @@
                             </div>
                             <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                             <div class="invalid-feedback">
-                                please fill in your password
+                                Mohon isi password anda
                             </div>
                           </div>
                           <div class="form-group text-right">
@@ -68,7 +67,7 @@
                             </button>
                           </div>
                           <div class="mt-5 text-center">
-                            Don't have an account? <a  href="javascript:void(0)" onclick="log_res('register')">Create new one</a>
+                            Belum punya akun? <a  href="javascript:void(0)" onclick="log_res('register')">Buat akun baru</a>
                           </div>
                       </form>
                       {{-- 
@@ -81,16 +80,16 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white id-register" hidden>
                   <div class="p-4 m-3">
                     <img src="../assets/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-                    <h4 class="text-dark font-weight-normal">Register</h4>
+                    <h4 class="text-dark font-weight-normal">Pendaftaran</h4>
                     <form id="formRegister">
                       <input type="hidden" value="user" name="role">
                       <div class="row">
                         <div class="form-group col-6">
-                          <label for="first_name">First Name</label>
+                          <label for="first_name">Nama Pertama</label>
                           <input id="first_name" type="text" class="form-control" name="firstname" autofocus>
                         </div>
                         <div class="form-group col-6">
-                          <label for="last_name">Last Name</label>
+                          <label for="last_name">Nama Terakhir</label>
                           <input id="last_name" type="text" class="form-control" name="lastname">
                         </div>
                       </div>
@@ -112,7 +111,7 @@
                           </div>
                         </div>
                         <div class="form-group col-6">
-                          <label for="password2" class="d-block">Password Confirmation</label>
+                          <label for="password2" class="d-block">Konfirmasi Password</label>
                           <input id="password2" type="password" class="form-control" name="passwordconfirm">
                         </div>
                       </div>
@@ -127,11 +126,11 @@
     
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">
-                          Register
+                          Daftar Sekarang!
                         </button>
                       </div>
                       <div class="mt-5 text-center">
-                        Already have an account? <a href="javascript:void(0)" onclick="log_res('login')">Login here</a>
+                        Sudah punya akun? <a href="javascript:void(0)" onclick="log_res('login')">Login disini</a>
                       </div>
                     </form>
                     {{-- 

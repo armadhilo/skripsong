@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class BuatMateriController extends Controller
 
         $data['list'] = Materi::all();
 
-        return view('admin.buat-materi.index',$data);
+        return view('checker.buat-materi.index',$data);
     }
 
     public function first($id){

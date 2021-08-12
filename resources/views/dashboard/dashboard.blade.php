@@ -5,13 +5,10 @@
    <section class="section">
       <div class="section-header">
          <h1>Dashboard</h1>
-         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-         </div>
       </div>
 
       <div class="alert alert-primary" role="alert">
-         Hello  <b>{{session()->get('firstname')}} {{session()->get('lastname')}} </b> , Have good day 
+         Hallo  <b>{{session()->get('firstname')}} {{session()->get('lastname')}} </b> , Semoga hari anda menyenangkan
        </div>
 
       <div class="section-body">
@@ -19,7 +16,7 @@
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
                   <div class="card-header text-center">
-                     <h4>About AirNav</h4>
+                     <h4>Tentang AirNav</h4>
                   </div>
                   <div class="card-body">
                      <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">

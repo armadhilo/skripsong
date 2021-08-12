@@ -34,36 +34,26 @@
           <a href="index.html">NV</a>
        </div>
 
-       @if (session()->get('role') == 'Admin')
+       @if (session()->get('role') == 'Checker')
          <ul class="sidebar-menu">
-            <li class="menu-header">App</li>
-            <li><a class="nav-link" href="{{route('dashboard.admin')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="{{route('dashboard.checker')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
             <li class="menu-header">Master</li>
             <li><a class="nav-link" href="{{ route('buat_materi.view') }}"><i class="far fa-file-alt"></i> <span>Master Materi</span></a></li>
-            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Package</span></a></li>
+            <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Kelompok Ujian</span></a></li>
             <li><a class="nav-link" href="{{ route('soal.view') }}"><i class="far fa-file-alt"></i> <span>Master Soal</span></a></li>
 
-            <li class="menu-header">Publish</li>
-            <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Publish Package</span></a></li>
+            <li class="menu-header">Terbitkan</li>
+            <li><a class="nav-link" href="{{ route('publish.view') }}"><i class="far fa-file-alt"></i> <span>Terbitkan Ujian</span></a></li>
 
-            <li class="menu-header">View</li>
-            <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>List Package</span></a></li>
-
-            <li class="menu-header">Hasil</li>
-            <li><a class="nav-link" href="{{ route('hasil.view') }}"><i class="far fa-file-alt"></i> <span>Hasil</span></a></li>
-            
-         </ul>
-       @elseif (session()->get('role') == 'Checker')
-         <ul class="sidebar-menu">
-            <li class="menu-header">App</li>
-            <li><a class="nav-link" href="{{route('dashboard.checker')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li class="menu-header">Data</li>
+            <li><a class="nav-link" href="{{ route('listpack.view') }}"><i class="far fa-file-alt"></i> <span>Data Kelompok Ujian</span></a></li>
 
             <li class="menu-header">Checker</li>
             <li><a class="nav-link" href="/checker/checking/lihat_berkas"><i class="far fa-file-alt"></i> <span>Verifikasi Peserta</span></a></li>
 
             <li class="menu-header">Ujian</li>
-            <li><a class="nav-link" href="/checker/daftar-ujian/"><i class="far fa-file-alt"></i> <span>Ambil Package Ujian</span></a></li>
+            <li><a class="nav-link" href="/checker/daftar-ujian/"><i class="far fa-file-alt"></i> <span>Ambil Kelompok Ujian</span></a></li>
             <li><a class="nav-link" href="/checker/kerjakan-ujian/"><i class="far fa-file-alt"></i> <span>Kerjakan Ujian</span></a></li>
             <li><a class="nav-link" href="/checker/sudah-ujian/"><i class="far fa-file-alt"></i> <span>Hasil Ujian</span></a></li>
 

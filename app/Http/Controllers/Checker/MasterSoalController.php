@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class MasterSoalController extends Controller
 
         $data['PackageSoal'] = Package::all();
 
-        return view('admin.master-soal.pilih_package',$data);
+        return view('checker.master-soal.pilih_package',$data);
     }
 
     public function goPackage($id){
@@ -26,7 +26,7 @@ class MasterSoalController extends Controller
         $data['PilihanGanda'] = Soal::where(['package_id' => $packageSoal->id, 'type' => 1])->get();
         $data['TrueFalse'] = Soal::where(['package_id' => $packageSoal->id, 'type' => 2])->get();
 
-        return view('admin.master-soal.index',$data);
+        return view('checker.master-soal.index',$data);
     }
 
     public function goCreate($id, $type){
@@ -39,7 +39,7 @@ class MasterSoalController extends Controller
             $data['type'] = 'edit';
         }
 
-        return view('admin.master-soal.create_soal',$data);
+        return view('checker.master-soal.create_soal',$data);
     }
 
     public function addSoal(Request $request){
@@ -86,7 +86,7 @@ class MasterSoalController extends Controller
 
         $data['soal'] = Soal::find($id);
 
-        return view('admin.master-soal.create_soal',$data);
+        return view('checker.master-soal.create_soal',$data);
     }
 
     public function delete($id){

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Checker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class PackageSoalController extends Controller
     public function index(){
 
         $data['dataAll'] = Package::all();
-        return view('admin.package-soal.index',$data);
+        return view('checker.package-soal.index',$data);
     }
 
     public function add(Request $request){
