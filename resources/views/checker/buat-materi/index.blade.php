@@ -6,11 +6,6 @@
    <section class="section">
       <div class="section-header">
          <h1>Materi</h1>
-         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Forms</a></div>
-            <div class="breadcrumb-item">Advanced Forms</div>
-         </div>
       </div>
       <div class="section-body">
          <h2 class="section-title">Buat Materi</h2>
@@ -120,7 +115,7 @@
    function delete_materi(id){
          swal({
          title: "Are you sure?",
-         text: "Once deleted, you will not be able to recover this data!",
+         text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,
          dangerMode: true,

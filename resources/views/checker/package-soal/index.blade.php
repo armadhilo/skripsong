@@ -111,7 +111,7 @@
    function delete_package(id){
          swal({
          title: "Are you sure?",
-         text: "Once deleted, you will not be able to recover this data!",
+         text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,
          dangerMode: true,

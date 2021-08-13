@@ -20,9 +20,21 @@
             <div class="navbar-bg"></div>
 
             @include('partial.header')
+            
             @yield('content')
 
-            @include('partial.footer')
+             <!-- Modal Load-->
+             <div class="modal fade" role="dialog" id="modal_loading" data-keyboard="false" data-backdrop="static">
+               <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                   <div class="modal-body pt-0" style="background-color: #FAFAF8; border-radius: 6px;">
+                       <div class="text-center">
+                           <img style="border-radius: 4px; height: 140px;" src="{{ asset('assets/img/skripsong/loader.gif') }}" alt="Loading">
+                           <h6 style="position: absolute; bottom: 10%; left: 38%;" class="pb-2">Mohon Tunggu..</h6>
+                       </div>
+                   </div>
+               </div>
+           </div>
 
          </div>
       </div>
@@ -40,6 +52,7 @@
       <script src="{{ asset('assets/js/scripts.js') }}"></script>
       <script src="{{ asset('assets/js/custom.js') }}"></script>
       <!-- Page Specific JS File -->
+      @include('scriptjs')
       <script type="text/javascript">
         $.ajaxSetup({
             headers: {

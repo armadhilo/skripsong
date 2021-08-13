@@ -43,6 +43,19 @@ Route::prefix('checker')->group(function () {
 
     Route::get('/', 'Checker\DashboardController@index')->name('dashboard.checker');
 
+    Route::prefix('master-checker')->group(function(){
+        Route::get('/','Checker\MasterCheckerController@index');
+        Route::get('/detail/{id}','Checker\MasterCheckerController@detail');
+        Route::get('/reset-password/{id}','Checker\MasterCheckerController@reset_password');
+        Route::post('/store-update','Checker\MasterCheckerController@store_update');
+        Route::delete('/delete/{id}','Checker\MasterCheckerController@delete');
+    });
+
+    Route::prefix('master-user')->group(function(){
+        Route::get('/','Checker\MasterUserController@index');
+        Route::get('/reset-password/{id}','Checker\MasterUserController@reset_password');
+    });
+
     Route::get('/package','Checker\PackageSoalController@index')->name('package.view');
     Route::post('/package','Checker\PackageSoalController@add')->name('package.post');
     Route::get('/package/{id}','Checker\PackageSoalController@first')->name('package.first');

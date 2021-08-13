@@ -39,6 +39,8 @@
             <li><a class="nav-link" href="{{route('dashboard.checker')}}"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
             <li class="menu-header">Master</li>
+            <li><a class="nav-link" href="/checker/master-checker/"><i class="far fa-file-alt"></i> <span>Master Checker</span></a></li>
+            <li><a class="nav-link" href="/checker/master-user/"><i class="far fa-file-alt"></i> <span>Master User</span></a></li>
             <li><a class="nav-link" href="{{ route('buat_materi.view') }}"><i class="far fa-file-alt"></i> <span>Master Materi</span></a></li>
             <li><a class="nav-link" href="{{ route('package.view') }}"><i class="far fa-file-alt"></i> <span>Master Kelompok Ujian</span></a></li>
             <li><a class="nav-link" href="{{ route('soal.view') }}"><i class="far fa-file-alt"></i> <span>Master Soal</span></a></li>
