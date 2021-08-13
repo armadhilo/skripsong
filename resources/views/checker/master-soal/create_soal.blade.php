@@ -19,7 +19,7 @@
                <div class="card">
                   <div class="row m-2" style="padding-top: 10px; padding-bottom: 6px;">
                      <div class="col-8 col-md-8 col-lg-8">
-                        <h6 class="text-primary">List Soal</h6>
+                        <h6 class="text-primary">Data Soal</h6>
                      </div>
                   </div>
                   <form id="formMasterSoal">

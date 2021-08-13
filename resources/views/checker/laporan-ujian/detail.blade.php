@@ -47,7 +47,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Nilai</h6>
+                               <h6 class="text-primary">Data Nilai</h6>
                            </div>
                         </div>
                      </div>

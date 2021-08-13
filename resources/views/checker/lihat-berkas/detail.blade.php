@@ -20,7 +20,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">Package</h6>
+                               <h6 class="text-primary">Kelompok Ujian</h6>
                            </div>
                         </div>
                      </div>
@@ -28,7 +28,7 @@
                         <div class="row">
                            <div class="col-12 col-md-12 col-lg-12">
                               <div class="form-group mb-4">
-                                 <label>Package</label>
+                                 <label>Kelompok Ujian</label>
                                  <input type="text" class="form-control" value="{{ $data->package->package }}" readonly/>
                               </div>
                            </div>
@@ -212,7 +212,7 @@
 
    function validasi(id,acc){
          swal({
-         title: "Are you sure?",
+         title: "Apa anda yakin?",
          text: "",
          icon: "warning",
          buttons: true,

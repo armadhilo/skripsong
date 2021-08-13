@@ -4,10 +4,10 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Ambil Package Ujian</h1>
+         <h1>Ambil Kelompok Ujian</h1>
       </div>
       <div class="section-body">
-         <h2 class="section-title">List Package</h2>
+         <h2 class="section-title">Data Kelompok</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -15,7 +15,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Package</h6>
+                               <h6 class="text-primary">Data Kelompok</h6>
                            </div>
                         </div>
                      </div>
@@ -24,7 +24,7 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Package</th>
+                                 <th scope="col" class="text-center">Kelompok Ujian</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
                                  <th scope="col" class="text-center" style="width: 18%">Actions</th>
                               </tr>
@@ -37,7 +37,7 @@
                                     <td>{{ $item->package }}</td>
                                     <td>{{ $item->deskripsi }}</td>
                                     <td class="text-center">
-                                       <a href="javascript:void(0)" onclick="ambil_package({{$item->id}});" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Ambil Package</a>
+                                       <a href="javascript:void(0)" onclick="ambil_package({{$item->id}});" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-check"></i> Ambil Kelompok Ujian</a>
                                     </td>
                                  </tr>
                               @endforeach

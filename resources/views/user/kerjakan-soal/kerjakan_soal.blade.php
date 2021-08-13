@@ -4,12 +4,7 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Package A</h1>
-         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Forms</a></div>
-            <div class="breadcrumb-item">Advanced Forms</div>
-         </div>
+         <h1>Kelompok Ujian A</h1>
       </div>
       <div class="section-body">
          <p hidden id="demo">{{$package->package->durasi}}</p>
@@ -108,8 +103,8 @@
 
    function finish(id){
          swal({
-         title: "Are you sure?",
-         text: "Are you sure of your answer?",
+         title: "Apa anda yakin?",
+         text: "Apa anda yakind dengan jawaban anda?",
          icon: "warning",
          buttons: true,
          dangerMode: true,

@@ -4,7 +4,7 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>List Package</h1>
+         <h1>Data Kelompok Ujian</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -12,13 +12,13 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">List Package</h2>
+         <h2 class="section-title">Data Kelompok Ujian</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
                   <div class="row m-2" style="padding-top: 10px; padding-bottom: 6px;">
                      <div class="col-8 col-md-8 col-lg-8">
-                        <h6 class="text-primary">List Package</h6>
+                        <h6 class="text-primary">Data Kelompok Ujian</h6>
                      </div>
                   </div>
                   <div class="card-body pt-0">

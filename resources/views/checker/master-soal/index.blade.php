@@ -19,7 +19,7 @@
                <div class="card">
                   <div class="row m-2" style="padding-top: 10px; padding-bottom: 6px;">
                      <div class="col-8 col-md-8 col-lg-8">
-                        <h6 class="text-primary">List Soal</h6>
+                        <h6 class="text-primary">Data Soal</h6>
                      </div>
                      <div class="col-4 col-md-4 col-lg-4 text-right">
                         <a href="/admin/master_soal/{{ $PackageSoal->id }}/create" class="btn btn-icon icon-left btn-success"><i class="fa fa-plus"></i> Tambah Soal</a>
@@ -145,7 +145,7 @@
 
    function delete_soal(id){
       swal({
-         title: "Are you sure?",
+         title: "Apa anda yakin?",
          text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,

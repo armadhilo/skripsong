@@ -7,7 +7,7 @@
          <h1>Laporan</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#">Laporan</a></div>
-            <div class="breadcrumb-item">List Package</div>
+            <div class="breadcrumb-item">Data Kelompok Ujian</div>
          </div>
       </div>
       <div class="section-body">
@@ -19,7 +19,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Package</h6>
+                               <h6 class="text-primary">Data Kelompok Ujian</h6>
                            </div>
                         </div>
                      </div>

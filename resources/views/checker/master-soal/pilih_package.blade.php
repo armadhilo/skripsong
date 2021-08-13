@@ -4,17 +4,12 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Pilih Package</h1>
-         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Forms</a></div>
-            <div class="breadcrumb-item">Advanced Forms</div>
-         </div>
+         <h1>Pilih Kelompok Ujian</h1>
       </div>
       <div class="section-body">
          <div class="row">
             <div class="col-8 col-md-8 col-lg-8">
-               <h2 class="section-title" style="margin-top: 0px; margin-bottom: 0px;">Pilih Package Soal</h2>
+               <h2 class="section-title" style="margin-top: 0px; margin-bottom: 0px;">Pilih Kelompok Ujian Soal</h2>
             </div>
             <div class="col-4 col-md-4 col-lg-4">
                <div class="card" style="background-color: #f4f6f9; box-shadow: none; margin: 0px;">

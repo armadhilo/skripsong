@@ -4,7 +4,7 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Master Package</h1>
+         <h1>Master Kelompok Ujian</h1>
          <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -12,7 +12,7 @@
          </div>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Buat Package Soal</h2>
+         <h2 class="section-title">Buat Kelompok Ujian Soal</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -20,10 +20,10 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Package</h6>
+                               <h6 class="text-primary">Data Kelompok Ujian</h6>
                            </div>
                            <div class="col-4 col-md-4 col-lg-4 text-right">
-                              <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add_package();"><i class="fa fa-plus"></i> Tambah Package</a>
+                              <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add_package();"><i class="fa fa-plus"></i> Tambah Kelompok Ujian</a>
                            </div>
                         </div>
                      </div>
@@ -32,7 +32,7 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Package</th>
+                                 <th scope="col" class="text-center">Kelompok Ujian</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
                                  <th scope="col" class="text-center" style="width: 12%">Actions</th>
                               </tr>
@@ -110,7 +110,7 @@
 
    function delete_package(id){
          swal({
-         title: "Are you sure?",
+         title: "Apa anda yakin?",
          text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,
@@ -141,7 +141,7 @@
 
    function add_package(id = null){
       if(id){
-         $('#modalTitle').html('Edit Package');
+         $('#modalTitle').html('Edit Kelompok Ujian');
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
 
@@ -161,7 +161,7 @@
          });
 
       }else{
-         $('#modalTitle').html('Add Package');
+         $('#modalTitle').html('Add Kelompok Ujian');
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
          $('#formPackage')[0].reset();

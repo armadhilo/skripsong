@@ -20,7 +20,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Package</h6>
+                               <h6 class="text-primary">Data Kelompok Ujian</h6>
                            </div>
                         </div>
                      </div>
@@ -29,7 +29,7 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Package</th>
+                                 <th scope="col" class="text-center">Kelompok Ujian</th>
                                  <th scope="col" class="text-center">Deskripsi Packgae</th>
                                  <th scope="col" class="text-center">User</th>
                                  <th scope="col" class="text-center">Nama User</th>

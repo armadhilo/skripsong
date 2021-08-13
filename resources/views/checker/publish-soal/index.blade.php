@@ -20,7 +20,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Publish Soal</h6>
+                               <h6 class="text-primary">Data Publish Soal</h6>
                            </div>
                            <div class="col-4 col-md-4 col-lg-4 text-right">
                               <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="publish_soal();"><i class="fa fa-plus"></i> Publish Soal</a>
@@ -32,7 +32,7 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Package</th>
+                                 <th scope="col" class="text-center">Kelompok Ujian</th>
                                  <th scope="col" class="text-center">Durasi</th>
                                  <th scope="col" class="text-center">Status</th>
                                  <th scope="col" class="text-center">Waktu Publish</th>
@@ -90,7 +90,7 @@
                <div class="modal-body pb-0">
                   <div class="col-12 col-md-12 col-lg-12">
                      <div class="form-group mb-4">
-                        <label>Package</label>
+                        <label>Kelompok Ujian</label>
                         <div id="placeForm"></div>
                         <select class="form-control" id="id" name="id">
                            <option selected value="">- Pilih -</option>
@@ -99,7 +99,7 @@
                                  <option value="{{$item->id}}">{{$item->package}}</option>
                               @endforeach 
                            @else
-                              <option disabled>Tidak Ada Package</option>
+                              <option disabled>Tidak Ada Kelompok Ujian</option>
                            @endif
                         </select>
                      </div>
@@ -138,7 +138,7 @@
    $('#formPublish').submit(function(e){
       e.preventDefault();
       if($("#id").val() == ""){
-         swal("Info!", "Mohon pilih package soal", "info");
+         swal("Info!", "Mohon pilih Kelompok Ujian soal", "info");
       }else{
             $.ajax({
                   url: "{{ route('publish.publish') }}",
@@ -204,7 +204,7 @@
 
    function delete_publish(id){
       swal({
-         title: "Are you sure?",
+         title: "Apa anda yakin?",
          text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,

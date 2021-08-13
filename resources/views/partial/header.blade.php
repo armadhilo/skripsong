@@ -82,7 +82,7 @@
             <li><a class="nav-link" href="{{ route('list_materi.view') }}"><i class="fa fa-home"></i> <span>List Materi</span></a></li>
 
             <li class="menu-header">Ujian</li>
-            <li><a class="nav-link" href="{{ route('user_package.view') }}"><i class="fa fa-home"></i> <span>Ambil Package Ujian</span></a></li>
+            <li><a class="nav-link" href="{{ route('user_package.view') }}"><i class="fa fa-home"></i> <span>Ambil Kelompok Ujian</span></a></li>
             <li><a class="nav-link" href="{{ route('kerjakan_soal.view') }}"><i class="fa fa-home"></i> <span>Kerjakan Ujian</span></a></li>
             <li><a class="nav-link" href="{{ route('sudah_dikerjakan.view') }}"><i class="fa fa-home"></i> <span>Hasil Ujian</span></a></li>
          </ul>

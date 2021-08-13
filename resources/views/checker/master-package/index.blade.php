@@ -4,15 +4,10 @@
 <div class="main-content">
    <section class="section">
       <div class="section-header">
-         <h1>Master Package</h1>
-         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Forms</a></div>
-            <div class="breadcrumb-item">Advanced Forms</div>
-         </div>
+         <h1>Master Kelompok Ujian</h1>
       </div>
       <div class="section-body">
-         <h2 class="section-title">Buat Package Soal</h2>
+         <h2 class="section-title">Buat Kelompok Ujian Soal</h2>
          <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                <div class="card">
@@ -20,7 +15,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Package</h6>
+                               <h6 class="text-primary">Data Kelompok Ujian</h6>
                            </div>
                            <div class="col-4 col-md-4 col-lg-4 text-right">
                               <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add_package();"><i class="fa fa-plus"></i> Tambah Package</a>
@@ -32,7 +27,7 @@
                            <thead>
                               <tr>
                                  <th scope="col" class="text-center">No</th>
-                                 <th scope="col" class="text-center">Package</th>
+                                 <th scope="col" class="text-center">Kelompok Ujian</th>
                                  <th scope="col" class="text-center">Deskripsi</th>
                                  <th scope="col" class="text-center" style="width: 12%">Actions</th>
                               </tr>
@@ -40,7 +35,7 @@
                            <tbody>
                               <tr>
                                  <th class="text-center">1</th>
-                                 <td>Package A</td>
+                                 <td>Kelompok Ujian A</td>
                                  <td>lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore</td>
                                  <td class="text-center">
                                     <a href="#" class="btn btn-sm mr-1 btn-icon btn-success"><i class="fa fa-edit"></i></a>
@@ -65,7 +60,7 @@
          <div class="modal-dialog" role="document">
            <div class="modal-content">
              <div class="modal-header">
-               <h5 class="modal-title">Tambah Package</h5>
+               <h5 class="modal-title">Tambah Kelompok Ujian</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                </button>
@@ -73,7 +68,7 @@
              <div class="modal-body pb-0">
                <div class="col-12 col-md-12 col-lg-12">
                   <div class="form-group mb-4">
-                     <label>Judul Package</label>
+                     <label>Judul Kelompok Ujian</label>
                      <input type="text" class="form-control"/>
                   </div>
                </div>

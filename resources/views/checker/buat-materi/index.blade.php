@@ -16,7 +16,7 @@
                      <div class="col-12 col-md-12 col-lg-12 mt-2" style="margin-bottom: 24px;">
                         <div class="row">
                             <div class="col-8 col-md-8 col-lg-8">
-                               <h6 class="text-primary">List Materi</h6>
+                               <h6 class="text-primary">Data Materi</h6>
                            </div>
                            <div class="col-4 col-md-4 col-lg-4 text-right">
                               <a href="javascript:void(0)" class="btn btn-icon icon-left btn-success" onclick="add();"><i class="fa fa-plus"></i> Tambah Materi</a>
@@ -114,7 +114,7 @@
 
    function delete_materi(id){
          swal({
-         title: "Are you sure?",
+         title: "Apa anda yakin?",
          text: "Setelah dihapus, anda tidak bisa mengembalikan data ini!",
          icon: "warning",
          buttons: true,
