@@ -35,6 +35,7 @@
                                  <th scope="col" class="text-center">No</th>
                                  <th scope="col" class="text-center">Judul Materi</th>
                                  <th scope="col" class="text-center">Deskripsi Singkat</th>
+                                 <th scope="col" class="text-center">Materi</th>
                                  <th scope="col" class="text-center" style="width: 12%">Actions</th>
                               </tr>
                            </thead>
@@ -44,6 +45,9 @@
                                  <td>{{ $loop->iteration }}</td>
                                  <td>{{ $item->judul }}</td>
                                  <td>{{ $item->deskripsi }}</td>
+                                 <td class="text-center">
+                                    <a href="{{asset('/berkas/materi/'.$item->materi)}}" target="_blank"><button class="btn btn-warning">Lihat Materi</button></a>
+                                 </td>
                                  <td class="text-center">
                                     <button class="btn btn-sm mr-1 btn-icon btn-success" onclick="add({{$item->id}})"><i class="fa fa-edit"></i></button>
                                     <button class="btn btn-sm btn-icon btn-danger" onclick="delete_materi({{$item->id}})"><i class="fa fa-trash"></i></button>
@@ -77,26 +81,19 @@
                      <div class="col-6 col-md-6 col-lg-6">
                         <div class="form-group mb-4">
                            <label>Judul Materi</label>
-                           <input type="text" name="judul" id="judul" class="form-control" required/>
+                           <input type="text" name="judul" id="judul" name="judul" class="form-control" required/>
                         </div>
                      </div>
                      <div class="col-6 col-md-6 col-lg-6">
                         <div class="form-group mb-4">
                            <label>Deskripsi Singkat</label>
-                           <textarea type="text" name="deskripsi" id="deskripsi" class="form-control" required></textarea>
+                           <textarea type="text" name="deskripsi" id="deskripsi" name="deskripsi" class="form-control" required></textarea>
                         </div>
                      </div>
                      <div class="col-12 col-md-12 col-lg-12">
                         <div class="form-group mb-4">
                            <label>Materi</label>
-                           <textarea type="text" class="form-control ckeditor-text" name="materi" id="materi" autocomplete="off"></textarea>
-                           <script type="text/javascript">
-                                 CKEDITOR.replace( 'materi',
-                                 {
-                                    height: 200,
-                                    filebrowserUploadUrl: "base64",
-                                 });
-                           </script>
+                           <input type="file" class="form-control" id="materi" name="materi"/>
                         </div>
                      </div>
                 </div>
@@ -152,23 +149,22 @@
    }
 
    function add(id = null){
-      $('#modalTitle').html('Edit Package');
+      $('#modalTitle').html('Edit Materi');
       $("#modal").modal('show');
       $(".modal-backdrop").remove();
       if(id){
-         $('#modalTitle').html('Edit Package');
+         $('#modalTitle').html('Edit Materi');
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
 
          $.ajax({
-            url: "/admin/buat_materi/" + id,
+            url: "/checker/buat_materi/" + id,
             type: "GET",
             dataType: 'JSON',
             success: function( data, textStatus, jQxhr ){
                $('#judul').val(data.judul);
                $('#deskripsi').val(data.deskripsi);
                $('#id').val(data.id);
-               CKEDITOR.instances['materi'].setData(data.materi);
             },
             error: function( jqXhr, textStatus, errorThrown ){
                console.log( errorThrown );
@@ -177,7 +173,7 @@
          });
 
       }else{
-         $('#modalTitle').html('Add Package');
+         $('#modalTitle').html('Add Materi');
          $("#modal_package").modal('show');
          $(".modal-backdrop").remove();
          $('#form')[0].reset();
@@ -188,21 +184,23 @@
 
    $('#form').submit(function(e){
       e.preventDefault();
-      for (instance in CKEDITOR.instances) {
-            CKEDITOR.instances[instance].updateElement();
-      }
+      var data = new FormData(this);
+
       $.ajax({
          url: "{{ route('buat_materi.post') }}",
+         cache: false,
+         contentType: false,
+         processData: false,
+         data: data,
          type: "POST",
-         data: $('#form').serialize(),
          dataType: 'JSON',
          success: function( data, textStatus, jQxhr ){
             if(data.status == 'success'){
                swal("Success!", "Proses berhasil", "success");
-               console.log('success');
                $('#form').trigger("reset");
                $("#modal_package").modal('hide');
-               location.reload();
+            }else if(data.status == '300'){
+               swal("Failed!", data.message, "error");
             }else{
                swal("Failed!", "Proses gagal", "error");
             }

@@ -196,8 +196,6 @@
       var a = document.getElementById(id);
       var src = a.value;
 
-      console.log(a);
-
       if(id === "img_nep"){
          $(".modal-title").text("New English Proficiency");
          $("#img_place").attr("src", src);
@@ -242,13 +240,6 @@
 
    $('#form').submit(function(e){
       e.preventDefault();
-      
-      // var id               = $('#id').val();
-      // var img_nep          = $('#img_nep').files[0];
-      // var img_medex        = $('#img_medex').files[0];
-
-      // console.log(img_nep);
-
       var data = new FormData(this);
 
       $.ajax({
